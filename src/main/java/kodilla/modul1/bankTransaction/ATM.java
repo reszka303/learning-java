@@ -1,4 +1,4 @@
-package kodilla.bankTransaction;
+package kodilla.modul1.bankTransaction;
 
 public class ATM extends Bank {
     public void cardInsertionRequest() {
@@ -13,11 +13,11 @@ public class ATM extends Bank {
         System.out.println("Please enter the amount to withdrawal");
     }
 
-    protected void informationOnTheAcceptanceOfAWithdrawalRequestByTheBank() {
+    public void informationOnTheAcceptanceOfAWithdrawalRequestByTheBank() {
         System.out.println("The bank accepted the cash withdrawal request");
     }
 
-    protected void checkingAccountStatus() {
+    public void checkingAccountStatus() {
         System.out.println("Checking bank balance is in progress");
     }
 

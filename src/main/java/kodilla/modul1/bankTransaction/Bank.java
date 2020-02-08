@@ -1,4 +1,4 @@
-package kodilla.bankTransaction;
+package kodilla.modul1.bankTransaction;
 
 public abstract class Bank {
     abstract protected void informationOnTheAcceptanceOfAWithdrawalRequestByTheBank();

@@ -1,12 +1,15 @@
 package bankTransaction;
 
-import kodilla.bankTransaction.ATM;
+import kodilla.modul1.bankTransaction.ATM;
 import org.junit.Test;
 
 public class testBankTransaction {
     @Test
     public void testATM() {
+        //Given - Arrange
         ATM atm = new ATM();
+
+        //When - Act
         atm.run();
     }
 }
