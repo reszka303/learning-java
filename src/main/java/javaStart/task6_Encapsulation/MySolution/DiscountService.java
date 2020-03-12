@@ -1,17 +1,23 @@
 package javaStart.task6_Encapsulation.MySolution;
 
 public class DiscountService {
-    public double isPremium(Client client, double price) {
+
+    public double differentiateClient(Client client, double price) {
         if (client.isPremium()) {
-            if (price >= 5000) {
-                return amountExtremeExtraDiscountForPremiumClient(price);
-            } else if (price >= 1000 && price < 5000) {
-                return amountExtraDiscountForPremiumClient(price);
-            } else {
-                return amountStandardDiscountForPremiumClient(price);
-            }
+            return isPremium(client, price);
+        } else {
+            return noPremium(client,price);
         }
-        return price;
+    }
+
+    private double isPremium(Client client, double price) {
+        if (price >= 5000) {
+            return amountExtremeExtraDiscountForPremiumClient(price);
+        } else if (price >= 1000 && price < 5000) {
+            return amountExtraDiscountForPremiumClient(price);
+        } else {
+            return amountStandardDiscountForPremiumClient(price);
+        }
     }
 
     private double amountExtremeExtraDiscountForPremiumClient(double price) {
@@ -26,17 +32,14 @@ public class DiscountService {
         return price *= 0.95;
     }
 
-    public double noPremium(Client client, double price) {
-        if (!client.isPremium()) {
-            if (price >= 5000) {
-                return amountExtraDiscountForStandardClient(price);
-            } else if (price >= 1000 && price < 5000) {
-                return amountDiscountForStandardClient(price);
-            } else {
-                return amountNoDiscountForStandardClient(price);
-            }
+    private double noPremium(Client client, double price) {
+        if (price >= 5000) {
+            return amountExtraDiscountForStandardClient(price);
+        } else if (price >= 1000 && price < 5000) {
+            return amountDiscountForStandardClient(price);
+        } else {
+            return amountNoDiscountForStandardClient(price);
         }
-        return price;
     }
 
     private double amountExtraDiscountForStandardClient(double price){
