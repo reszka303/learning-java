@@ -1,4 +1,4 @@
-package javaStart.task7_arrayOneDimensional.exercise1_mySolution;
+package javaStart.task7_arrayOneDimensional.exercise1;
 
 import java.util.Random;
 
