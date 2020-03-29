@@ -11,12 +11,12 @@ public class Application {
         Product product3 = new Product(new Price(100));
 
         double priceGross1 = shopService.countGrossPrice(product1, taxRate1);
-        shopService.printInfo(priceGross1);
+        shopService.printInfo(priceGross1, product1, taxRate1);
 
         double priceGross2 = shopService.countGrossPrice(product2, taxRate2);
-        shopService.printInfo(priceGross2);
+        shopService.printInfo(priceGross2, product2, taxRate2);
 
         double priceGross3 = shopService.countGrossPrice(product3, taxRate3);
-        shopService.printInfo(priceGross3);
+        shopService.printInfo(priceGross3, product3, taxRate3);
     }
 }
