@@ -1,4 +1,4 @@
-package javaStart.task1_OperationsOnVariables;
+package javaStart.task1_OperationsOnVariables.exercise1;
 
 import java.util.Random;
 

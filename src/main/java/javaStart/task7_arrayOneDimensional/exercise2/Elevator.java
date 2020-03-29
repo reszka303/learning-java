@@ -22,7 +22,7 @@ public class Elevator {
                             + person.length + " persons are too many");
         }
 
-    public int sumWeightOfPerson(Person[] person) {
+    private int sumWeightOfPerson(Person[] person) {
         int sum = 0;
         for (int i = 0; i < person.length; i++) {
             sum += person[i].getWeight();

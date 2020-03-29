@@ -10,7 +10,7 @@ public class Application {
 
         elevator.list(person);
         elevator.countPerson(person);
-        elevator.sumWeightOfPerson(person);
+        //elevator.sumWeightOfPerson(person);
         elevator.countWeightOfPerson(person);
         elevator.emptyElevator(person);
     }
