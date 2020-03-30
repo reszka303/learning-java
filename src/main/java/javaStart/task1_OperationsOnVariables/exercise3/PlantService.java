@@ -13,13 +13,11 @@ public class PlantService {
 
     public double annualWaterIntake(Plant plant) {
         double waterIntake = 365.0;
-        waterIntake *= plant.getWaterDemand();
-        return waterIntake;
+        return waterIntake *= plant.getWaterDemand();
     }
 
     public void printInfo(Plant plant) {
-        System.out.println("Water intake of " + plant.getName() +
-                " is: ");
+        System.out.println(plant.getName() + " water intake in liters daily/weekly/annual are: ");
     }
 
 }
