@@ -12,11 +12,4 @@ public class Price {
     public double getPriceNet() {
         return priceNet;
     }
-
-    @Override
-    public String toString() {
-        return "Price{" +
-                "priceNet=" + priceNet +
-                '}';
-    }
 }
