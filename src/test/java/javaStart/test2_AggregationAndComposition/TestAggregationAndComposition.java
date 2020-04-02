@@ -1,9 +1,9 @@
 package javaStart.test2_AggregationAndComposition;
 
-import javaStart.task2_AggregationAndComposition.BankAccount;
-import javaStart.task2_AggregationAndComposition.Credit;
-import javaStart.task2_AggregationAndComposition.Person;
-import javaStart.task2_AggregationAndComposition.PlaceOfResidence;
+import javaStart.task2_AggregationAndComposition.exercise1.BankAccount;
+import javaStart.task2_AggregationAndComposition.exercise1.Credit;
+import javaStart.task2_AggregationAndComposition.exercise1.Person;
+import javaStart.task2_AggregationAndComposition.exercise1.PlaceOfResidence;
 import org.junit.Test;
 
 public class TestAggregationAndComposition {
