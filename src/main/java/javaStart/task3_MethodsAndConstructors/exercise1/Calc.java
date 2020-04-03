@@ -1,4 +1,4 @@
-package javaStart.task3_MethodsAndConstructors;
+package javaStart.task3_MethodsAndConstructors.exercise1;
 
 public class Calc {
 
