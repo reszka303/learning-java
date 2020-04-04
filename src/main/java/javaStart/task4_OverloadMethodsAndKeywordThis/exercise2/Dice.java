@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class Dice {
     private int number;
+    private Random random = new Random();
 
     public Dice() {
-        Random random = new Random();
-        this.number = random.nextInt(6) + 1;
+        roll();
     }
 
     public Dice(int number) {
@@ -16,11 +16,11 @@ public class Dice {
 
     public int roll() {
         Random random = new Random();
-        System.out.println("A dice roll occurs");
         return number = random.nextInt(6) + 1;
     }
 
     public void printRoll() {
+        System.out.println("A dice roll occurs");
         System.out.println("The drawn number is: " + number);
     }
 }
