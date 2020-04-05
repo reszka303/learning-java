@@ -1,4 +1,4 @@
-package javaStart.task6_Encapsulation.JavaStartSolution;
+package javaStart.task7_Encapsulation.exercise2.exercise1.JavaStartSolution;
 
 public class Client {
     private String firstName;

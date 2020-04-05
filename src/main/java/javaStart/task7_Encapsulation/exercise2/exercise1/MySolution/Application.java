@@ -1,4 +1,4 @@
-package javaStart.task6_Encapsulation.MySolution;
+package javaStart.task7_Encapsulation.exercise2.exercise1.MySolution;
 
 public class Application {
     public static void main(String[] args) {

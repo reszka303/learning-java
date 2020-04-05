@@ -1,4 +1,4 @@
-package javaStart.task7_arrayOneDimensional.exercise2;
+package javaStart.task8_arrayOneDimensional.exercise2;
 
 public class Person {
     private int id;
