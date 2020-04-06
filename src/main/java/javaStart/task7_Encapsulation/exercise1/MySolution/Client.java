@@ -1,16 +1,16 @@
-package javaStart.task7_Encapsulation.exercise2.exercise1.JavaStartSolution;
+package javaStart.task7_Encapsulation.exercise1.MySolution;
 
 public class Client {
     private String firstName;
     private String lastName;
     private boolean premium;
+    private double price;
 
-
-    public Client(String firstName, String lastName, boolean premium) {
+    public Client(String firstName, String lastName, boolean premium, double price) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.premium = premium;
-
+        this.price = price;
     }
 
     public String getFirstName() {
@@ -25,6 +25,10 @@ public class Client {
         return premium;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -37,10 +41,15 @@ public class Client {
         this.premium = premium;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-    @Override
-    public String toString() {
-        return " " + firstName + lastName + premium;
+    public void printInfo() {
+        if (premium == true) {
+            System.out.println(firstName + " " + lastName + " premium client " + price);
+        } else {
+            System.out.println(firstName + " " + lastName + " standard client " + price);
+        }
     }
 }
-

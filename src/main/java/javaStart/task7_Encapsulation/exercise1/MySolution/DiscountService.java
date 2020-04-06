@@ -1,4 +1,4 @@
-package javaStart.task7_Encapsulation.exercise2.exercise1.MySolution;
+package javaStart.task7_Encapsulation.exercise1.MySolution;
 
 public class DiscountService {
 

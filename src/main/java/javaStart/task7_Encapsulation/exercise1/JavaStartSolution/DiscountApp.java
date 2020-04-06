@@ -1,4 +1,4 @@
-package javaStart.task7_Encapsulation.exercise2.exercise1.JavaStartSolution;
+package javaStart.task7_Encapsulation.exercise1.JavaStartSolution;
 
 class DiscountApp {
     public static void main(String[] args) {
