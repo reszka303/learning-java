@@ -69,4 +69,12 @@ public class MovieShow {
     public String getMovieInfo() {
         return movieTitle + "-" + movieType+ "-" + duration + " min";
     }
+
+    public boolean hasFreeSeats() {
+        return freeSeats != 0;
+    }
+
+    public void decreaseFreeSeatsNumber() {
+        freeSeats--;
+    }
 }
