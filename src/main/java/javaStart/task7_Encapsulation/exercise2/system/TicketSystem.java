@@ -4,6 +4,8 @@ import javaStart.task7_Encapsulation.exercise2.model.Client;
 import javaStart.task7_Encapsulation.exercise2.model.MovieShow;
 import javaStart.task7_Encapsulation.exercise2.model.Ticket;
 
+import java.util.Optional;
+
 public class TicketSystem {
     public Ticket createTicket(MovieShow movieShow, Client client) {
         if(!movieShow.hasFreeSeats()) {

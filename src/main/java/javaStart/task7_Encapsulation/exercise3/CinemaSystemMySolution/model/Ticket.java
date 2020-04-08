@@ -1,13 +1,13 @@
-package javaStart.task7_Encapsulation.exercise2.model;
+package javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model;
 
 public class Ticket {
     private int id;
-    private MovieShow movieShow;
+    private Movie movie;
     private Client client;
 
-    public Ticket(int id, MovieShow movieShow, Client client) {
+    public Ticket(int id, Movie movie, Client client) {
         this.id = id;
-        this.movieShow = movieShow;
+        this.movie = movie;
         this.client = client;
     }
 
@@ -15,8 +15,8 @@ public class Ticket {
         return id;
     }
 
-    public MovieShow getMovieShow() {
-        return movieShow;
+    public Movie getMovie() {
+        return movie;
     }
 
     public Client getClient() {
@@ -27,8 +27,8 @@ public class Ticket {
         this.id = id;
     }
 
-    public void setMovieShow(MovieShow movieShow) {
-        this.movieShow = movieShow;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public void setClient(Client client) {
@@ -36,8 +36,6 @@ public class Ticket {
     }
 
     public String getInfo() {
-        return id + " "+ movieShow.getMovieInfo() + client.getFullName();
+        return "Ticket Id: " + id + " Movie: " + movie.getMovieInfo() + " Client: " + client.getClientInfo();
     }
-
-
 }
