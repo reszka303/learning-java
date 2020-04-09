@@ -36,6 +36,6 @@ public class Ticket {
     }
 
     public String getInfo() {
-        return "Ticket Id: " + id + " Movie: " + movie.getMovieInfo() + " Client: " + client.getClientInfo();
+        return "Ticket id: " + id + "\n" + movie.getMovieInfo() + "\n" + client.getClientInfo();
     }
 }

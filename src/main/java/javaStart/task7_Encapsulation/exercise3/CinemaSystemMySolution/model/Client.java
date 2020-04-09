@@ -36,6 +36,6 @@ public class Client {
     }
 
     public String getClientInfo() {
-        return "Name: " + name + " Surname: " + surname + " Age: " + age;
+        return "Client's full name: " + name + " "+ surname + " -- Age: " + age;
     }
 }

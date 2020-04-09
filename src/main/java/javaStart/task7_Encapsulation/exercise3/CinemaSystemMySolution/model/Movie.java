@@ -7,6 +7,7 @@ public class Movie {
     private int ageRequired;
     private int maxSeats;
     private int freeSeats;
+    private int ticketId = 1;
 
     public Movie(String title, String genre, int length, int ageRequired,
                  int maxSeats, int freeSeats) {
@@ -42,6 +43,10 @@ public class Movie {
         return freeSeats;
     }
 
+    public int getTicketId() {
+        return ticketId;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -66,9 +71,13 @@ public class Movie {
         this.freeSeats = freeSeats;
     }
 
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
+    }
+
     public String getMovieInfo() {
-        return "Movie: " + title + "Genre: " + genre + "length: "
-                + length + "min" + " Age required: " + ageRequired
-                + " Max seats: " + maxSeats + " Seats available: " + freeSeats;
+        return "Movie: " + title + " -- Genre: " + genre + " -- Length: "
+                + length + " min" + " -- Age required: " + ageRequired
+                + " -- Max seats: " + maxSeats + " -- Seats available: " + freeSeats;
     }
 }
