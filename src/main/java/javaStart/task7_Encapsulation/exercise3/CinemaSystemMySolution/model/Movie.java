@@ -7,7 +7,7 @@ public class Movie {
     private int ageRequired;
     private int maxSeats;
     private int freeSeats;
-    private int ticketId = 1;
+    private int ticketId;
 
     public Movie(String title, String genre, int length, int ageRequired,
                  int maxSeats, int freeSeats) {

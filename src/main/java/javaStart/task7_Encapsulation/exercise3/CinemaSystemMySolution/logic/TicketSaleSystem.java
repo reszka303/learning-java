@@ -4,31 +4,33 @@ import javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model.Clie
 import javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model.Movie;
 import javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model.Ticket;
 
+import java.util.Optional;
+
 public class TicketSaleSystem {
-    public Ticket createTicket(Movie movie, Client client) {
+    public Optional<Ticket> createTicket(Movie movie, Client client) {
         if (movie.getFreeSeats() == 0) {
             System.out.println("Details of the order:");
             System.out.println("There are no seats");
             System.out.println();
-            return null;
+            return Optional.empty();
         } else if (client.getAge() < movie.getAgeRequired()) {
             System.out.println("Details of the order:");
             System.out.println("The movie is accessible from "
                     + movie.getAgeRequired() + " years");
             System.out.println();
-            return null;
+            return Optional.empty();
         } else {
             movie.setFreeSeats(movie.getFreeSeats() - 1);
-            int ticketId = movie.getTicketId();
-            movie.setTicketId(movie.getTicketId() + 1);
-            return new Ticket(ticketId, movie, client);
+            int setToOne = movie.getTicketId() + 1;
+            int ticketId = setToOne;
+            movie.setTicketId(setToOne++);
+            return Optional.of(new Ticket(ticketId, movie, client));
         }
     }
 
-    public void getTicketInfo(Ticket ticket) {
-        if (ticket != null) {
-            System.out.println("Details of the order:");
-            System.out.println(ticket.getInfo());
+    public void getTicketInfo(Optional<Ticket> ticket) {
+        if (ticket.isPresent()) {
+            System.out.println(ticket.get().getInfo());
             System.out.println();
         }
     }

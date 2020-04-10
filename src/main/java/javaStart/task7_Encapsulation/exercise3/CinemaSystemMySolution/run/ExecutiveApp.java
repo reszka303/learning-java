@@ -5,6 +5,8 @@ import javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model.Clie
 import javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model.Movie;
 import javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model.Ticket;
 
+import java.util.Optional;
+
 public class ExecutiveApp {
     public static void main(String[] args) {
         TicketSaleSystem ticketSaleSystem = new TicketSaleSystem();
@@ -18,27 +20,29 @@ public class ExecutiveApp {
         Client client2 = new Client(
                 "Eddie",
                 "Travis", 35);
-        Client client3 = new Client("Bill",
+        Client client3 = new Client(
+                "Bill",
                 "Andrade",17);
         Client client4 = new Client(
                 "Zak",
                 "Duarte", 63);
-        Client client5 = new Client("Ines",
+        Client client5 = new Client(
+                "Ines",
                 "Coleman" , 45);
 
-        Ticket ticket1 = ticketSaleSystem.createTicket(movie1, client1);
+        Optional<Ticket> ticket1 = ticketSaleSystem.createTicket(movie1, client1);
         ticketSaleSystem.getTicketInfo(ticket1);
 
-        Ticket ticket2 = ticketSaleSystem.createTicket(movie1, client2);
+        Optional<Ticket> ticket2 = ticketSaleSystem.createTicket(movie1, client2);
         ticketSaleSystem.getTicketInfo(ticket2);
 
-        Ticket ticket3 = ticketSaleSystem.createTicket(movie1, client3);
+        Optional<Ticket> ticket3 = ticketSaleSystem.createTicket(movie1, client3);
         ticketSaleSystem.getTicketInfo(ticket3);
 
-        Ticket ticket4 = ticketSaleSystem.createTicket(movie1, client4);
+        Optional<Ticket> ticket4 = ticketSaleSystem.createTicket(movie1, client4);
         ticketSaleSystem.getTicketInfo(ticket4);
 
-        Ticket ticket5 = ticketSaleSystem.createTicket(movie1, client5);
+        Optional<Ticket> ticket5 = ticketSaleSystem.createTicket(movie1, client5);
         ticketSaleSystem.getTicketInfo(ticket5);
     }
 }
