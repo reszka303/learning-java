@@ -7,7 +7,7 @@ import javaStart.task7_Encapsulation.exercise3.CinemaSystemMySolution.model.Tick
 
 import java.util.Optional;
 
-public class ExecutiveApp {
+public class ExecutiveTicketApp {
     public static void main(String[] args) {
         TicketSaleSystem ticketSaleSystem = new TicketSaleSystem();
         Movie movie1 = new Movie(

@@ -1,6 +1,6 @@
-package javaStart.logic;
+package javaStart.task6_ControlStructure.exercise2.logic;
 
-import javaStart.model.Telephone;
+import javaStart.task6_ControlStructure.exercise2.model.Telephone;
 
 public class Charger {
     public void chargeVariable (Telephone telephone) {

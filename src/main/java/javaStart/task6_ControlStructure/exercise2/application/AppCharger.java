@@ -1,7 +1,7 @@
-package javaStart.application;
+package javaStart.task6_ControlStructure.exercise2.application;
 
-import javaStart.logic.Charger;
-import javaStart.model.Telephone;
+import javaStart.task6_ControlStructure.exercise2.logic.Charger;
+import javaStart.task6_ControlStructure.exercise2.model.Telephone;
 
 import java.util.Random;
 

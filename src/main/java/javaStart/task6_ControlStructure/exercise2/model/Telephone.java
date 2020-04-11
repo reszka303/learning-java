@@ -1,4 +1,4 @@
-package javaStart.model;
+package javaStart.task6_ControlStructure.exercise2.model;
 
 import java.util.Random;
 
