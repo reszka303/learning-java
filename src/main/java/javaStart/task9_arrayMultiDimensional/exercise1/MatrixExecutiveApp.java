@@ -4,12 +4,28 @@ public class MatrixExecutiveApp {
     public static void main(String[] args) {
         MatrixLogic matrixLogic = new MatrixLogic();
 
-        double[][] numbers = matrixLogic.createMatrix();
-        matrixLogic.printArray(numbers);
-        matrixLogic.calculatePrincipalMatrixDiagonal(numbers);
-        matrixLogic.calculateSecondaryMatrixDiagonal(numbers);
-        matrixLogic.calculateSumMiddleRowMatrix(numbers);
-        matrixLogic.calculateSumMiddleColumnMatrix(numbers);
-        matrixLogic.calculateSumBoundaryElementMatrix(numbers);
+        double[][] matrix = matrixLogic.createMatrix();
+        matrixLogic.randomMatrix(matrix);
+        matrixLogic.printArray(matrix);
+
+        matrixLogic.calculateProductPrincipalMatrixDiagonal(matrix);
+        matrixLogic.printSumProductPrincipalMatrixDiagonal(matrix);
+
+        matrixLogic.calculateProductSecondaryMatrixDiagonal(matrix);
+        matrixLogic.printSumProductSecondaryMatrixDiagonal(matrix);
+
+        matrixLogic.calculateSumProductsPrincipalAndSecondaryMatrixDiagonal(matrix);
+        matrixLogic.printSumProductsPrincipalAndSecondaryMatrixDiagonal(matrix);
+
+        matrixLogic.calculateSumMiddleRowMatrix(matrix);
+        matrixLogic.printSumMiddleRowMatrix(matrix);
+
+        matrixLogic.calculateSumMiddleColumnMatrix(matrix);
+        matrixLogic.printSumMiddleColumnMatrix(matrix);
+
+        matrixLogic.printProductSumMiddleRowAndMiddleColumnMatrix(matrix);
+
+        matrixLogic.calculateSumBoundaryElementMatrix(matrix);
+        matrixLogic.printSumBoundaryElementMatrix(matrix);
     }
 }

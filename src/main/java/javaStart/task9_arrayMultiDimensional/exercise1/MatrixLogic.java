@@ -1,17 +1,22 @@
 package javaStart.task9_arrayMultiDimensional.exercise1;
 
+import java.util.Random;
+
 public class MatrixLogic {
+
     public double[][] createMatrix() {
-        double[][] matrix = new double[3][3];
-        matrix[0][0] = 1.0;
-        matrix[0][1] = 1.5;
-        matrix[0][2] = 2.0;
-        matrix[1][0] = 1.5;
-        matrix[1][1] = 2.0;
-        matrix[1][2] = 2.5;
-        matrix[2][0] = 2.0;
-        matrix[2][1] = 2.5;
-        matrix[2][2] = 3.0;
+        Matrix matrix = new Matrix(new double[5][5]);
+        double[][] array = matrix.getMatrix();
+        return array;
+    }
+
+    public double[][] randomMatrix(double[][] matrix) {
+        Random random = new Random();
+        for (int i = 0; i < matrix.length ; i++) {
+            for (int j = 0; j < matrix[i].length ; j++) {
+                matrix[i][j] = random.nextInt(9) + 1;
+            }
+        }
         return matrix;
     }
 
@@ -25,32 +30,53 @@ public class MatrixLogic {
         }
     }
 
-    public double calculatePrincipalMatrixDiagonal(double[][] matrix) {
-        double diagonalSum = 0;
+    public double calculateProductPrincipalMatrixDiagonal(double[][] matrix) {
+        double diagonalSum = 1;
         for (int i = 0; i < matrix.length ; i++) {
             for (int j = 0; j < matrix[i].length ; j++) {
                 if (i == j) {
-                    diagonalSum += matrix[i][j];
+                    diagonalSum *= matrix[i][j];
                 }
             }
         }
-        System.out.println("A sum of products of the principal" +
-                " matrix diagonal is: " + diagonalSum);
         return diagonalSum;
     }
 
-    public double calculateSecondaryMatrixDiagonal(double[][] matrix) {
-        double diagonalSum = 0;
+    public void printSumProductPrincipalMatrixDiagonal(double[][] matrix) {
+        System.out.println("A product of the principal" +
+                " matrix diagonal is as follows: " +
+                calculateProductPrincipalMatrixDiagonal(matrix));
+    }
+
+    public double calculateProductSecondaryMatrixDiagonal(double[][] matrix) {
+        double diagonalSum = 1;
         for (int i = 0; i < matrix.length ; i++) {
             for (int j = 0; j < matrix[i].length ; j++) {
                 if ((i + j) == (matrix.length - 1)) {
-                    diagonalSum += matrix[i][j];
+                    diagonalSum *= matrix[i][j];
                 }
             }
         }
-        System.out.println("A sum of products of the secondary" +
-                " matrix diagonal is: " + diagonalSum);
         return diagonalSum;
+    }
+
+    public void printSumProductSecondaryMatrixDiagonal(double[][] matrix) {
+        System.out.println("A product of the secondary" +
+                " matrix diagonal is as follows: " +
+                calculateProductSecondaryMatrixDiagonal(matrix));
+    }
+
+    public double calculateSumProductsPrincipalAndSecondaryMatrixDiagonal(double[][] matrix) {
+        double sumTwoMatrixDiagonal =
+                calculateProductPrincipalMatrixDiagonal(matrix) +
+                calculateProductSecondaryMatrixDiagonal(matrix);
+        return sumTwoMatrixDiagonal;
+    }
+
+    public void printSumProductsPrincipalAndSecondaryMatrixDiagonal(double[][] matrix) {
+        System.out.println("A sum of the products of the principal and" +
+                " secondary matrix diagonal is as follows: " +
+                calculateSumProductsPrincipalAndSecondaryMatrixDiagonal(matrix));
     }
 
     public double calculateSumMiddleRowMatrix(double[][] matrix) {
@@ -58,9 +84,13 @@ public class MatrixLogic {
         for (int i = 0; i < matrix.length ; i++) {
             rowSum += matrix[matrix.length / 2][i];
         }
-        System.out.println("A sum of the product of the middle row " +
-                "of the matrix is: " + rowSum);
         return rowSum;
+    }
+
+    public void printSumMiddleRowMatrix(double[][] matrix) {
+        System.out.println("A sum of the middle row " +
+                "of the matrix is as follows: " +
+                calculateSumMiddleRowMatrix(matrix));
     }
 
     public double calculateSumMiddleColumnMatrix(double[][] matrix) {
@@ -68,9 +98,26 @@ public class MatrixLogic {
         for (int i = 0; i < matrix.length ; i++) {
             columnSum += matrix[i][matrix.length / 2];
         }
-        System.out.println("A sum of the product of the middle column " +
-                "of the matrix is: " + columnSum);
         return columnSum;
+    }
+
+    public void printSumMiddleColumnMatrix(double[][] matrix) {
+        System.out.println("A sum of the middle column " +
+                "of the matrix is as follows: " +
+                calculateSumMiddleColumnMatrix(matrix));
+    }
+
+    public double calculateProductSumMiddleRowAndMiddleColumnMatrix(double[][] matrix) {
+        double productSumMiddleRowAndColumnMatrix =
+                calculateSumMiddleRowMatrix(matrix) *
+                        calculateSumMiddleColumnMatrix(matrix);
+        return productSumMiddleRowAndColumnMatrix;
+    }
+
+    public void printProductSumMiddleRowAndMiddleColumnMatrix(double[][] matrix) {
+        System.out.println("Product of the sums of the middle row and" +
+                " the middle column of the matrix is as follows: " +
+                calculateProductSumMiddleRowAndMiddleColumnMatrix(matrix));
     }
 
     public double calculateSumBoundaryElementMatrix(double[][] matrix) {
@@ -82,7 +129,11 @@ public class MatrixLogic {
                 }
             }
         }
-        System.out.println("A sum of boundary of the matrix is: " + boundarySum);
         return boundarySum;
+    }
+
+    public void printSumBoundaryElementMatrix(double[][] matrix) {
+        System.out.println("A sum of boundary of the matrix is as follows: " +
+                calculateSumBoundaryElementMatrix(matrix));
     }
 }
