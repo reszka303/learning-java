@@ -80,4 +80,13 @@ public class Movie {
                 + length + " min" + " -- Age required: " + ageRequired
                 + " -- Max seats: " + maxSeats + " -- Seats available: " + freeSeats;
     }
+
+    public int nextTicketId() {
+        setTicketId(ticketId + 1);
+        return ticketId;
+    }
+
+    public boolean noSeats() {
+        return freeSeats == 0;
+    }
 }

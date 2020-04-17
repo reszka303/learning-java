@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class TicketSaleSystem {
     public Optional<Ticket> createTicket(Movie movie, Client client) {
-        if (movie.getFreeSeats() == 0) {
+        if (movie.noSeats()) {
             System.out.println("Details of the order:");
             System.out.println("There are no seats");
             System.out.println();
@@ -21,17 +21,13 @@ public class TicketSaleSystem {
             return Optional.empty();
         } else {
             movie.setFreeSeats(movie.getFreeSeats() - 1);
-            int setToOne = movie.getTicketId() + 1;
-            int ticketId = setToOne;
-            movie.setTicketId(setToOne++);
-            return Optional.of(new Ticket(ticketId, movie, client));
+            int tickedId = movie.nextTicketId();
+            return Optional.of(new Ticket(tickedId, movie, client));
         }
     }
 
-    public void getTicketInfo(Optional<Ticket> ticket) {
-        if (ticket.isPresent()) {
-            System.out.println(ticket.get().getInfo());
-            System.out.println();
-        }
+    public void getTicketInfo(Ticket ticket) {
+        System.out.println(ticket.getInfo());
+        System.out.println();
     }
 }

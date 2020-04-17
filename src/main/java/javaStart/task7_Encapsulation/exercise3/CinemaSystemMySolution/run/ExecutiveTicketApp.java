@@ -31,18 +31,18 @@ public class ExecutiveTicketApp {
                 "Coleman" , 45);
 
         Optional<Ticket> ticket1 = ticketSaleSystem.createTicket(movie1, client1);
-        ticketSaleSystem.getTicketInfo(ticket1);
+        ticket1.ifPresent(ticket -> ticketSaleSystem.getTicketInfo(ticket));
 
-        Optional<Ticket> ticket2 = ticketSaleSystem.createTicket(movie1, client2);
-        ticketSaleSystem.getTicketInfo(ticket2);
+        ticketSaleSystem.createTicket(movie1, client2)
+                .ifPresent(ticket2 -> ticketSaleSystem.getTicketInfo(ticket2));
 
         Optional<Ticket> ticket3 = ticketSaleSystem.createTicket(movie1, client3);
-        ticketSaleSystem.getTicketInfo(ticket3);
+        ticket3.ifPresent(ticket -> ticketSaleSystem.getTicketInfo(ticket));
 
-        Optional<Ticket> ticket4 = ticketSaleSystem.createTicket(movie1, client4);
-        ticketSaleSystem.getTicketInfo(ticket4);
+        ticketSaleSystem.createTicket(movie1, client4)
+                .ifPresent(ticket4 -> ticketSaleSystem.getTicketInfo(ticket4));
 
         Optional<Ticket> ticket5 = ticketSaleSystem.createTicket(movie1, client5);
-        ticketSaleSystem.getTicketInfo(ticket5);
+        ticket5.ifPresent(ticket -> ticketSaleSystem.getTicketInfo(ticket));
     }
 }

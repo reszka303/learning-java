@@ -3,7 +3,6 @@ package javaStart.task9_arrayMultiDimensional.exercise1;
 import java.util.Random;
 
 public class MatrixLogic {
-
     public double[][] createMatrix() {
         Matrix matrix = new Matrix(new double[5][5]);
         double[][] array = matrix.getMatrix();
