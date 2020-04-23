@@ -1,4 +1,4 @@
-package javaStart.task8_arrayOneDimensional.exercise2;
+package javaStart.task8_ArrayOneDimensional.exercise2;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
