@@ -82,7 +82,7 @@ public class Movie {
     }
 
     public int nextTicketId() {
-        setTicketId(ticketId + 1);
+        ticketId++;
         return ticketId;
     }
 
