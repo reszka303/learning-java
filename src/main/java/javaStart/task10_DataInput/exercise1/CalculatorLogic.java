@@ -4,40 +4,38 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class CalculatorLogic {
-    CalculatorPrint calculatorPrint = new CalculatorPrint();
-    public double add(double number1, double number2) {
+    public float add(float number1, float number2) {
         return number1 + number2;
     }
 
-    public double subtract(double number1, double number2) {
+    public float subtract(float number1, float number2) {
         return number1 - number2;
     }
 
-    public double multiply(double number1, double number2) {
+    public float multiply(float number1, float number2) {
         return number1 * number2;
     }
 
-    public double divide(double number1, double number2) {
-        double result = 0;
+    public float divide(float number1, float number2) {
         if (number2 == 0) {
-            System.out.println("One can't divide by zero");
-        } else {
-            result = number1 / number2;
+            System.out.println("Can't be divide by zero");
+
         }
-        return result;
+        return number1/number2;
     }
 
-    public double setEuropeanNumberFormat() {
+
+    public float runEuropeanFormatNumbering() {
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.GERMANY);
-        double number = scanner.nextDouble();
+        float number = scanner.nextFloat();
         return number;
     }
 
-    public double setUSNumberFormat() {
+    public float runUSFormatNumbering() {
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
-        double number = scanner.nextDouble();
+        float number = scanner.nextFloat();
         return number;
     }
 }
