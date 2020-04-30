@@ -81,9 +81,12 @@ public class Movie {
                 + " -- Max seats: " + maxSeats + " -- Seats available: " + freeSeats;
     }
 
+    public int subtractFreeSeats() {
+        return freeSeats -= 1;
+    }
+
     public int nextTicketId() {
-        ticketId++;
-        return ticketId;
+        return ticketId += 1;
     }
 
     public boolean noSeats() {

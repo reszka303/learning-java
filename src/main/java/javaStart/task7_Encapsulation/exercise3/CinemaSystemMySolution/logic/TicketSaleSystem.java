@@ -20,7 +20,8 @@ public class TicketSaleSystem {
             System.out.println();
             return Optional.empty();
         } else {
-            movie.setFreeSeats(movie.getFreeSeats() - 1);
+//            movie.setFreeSeats(movie.getFreeSeats() - 1);
+            movie.subtractFreeSeats();
             int tickedId = movie.nextTicketId();
             return Optional.of(new Ticket(tickedId, movie, client));
         }

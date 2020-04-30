@@ -7,7 +7,7 @@ public class MenuLogic {
     CalculatorPrint calculatorPrint = new CalculatorPrint();
     ChoiceLogic choiceLogic = new ChoiceLogic();
 
-    public void runMainMenu() {
+    protected void runMainMenu() {
         calculatorPrint.displayMainMenu();
         int menu = choiceLogic.protectRightChoiceMainMenu();
 
@@ -24,7 +24,7 @@ public class MenuLogic {
         }
     }
 
-    public void runEuroFormatNumber() {
+    private void runEuroFormatNumber() {
         float numberOne = 0;
         float numberTwo = 0;
         boolean error = true;
@@ -109,7 +109,7 @@ public class MenuLogic {
         }
     }
 
-    public void runUSFormatNumber() {
+    private void runUSFormatNumber() {
         float numberOne = 0;
         float numberTwo = 0;
         boolean error = true;
@@ -194,7 +194,7 @@ public class MenuLogic {
         }
     }
 
-    public void displayMenuAfterCalculation() {
+    private void displayMenuAfterCalculation() {
         calculatorPrint.displayMenuAfterCalculation();
         int menu = choiceLogic.protectRightChoiceMenuAfterCalculation();
 
