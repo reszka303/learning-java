@@ -45,7 +45,7 @@ public class Client {
         this.price = price;
     }
 
-    public void printInfo() {
+    protected void printInfo() {
         if (premium == true) {
             System.out.println(firstName + " " + lastName + " premium client " + price);
         } else {

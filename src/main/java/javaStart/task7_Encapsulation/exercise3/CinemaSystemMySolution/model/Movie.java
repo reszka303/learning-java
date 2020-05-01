@@ -82,11 +82,13 @@ public class Movie {
     }
 
     public int subtractFreeSeats() {
-        return freeSeats -= 1;
+        setFreeSeats(getFreeSeats() - 1);
+        return freeSeats;
     }
 
     public int nextTicketId() {
-        return ticketId += 1;
+        setTicketId(getTicketId() + 1);
+        return ticketId;
     }
 
     public boolean noSeats() {

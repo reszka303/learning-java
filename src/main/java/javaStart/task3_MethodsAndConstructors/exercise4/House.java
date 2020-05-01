@@ -61,35 +61,27 @@ public class House {
         setOilLevel();
     }
 
-    private String reachWaterLowLevel() {
-        if (water <= 100) {
-            return "Water has reached a low level";
-        } else {
-            return "";
+    private void reachWaterLowLevel() {
+        if (water <= 100 && water >= 1) {
+            System.out.println("Water has reached a low level");
         }
     }
 
-    private String reachOilLowLevel() {
-        if (oil <= 100) {
-            return "Oil has reached a low level";
-        } else {
-            return "";
+    private void reachOilLowLevel() {
+        if (oil <= 100 && oil >= 1) {
+            System.out.println("Oil has reached a low level");
         }
     }
 
-    private String noWater() {
+    private void noWater() {
         if (water <= 0) {
-            return "There is no water";
-        } else {
-            return "";
+            System.out.println("There is no water");
         }
     }
 
-    private String  noOil() {
+    private void noOil() {
         if (oil <= 0) {
-            return "There is no oil";
-        } else {
-            return "";
+            System.out.println("There is no oil");
         }
     }
 
@@ -106,6 +98,7 @@ public class House {
     }
 
     protected void tankWater(double tank) {
+        System.out.println("We're tanking a water container");
         setWater(water + tank);
         if (water >= 1000) {
             water = 1000;
@@ -114,6 +107,7 @@ public class House {
     }
 
     protected void tankOil(double tank) {
+        System.out.println("We're tanking a oil container");
         setOil(oil + tank);
         if (oil >= 1000) {
             setOil(oil = 1000);
@@ -121,12 +115,12 @@ public class House {
         }
     }
 
-    protected String printHome() {
-        return "Quantity of water is: " + water + " litres, " +
-                "Quantity of oil is: " + oil + " litres " +
-                "\n" + reachWaterLowLevel() +
-                "\n" + reachOilLowLevel() +
-                "\n" + noWater() +
-                "\n" + noOil();
+    protected void printHome() {
+        System.out.println("Quantity of water is: " + water + " litres, " +
+                "Quantity of oil is: " + oil + " litres ");
+        reachWaterLowLevel();
+        reachOilLowLevel();
+        noWater();
+        noOil();
     }
 }
