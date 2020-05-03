@@ -6,27 +6,34 @@ public class DrawLogic {
     TossUpPrint tossUpPrint = new TossUpPrint();
     CountdownLogic countdownLogic = new CountdownLogic();
 
-    void drawHeads() {
+    private int draw() {
         Random random = new Random();
         int draw = random.nextInt(2) + 1;
         countdownLogic.runTimer();
 
         if (draw == 1) {
-            tossUpPrint.winHeads();
+            tossUpPrint.win();
         } else {
             tossUpPrint.lose();
+        }
+        return draw;
+    }
+
+    void drawHeads() {
+        int resultDraw = draw();
+        if (resultDraw == 1) {
+            tossUpPrint.winHeads();
+        } else {
+            tossUpPrint.winTails();
         }
     }
 
     void drawTails() {
-        Random random = new Random();
-        int draw = random.nextInt(2) + 1;
-        countdownLogic.runTimer();
-
-        if (draw == 2) {
+        int resultDraw = draw();
+        if (resultDraw == 1) {
             tossUpPrint.winTails();
         } else {
-            tossUpPrint.lose();
+            tossUpPrint.winHeads();
         }
     }
 }

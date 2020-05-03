@@ -8,6 +8,10 @@ public class TossUpPrint {
         partOfMenu();
     }
 
+    void displayIncorrectChoice() {
+        System.out.println("Error! Incorrect choice");
+    }
+
     void chooseMenuAfterGame() {
         System.out.println("Maybe you want to play again?");
         partOfMenu();
@@ -31,11 +35,7 @@ public class TossUpPrint {
 
     private void beginningDraw() {
         System.out.println("Draw has been begun and " +
-                "soon you find out if you win or lose");
-    }
-
-    void displayIncorrectChoice() {
-        System.out.println("Error! Incorrect choice");
+                "you find out if you win or lose soon");
     }
 
     void displayCatchException() {
@@ -44,18 +44,20 @@ public class TossUpPrint {
         System.out.println("Try again...");
     }
 
-    void winHeads() {
+    void win() {
         System.out.println("Congratulations! You won");
-        System.out.println("Heads has been drawn");
-    }
-
-    void winTails() {
-        System.out.println("Congratulations! You won");
-        System.out.println("Tails has been drawn");
     }
 
     void lose() {
         System.out.println("Sorry! You lose");
+    }
+
+    void winHeads() {
+        System.out.println("Heads has been drawn");
+    }
+
+    void winTails() {
+        System.out.println("Tails has been drawn");
     }
 
     void closeProgram() {

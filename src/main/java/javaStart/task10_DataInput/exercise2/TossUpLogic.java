@@ -30,7 +30,7 @@ public class TossUpLogic {
         playGame();
     }
 
-    void chooseMenuAfterGame() {
+    private void chooseMenuAfterGame() {
         tossUpPrint.chooseMenuAfterGame();
         playGame();
     }
