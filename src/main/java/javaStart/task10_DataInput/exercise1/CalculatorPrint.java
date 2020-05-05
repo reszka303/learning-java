@@ -1,7 +1,7 @@
 package javaStart.task10_DataInput.exercise1;
 
 public class CalculatorPrint {
-    protected void displayMainMenu() {
+    void displayMainMenu() {
         System.out.println("==Calculator==");
         System.out.println("Main Menu");
         System.out.println("1 - Chose Main Menu - European format number");
@@ -9,7 +9,7 @@ public class CalculatorPrint {
         System.out.println("0 - End the program");
     }
 
-    protected void displayCalculationMenu() {
+    void displayCalculationMenu() {
         System.out.println("==Calculator==");
         System.out.println("Calculation Menu");
         System.out.println("1 - Add");
@@ -21,15 +21,15 @@ public class CalculatorPrint {
 
     }
 
-    protected void givingFirstNumbers() {
+    void givingFirstNumbers() {
         System.out.println("Give first number...");
     }
 
-    protected void givingSecondNumbers() {
+    void givingSecondNumbers() {
         System.out.println("Give second number...");
     }
 
-    protected void displayExceptionMessageForEuroFormatNumber() {
+    void displayExceptionMessageForEuroFormatNumber() {
         System.out.println("Error! You gave the wrong number");
         System.out.println("If you want to give a floating point number," +
                 " you should give it with comma ','");
@@ -38,7 +38,7 @@ public class CalculatorPrint {
         System.out.println("Try again...");
     }
 
-    protected void displayExceptionMessageForUSFormatNumber() {
+    void displayExceptionMessageForUSFormatNumber() {
         System.out.println("Error! You gave the wrong number");
         System.out.println("If you want to give a floating point number," +
                 " you should give it with dot '.'");
@@ -47,14 +47,14 @@ public class CalculatorPrint {
         System.out.println("Try again...");
     }
 
-    protected void displayMenuAfterCalculation() {
+    void displayMenuAfterCalculation() {
         System.out.println("What now?");
         System.out.println("1 - Chose the Main Menu - European Format Number");
         System.out.println("2 - Chose the Main Menu - U.S. Format Number");
         System.out.println("0 - End the program");
     }
 
-    protected void displayExceptionMessageForChoiceLogic() {
+    void displayExceptionMessageForChoiceLogic() {
         System.out.println("You must give only an integer");
         System.out.println("A floating point number or letter cannot be given");
         System.out.println("Try again...");

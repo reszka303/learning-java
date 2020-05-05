@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ChoiceLogic {
     CalculatorPrint calculatorPrint = new CalculatorPrint();
 
-    protected int protectRightChoiceMainMenu() {
+    int protectRightChoiceMainMenu() {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         boolean error = true;
@@ -30,7 +30,7 @@ public class ChoiceLogic {
         return choice;
     }
 
-    protected int protectRightChoiceCalculationMenu() {
+    int protectRightChoiceCalculationMenu() {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         boolean error = true;
@@ -54,7 +54,7 @@ public class ChoiceLogic {
         return choice;
     }
 
-    protected int protectRightChoiceMenuAfterCalculation() {
+    int protectRightChoiceMenuAfterCalculation() {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         boolean error = true;

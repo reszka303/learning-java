@@ -17,110 +17,118 @@ public class House {
         this.oil = oil;
     }
 
-    protected void takeShower() {
+    void takeShower() {
         water -= 48;
-        System.out.println("We're having a shower");
         setWaterLevel();
     }
 
-     protected void takeBath() {
+    void takeBath() {
         water -= 86;
-        System.out.println("We're having a bath");
         setWaterLevel();
     }
 
-     protected void makeDinner() {
+    void makeDinner() {
         oil -= 0.1;
         water -= 4;
-        System.out.println("We're making dinner");
         setWaterLevel();
         setOilLevel();
     }
 
-    protected void boilWater() {
+    void boilWater() {
         oil -= 0.05;
         water -= 0.5;
-        System.out.println("We're boiling some water");
         setWaterLevel();
         setOilLevel();
     }
 
-    protected void watchTV(int hours) {
+    void watchTV(int hours) {
         double intake = 0.06;
         intake *= hours;
         oil -= intake;
-        System.out.println("We're watching TV by " + hours + " hours");
         setOilLevel();
     }
 
-    protected void heatHouse(int month) {
+    void heatHouse(int month) {
         double intake = 300;
         intake *= month;
         oil -= intake;
-        System.out.println("We're heating a house");
         setOilLevel();
     }
 
-    private void reachWaterLowLevel() {
-        if (water <= 100 && water >= 1) {
-            System.out.println("Water has reached a low level");
-        }
-    }
-
-    private void reachOilLowLevel() {
-        if (oil <= 100 && oil >= 1) {
-            System.out.println("Oil has reached a low level");
-        }
-    }
-
-    private void noWater() {
-        if (water <= 0) {
-            System.out.println("There is no water");
-        }
-    }
-
-    private void noOil() {
-        if (oil <= 0) {
-            System.out.println("There is no oil");
-        }
-    }
-
-    private void setWaterLevel() {
+    private String setWaterLevel() {
         if (water <= 0) {
             setWater(water = 0);
         }
+        return "";
     }
 
-    private void setOilLevel() {
+    private String setOilLevel() {
         if (oil <= 0) {
             setOil(oil = 0);
         }
+        return "";
     }
 
-    protected void tankWater(double tank) {
-        System.out.println("We're tanking a water container");
-        setWater(water + tank);
+    String fuelWater(double fuel) {
+        setWater(water + fuel);
         if (water >= 1000) {
             water = 1000;
-            System.out.println("A container of water is full");
+            return "A container of water is full";
         }
+        return "";
     }
 
-    protected void tankOil(double tank) {
-        System.out.println("We're tanking a oil container");
-        setOil(oil + tank);
+    String fuelOil(double fuel) {
+        setOil(oil + fuel);
         if (oil >= 1000) {
             setOil(oil = 1000);
-            System.out.println("A container of oil is full");
         }
+        return "";
     }
 
-    protected void printHome() {
-        System.out.println("Quantity of water is: " + water + " litres, " +
-                "Quantity of oil is: " + oil + " litres ");
-        reachWaterLowLevel();
-        reachOilLowLevel();
-        noWater();
-        noOil();
+    private String fullOil() {
+        if (oil >= 1000) {
+            return "A container of oil is full";
+        }
+        return "";
+    }
+
+    private String fullWater() {
+        if (water >= 1000) {
+            return "A container of water is full";
+        }
+        return "";
+    }
+
+    private String infoOilLevel() {
+        if (oil <= 100 && oil >= 0.01) {
+            return "There is a level of oil below 100 litres" +
+                    " in the container";
+        } else if (oil <= 0) {
+            return "There is no oil in the container" +
+                    setOilLevel();
+        }
+        return "";
+    }
+
+    private String infoWaterLevel() {
+        if (water <= 100 && water >= 0.01) {
+            return "There is a level of water below 100 litres" +
+                    " in the container";
+        } else if (water <= 0) {
+            return "There is no water in the container" +
+                    setWaterLevel();
+        }
+        return "";
+    }
+
+    String infoHome() {
+        return "Quantity of water is: " + water + " litres" +
+                "\n" + "Quantity of oil is: " + oil + " litres " +
+                "\n" + infoOilLevel() +
+                "\n" + infoWaterLevel() +
+                "\n" + setWaterLevel() +
+                "\n" + setOilLevel() + fullOil() +
+                "\n" + fullWater();
     }
 }

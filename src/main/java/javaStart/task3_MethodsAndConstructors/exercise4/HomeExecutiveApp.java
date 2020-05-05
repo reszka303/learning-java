@@ -3,43 +3,102 @@ package javaStart.task3_MethodsAndConstructors.exercise4;
 public class HomeExecutiveApp {
     public static void main(String[] args) {
         House home = new House(1000, 1000);
-        home.printHome();
+        HousePrint housePrint = new HousePrint();
+
+        System.out.println(home.infoHome());
+        System.out.println();
+        System.out.println();
 
         home.takeShower();
+        System.out.println(housePrint.printTakeShower());
+        System.out.println(home.infoHome());
+
         home.makeDinner();
+        System.out.println(housePrint.printMakeDinner());
+        System.out.println(home.infoHome());
+
         home.boilWater();
+        System.out.println(housePrint.printBoilWater());
+        System.out.println(home.infoHome());
+
         home.watchTV(10);
-        home.printHome();
+        System.out.println(housePrint.printWatchTV(10));
+        System.out.println(home.infoHome());
 
         home.takeBath();
-        home.takeBath();
-        home.takeBath();
-        home.takeBath();
-        home.takeBath();
-        home.takeBath();
-        home.takeBath();
-        home.printHome();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
 
         home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
         home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
         home.takeBath();
-        home.printHome();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
         home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
         home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
         home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
         home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
+        home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
+        home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
+        home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
+        home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
+        home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
+        home.takeBath();
+        System.out.println(housePrint.printTakeBath());
+        System.out.println(home.infoHome());
+
         home.heatHouse(3);
-        home.printHome();
+        System.out.println(housePrint.printHeatHouse());
+        System.out.println(home.infoHome());
 
         home.heatHouse(1);
-        home.printHome();
+        System.out.println(housePrint.printHeatHouse());
+        System.out.println(home.infoHome());
 
-        home.tankWater(700);
-        home.tankOil(800);
-        home.printHome();
+        home.fuelWater(700);
+        System.out.println(housePrint.printFuelWater());
+        home.fuelOil(800);
+        System.out.println(housePrint.printFuelOil());
+        System.out.println(home.infoHome());
 
-        home.tankOil(300);
-        home.tankWater(301);
-        home.printHome();
+        home.fuelOil(300);
+        System.out.println(housePrint.printFuelOil());
+        home.fuelWater(301);
+        System.out.println(housePrint.printFuelWater());
+        System.out.println(home.infoHome());
     }
 }

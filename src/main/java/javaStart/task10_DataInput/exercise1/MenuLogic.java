@@ -7,7 +7,7 @@ public class MenuLogic {
     CalculatorPrint calculatorPrint = new CalculatorPrint();
     ChoiceLogic choiceLogic = new ChoiceLogic();
 
-    protected void runMainMenu() {
+    void runMainMenu() {
         calculatorPrint.displayMainMenu();
         int menu = choiceLogic.protectRightChoiceMainMenu();
 
@@ -36,10 +36,8 @@ public class MenuLogic {
                     do {
                         try {
                             System.out.println("Add");
-                            calculatorPrint.givingFirstNumbers();
-                            numberOne = calculatorLogic.runEuropeanFormatNumbering();
-                            calculatorPrint.givingSecondNumbers();
-                            numberTwo = calculatorLogic.runEuropeanFormatNumbering();
+                            numberOne = givingNumberOneEuropeanFormatNumber();
+                            numberTwo = givingNumberTwoEuropeanFormatNumber();
                             System.out.println("The result of addition is: " +
                                     calculatorLogic.add(numberOne, numberTwo));
                             displayMenuAfterCalculation();
@@ -53,10 +51,8 @@ public class MenuLogic {
                     do {
                         try {
                             System.out.println("Subtract");
-                            calculatorPrint.givingFirstNumbers();
-                            numberOne = calculatorLogic.runEuropeanFormatNumbering();
-                            calculatorPrint.givingSecondNumbers();
-                            numberTwo = calculatorLogic.runEuropeanFormatNumbering();
+                            numberOne = givingNumberOneEuropeanFormatNumber();
+                            numberTwo = givingNumberTwoEuropeanFormatNumber();
                             System.out.println("The result of subtraction is: " +
                                     calculatorLogic.subtract(numberOne, numberTwo));
                             displayMenuAfterCalculation();
@@ -70,10 +66,8 @@ public class MenuLogic {
                     do {
                         try {
                             System.out.println("Multiply");
-                            calculatorPrint.givingFirstNumbers();
-                            numberOne = calculatorLogic.runEuropeanFormatNumbering();
-                            calculatorPrint.givingSecondNumbers();
-                            numberTwo = calculatorLogic.runEuropeanFormatNumbering();
+                            numberOne = givingNumberOneEuropeanFormatNumber();
+                            numberTwo = givingNumberTwoEuropeanFormatNumber();
                             System.out.println("The result of multiplication is: " +
                                     calculatorLogic.multiply(numberOne, numberTwo));
                             displayMenuAfterCalculation();
@@ -87,10 +81,8 @@ public class MenuLogic {
                     do {
                         try {
                             System.out.println("Divide");
-                            calculatorPrint.givingFirstNumbers();
-                            numberOne = calculatorLogic.runEuropeanFormatNumbering();
-                            calculatorPrint.givingSecondNumbers();
-                            numberTwo = calculatorLogic.runEuropeanFormatNumbering();
+                            numberOne = givingNumberOneEuropeanFormatNumber();
+                            numberTwo = givingNumberTwoEuropeanFormatNumber();
                             System.out.println("The result of dividing is: " +
                                     calculatorLogic.divide(numberOne, numberTwo));
                             displayMenuAfterCalculation();
@@ -121,10 +113,8 @@ public class MenuLogic {
                 do {
                     try {
                         System.out.println("Add");
-                        calculatorPrint.givingFirstNumbers();
-                        numberOne = calculatorLogic.runUSFormatNumbering();
-                        calculatorPrint.givingSecondNumbers();
-                        numberTwo = calculatorLogic.runUSFormatNumbering();
+                        numberOne = givingNumberOneUSFormatNumber();
+                        numberTwo = givingNumberTwoUSFormatNumber();
                         System.out.println("The result of addition is: " +
                                 calculatorLogic.add(numberOne, numberTwo));
                         displayMenuAfterCalculation();
@@ -138,10 +128,8 @@ public class MenuLogic {
                 do {
                     try {
                         System.out.println("Subtract");
-                        calculatorPrint.givingFirstNumbers();
-                        numberOne = calculatorLogic.runUSFormatNumbering();
-                        calculatorPrint.givingSecondNumbers();
-                        numberTwo = calculatorLogic.runUSFormatNumbering();
+                        numberOne = givingNumberOneUSFormatNumber();
+                        numberTwo = givingNumberTwoUSFormatNumber();
                         System.out.println("The result of subtraction is: " +
                                 calculatorLogic.subtract(numberOne, numberTwo));
                         displayMenuAfterCalculation();
@@ -155,10 +143,8 @@ public class MenuLogic {
                 do {
                     try {
                         System.out.println("Multiply");
-                        calculatorPrint.givingFirstNumbers();
-                        numberOne = calculatorLogic.runUSFormatNumbering();
-                        calculatorPrint.givingSecondNumbers();
-                        numberTwo = calculatorLogic.runUSFormatNumbering();
+                        numberOne = givingNumberOneUSFormatNumber();
+                        numberTwo = givingNumberTwoUSFormatNumber();
                         System.out.println("The result of multiplication is: " +
                                 calculatorLogic.multiply(numberOne, numberTwo));
                         displayMenuAfterCalculation();
@@ -172,10 +158,8 @@ public class MenuLogic {
                 do {
                     try {
                         System.out.println("Divide");
-                        calculatorPrint.givingFirstNumbers();
-                        numberOne = calculatorLogic.runUSFormatNumbering();
-                        calculatorPrint.givingSecondNumbers();
-                        numberTwo = calculatorLogic.runUSFormatNumbering();
+                        numberOne = givingNumberOneUSFormatNumber();
+                        numberTwo = givingNumberTwoUSFormatNumber();
                         System.out.println("The result of dividing is: " +
                                 calculatorLogic.divide(numberOne, numberTwo));
                         displayMenuAfterCalculation();
@@ -209,5 +193,29 @@ public class MenuLogic {
                 System.out.println("Calculator has been closed");
                 System.exit(0);
         }
+    }
+
+    private float givingNumberOneEuropeanFormatNumber() {
+        calculatorPrint.givingFirstNumbers();
+        float numberOne = calculatorLogic.runEuropeanFormatNumbering();
+        return numberOne;
+    }
+
+    private float givingNumberTwoEuropeanFormatNumber() {
+        calculatorPrint.givingFirstNumbers();
+        float numberTwo = calculatorLogic.runEuropeanFormatNumbering();
+        return numberTwo;
+    }
+
+    private float givingNumberOneUSFormatNumber() {
+        calculatorPrint.givingFirstNumbers();
+        float numberOne = calculatorLogic.runUSFormatNumbering();
+        return numberOne;
+    }
+
+    private float givingNumberTwoUSFormatNumber() {
+        calculatorPrint.givingFirstNumbers();
+        float numberTwo = calculatorLogic.runUSFormatNumbering();
+        return numberTwo;
     }
 }
