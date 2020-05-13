@@ -1,7 +1,12 @@
 package javaStart.task10_DataInput.exercise2;
 
-public class TossUpPrint {
-    void chooseMainMenu() {
+
+public class TossUpPrint implements java.lang.Runnable {
+    public void run() {
+        this.run();
+    }
+
+    void printMainMenu() {
         System.out.println("==TossUp==");
         System.out.println("Main Menu");
         System.out.println("What do you choose?");
@@ -53,14 +58,27 @@ public class TossUpPrint {
     }
 
     void winHeads() {
-        System.out.println("Heads has been drawn");
+        System.out.println("Heads has been randomly drawn");
     }
 
     void winTails() {
-        System.out.println("Tails has been drawn");
+        System.out.println("Tails has been randomly drawn");
     }
 
     void closeProgram() {
         System.out.println("The program has been closed");
+    }
+
+    void runTimer() {
+        int i = 10;
+        while (i > 0) {
+            System.out.println(i);
+            try {
+                i--;
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+
+            }
+        }
     }
 }

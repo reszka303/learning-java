@@ -2,7 +2,7 @@ package javaStart.task7_Encapsulation.exercise1.MySolution;
 
 public class DiscountService {
 
-    protected double differentiateClient(Client client, double price) {
+    double differentiateClient(Client client, double price) {
         if (client.isPremium()) {
             return isPremium(client, price);
         } else {
@@ -10,7 +10,7 @@ public class DiscountService {
         }
     }
 
-    private double isPremium(Client client, double price) {
+    double isPremium(Client client, double price) {
         if (price >= 5000) {
             return amountExtremeExtraDiscountForPremiumClient(price);
         } else if (price >= 1000 && price < 5000) {

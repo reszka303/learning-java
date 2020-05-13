@@ -15,7 +15,7 @@ public class ChoiceLogic {
                 choice = scanner.nextInt();
                 while (choice < 0 || choice > 2) {
                     tossUpPrint.displayIncorrectChoice();
-                    tossUpPrint.chooseMainMenu();
+                    tossUpPrint.printMainMenu();
                     choice = scanner.nextInt();
                 }
                 if (choice == 0 || choice == 1 || choice == 2) {

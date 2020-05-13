@@ -3,21 +3,26 @@ package javaStart.task10_DataInput.exercise2;
 public class TossUpLogic {
     TossUpPrint tossUpPrint = new TossUpPrint();
     ChoiceLogic choiceLogic = new ChoiceLogic();
-    DrawLogic drawLogic = new DrawLogic();
+    RandomProcess randomProcess = new RandomProcess();
 
-    private void playGame() {
+    void executeMainMenu() {
+        tossUpPrint.printMainMenu();
+        mainMenuLogic();
+    }
+
+    private void mainMenuLogic() {
         int choice = choiceLogic.chooseRightChoice();
 
         switch (choice) {
             case 1:
                 tossUpPrint.chooseHeads();
-                drawLogic.drawHeads();
-                chooseMenuAfterGame();
+                randomProcess.randomHeads();
+                menuAfterRandomizedTrial();
                 break;
             case 2:
                 tossUpPrint.chooseTails();
-                drawLogic.drawTails();
-                chooseMenuAfterGame();
+                randomProcess.randomTails();
+                menuAfterRandomizedTrial();
                 break;
             case 0:
                 tossUpPrint.closeProgram();
@@ -25,13 +30,8 @@ public class TossUpLogic {
         }
     }
 
-    void chooseMainMenu() {
-        tossUpPrint.chooseMainMenu();
-        playGame();
-    }
-
-    private void chooseMenuAfterGame() {
+    private void menuAfterRandomizedTrial() {
         tossUpPrint.chooseMenuAfterGame();
-        playGame();
+        mainMenuLogic();
     }
 }

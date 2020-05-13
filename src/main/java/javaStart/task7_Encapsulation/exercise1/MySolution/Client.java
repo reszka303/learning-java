@@ -45,11 +45,11 @@ public class Client {
         this.price = price;
     }
 
-    protected void printInfo() {
-        if (premium == true) {
-            System.out.println(firstName + " " + lastName + " premium client " + price);
+    String printInfo() {
+        if (premium) {
+            return firstName + " " + lastName + " premium client " + price;
         } else {
-            System.out.println(firstName + " " + lastName + " standard client " + price);
+            return firstName + " " + lastName + " standard client " + price;
         }
     }
 }

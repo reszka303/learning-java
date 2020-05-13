@@ -21,27 +21,27 @@ public class Application {
         double discountClientStandard3 = discountService.differentiateClient(clientStandard3, clientStandard3.getPrice());
 
         System.out.println();
-        clientPremium1.printInfo();
+        System.out.println(clientPremium1.printInfo());
         System.out.println(discountClientPremium1);
         System.out.println();
 
-        clientPremium2.printInfo();
+        System.out.println(clientPremium2.printInfo());
         System.out.println(discountClientPremium2);
         System.out.println();
 
-        clientPremium3.printInfo();
+        System.out.println(clientPremium3.printInfo());
         System.out.println(discountClientPremium3);
         System.out.println();
 
-        clientStandard1.printInfo();
+        System.out.println(clientStandard1.printInfo());
         System.out.println(discountClientStandard1);
         System.out.println();
 
-        clientStandard2.printInfo();
+        System.out.println(clientStandard2.printInfo());
         System.out.println(discountClientStandard2);
         System.out.println();
 
-        clientStandard3.printInfo();
+        System.out.println(clientStandard3.printInfo());
         System.out.println(discountClientStandard3);
     }
 }

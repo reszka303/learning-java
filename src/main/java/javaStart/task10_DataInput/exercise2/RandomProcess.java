@@ -2,35 +2,34 @@ package javaStart.task10_DataInput.exercise2;
 
 import java.util.Random;
 
-public class DrawLogic {
+public class RandomProcess {
     TossUpPrint tossUpPrint = new TossUpPrint();
-    CountdownLogic countdownLogic = new CountdownLogic();
 
-    private int draw() {
+    private int randomise() {
         Random random = new Random();
-        int draw = random.nextInt(2) + 1;
-        countdownLogic.runTimer();
+        int randomizedTrial = random.nextInt(2) + 1;
+        tossUpPrint.runTimer();
 
-        if (draw == 1) {
+        if (randomizedTrial == 1) {
             tossUpPrint.win();
         } else {
             tossUpPrint.lose();
         }
-        return draw;
+        return randomizedTrial;
     }
 
-    void drawHeads() {
-        int resultDraw = draw();
-        if (resultDraw == 1) {
+    void randomHeads() {
+        int resultOfRandomizedTrial = randomise();
+        if (resultOfRandomizedTrial == 1) {
             tossUpPrint.winHeads();
         } else {
             tossUpPrint.winTails();
         }
     }
 
-    void drawTails() {
-        int resultDraw = draw();
-        if (resultDraw == 1) {
+    void randomTails() {
+        int resultOfRandomizedTrial = randomise();
+        if (resultOfRandomizedTrial == 1) {
             tossUpPrint.winTails();
         } else {
             tossUpPrint.winHeads();
