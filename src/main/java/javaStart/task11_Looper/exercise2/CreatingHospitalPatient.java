@@ -1,7 +1,7 @@
 package javaStart.task11_Looper.exercise2;
 
 public class CreatingHospitalPatient {
-        private final int maxPatientsNumber = 10;
+    private final int maxPatientsNumber = 10;
     private Patient[] patients = new Patient[maxPatientsNumber];
     private int registeredPatients = 0;
 
@@ -17,7 +17,7 @@ public class CreatingHospitalPatient {
 
     void removePatient(Patient patient) {
         for (int i = 0; i < patients.length; i++) {
-            if (patients[i] == patient) {
+            if (patients[registeredPatients] == patient) {
                 for (int j = i; j < (patients.length - 1); j++) {
                         patients[j] = patients[j + 1];
                 }

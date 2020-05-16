@@ -8,20 +8,19 @@ public class HospitalMainMenu {
     }
 
     private void logicOfMainMenu() {
-        final int exit = 0;
-        final int add_Patient = 1;
-        final int remove_Patient = 2;
-        final int display_Patient = 3;
+        final String exit = "0";
+        final String add_Patient = "1";
+        final String remove_Patient = "2";
+        final String display_Patient = "3";
         Scanner input = new Scanner(System.in);
-        int option = -1;
+        String option = "-1";
 
         CreatingHospitalPatient creatingHospitalPatient =
                 new CreatingHospitalPatient();
 
         while (option != exit) {
             displayMainMenu();
-            option = input.nextInt();
-            input.nextLine();
+            option = input.nextLine();
 
             switch (option) {
                 case add_Patient:
@@ -37,6 +36,7 @@ public class HospitalMainMenu {
                     break;
                 case exit:
                     System.out.println("Program has been closed");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("No such option found");
