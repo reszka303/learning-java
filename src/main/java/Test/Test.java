@@ -1,56 +1,50 @@
 package Test;
 
+import javaStart.task22_Exceptions.exercise1.Me.UnknownOperatorException;
+
 import java.util.Scanner;
 
 public class Test {
-    public static void main(String[] args) {
-        // initialize the objects.
-        int size, i, del, count=0;
-        int arr[] = new int[50];
-        Scanner scan = new Scanner(System.in);
+    private static final String ADDING = "+";
+    private static final String SUBTRACTION = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVISION = "/";
+    Scanner scanner = new Scanner(System.in);
 
-        // enter array size.
-        System.out.print("Enter Array Size : ");
-        size = scan.nextInt();
+    void run() {
+        String operator = getException(getOperator());
+    }
 
-        // enter elements.
-        System.out.println("Enter Array Elements : ");
-        for(i=0; i<size; i++)
-        {
-            arr[i] = scan.nextInt();
+    private String getOperator() {
+        String operator = "";
+        System.out.println("Podaj jeden z następujących operatorów" +
+                " arytmetycznych: +, -, * lub /");
+        return operator;
+    }
+
+    private void handleUnknownOperatorException(String operator) {
+        boolean error = true;
+        if (operator.equals(ADDING) ||
+                operator.equals(SUBTRACTION) ||
+                (operator.equals(MULTIPLY) ||
+                        operator.equals(DIVISION))) {
+            System.out.println("Wczytano poprawny operator");
+            error = false;
+        } else {
+            throw new UnknownOperatorException("Nie rozpoznano " +
+                    "właściwego operatora");
         }
+    }
 
-        // enter elements which is to be deleted.
-        System.out.print("Enter Element to be Delete : ");
-        del = scan.nextInt();
-        for(i=0; i<size; i++)
-        {
-            if(arr[i] == del)
-            {
-                for(int j=i; j<(size-1); j++)
-                {
-                    arr[j] = arr[j+1];
-                }
-                count++;
-                break;
+    private String getException(String operator) {
+            try {
+                operator = scanner.nextLine();
+                handleUnknownOperatorException(operator);
+            } catch (UnknownOperatorException e) {
+                System.err.println(e.getMessage());
+                System.err.println("Nie podałeś prawidłowego operatora");
             }
-        }
-        if(count==0)
-        {
-            // print if entered element not found.
-            System.out.print("Element Not Found..!!");
-        }
-        else
-        {
-            // element deleted.
-            System.out.print("Element Deleted Successfully..!!");
-
-            // new array after deletion.
-            System.out.print("\nNow the New Array is :\n");
-            for(i=0; i<(size-1); i++)
-            {
-                System.out.print(arr[i]+ " ");
-            }
-        }
+        System.out.println("Podałeś następujący operator: " + operator);
+        return operator;
     }
 }
