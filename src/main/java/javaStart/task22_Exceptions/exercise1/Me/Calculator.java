@@ -11,7 +11,7 @@ public class Calculator {
     Scanner scanner = new Scanner(System.in);
 
     void run() {
-        double result = calculate();
+        Double result = calculate();
         printResult(result);
     }
 
@@ -20,9 +20,11 @@ public class Calculator {
     }
 
     private double calculate() {
-        double firstNumber = firstNumber();
+        System.out.println("Enter the first number");
+        double firstNumber = readNumber();
         String operator = enterArithmeticOperator();
-        double secondNumber = secondNumber();
+        System.out.println("Enter the second number");
+        double secondNumber = readNumber();
 
         double result = 0;
 
@@ -41,48 +43,29 @@ public class Calculator {
                 validateDivision(secondNumber);
                 break;
             default:
-                validateArithmeticOperators(operator);
+                readCorrectArithmeticOperator(operator);
         }
         return result;
     }
 
-    private double firstNumber() {
+    private double readNumber() {
         boolean error = true;
         double number = 0;
 
         do {
             try {
-                System.out.println("Enter the first number");
                 number = scanner.nextDouble();
                 error = false;
-                scanner.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println("Invalid data entered, start again");
+                System.out.println("Invalid data entered, start again," +
+                        " enter the number");
                 scanner.nextLine();
             }
         } while (error);
         return number;
     }
 
-    private double secondNumber() {
-        double number = 0;
-        boolean error = true;
-
-        do {
-            try {
-                System.out.println("Enter the second number");
-                number = scanner.nextDouble();
-                error = false;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid data entered," +
-                        " enter the second number again");
-                scanner.nextLine();
-            }
-        } while (error);
-        return number;
-    }
-
-    private double throwArithmeticException(double secondNumber) {
+    private double divisionByZero(double secondNumber) {
         if (secondNumber == 0) {
             throw new ArithmeticException("Can't be divided by zero");
         }
@@ -91,7 +74,7 @@ public class Calculator {
 
     private void validateDivision(double secondNumber) {
         try {
-            throwArithmeticException(secondNumber);
+            divisionByZero(secondNumber);
         } catch (ArithmeticException e) {
             System.err.println(e.getMessage());
             System.err.println("The result could not be calculated");
@@ -101,11 +84,12 @@ public class Calculator {
 
     private String enterArithmeticOperator() {
         System.out.println("Enter the arithmetic operator: (+, -, *, /)");
+        scanner.nextLine();
         String operator = scanner.nextLine();
         return operator;
     }
 
-    private void throwUnknownOperationException(String operator) {
+    private void validateArithmeticOperation(String operator) {
         boolean error = true;
         if (operator.equals(ADDING) ||
                 operator.equals(SUBTRACTION) ||
@@ -117,10 +101,10 @@ public class Calculator {
         }
     }
 
-    private String validateArithmeticOperators(String operator) {
+    private String readCorrectArithmeticOperator(String operator) {
         try {
             operator = scanner.nextLine();
-            throwUnknownOperationException(operator);
+            validateArithmeticOperation(operator);
         } catch (UnknownOperatorException e) {
             System.err.println(e.getMessage());
             System.err.println("The result could not be calculated");

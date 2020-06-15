@@ -1,13 +1,23 @@
 package javaStart.task22_Exceptions.exercise2.Me;
 
-public class Competition {
-    private String name;
-    private int maxParticipant;
-    private int ageLimit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-    public Competition(String name, int maxParticipant, int ageLimit) {
+class Competition {
+    private String name;
+    private int numberParticipant;
+    private int ageLimit;
+    private List<Participant> participants = new ArrayList<>();
+
+
+    public Competition() {
+    }
+
+    public Competition(String name, int numberParticipant,
+                       int ageLimit) {
         this.name = name;
-        this.maxParticipant = maxParticipant;
+        this.numberParticipant = numberParticipant;
         this.ageLimit = ageLimit;
     }
 
@@ -15,23 +25,36 @@ public class Competition {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getMaxParticipant() {
-        return maxParticipant;
-    }
-
-    public void setMaxParticipant(int maxParticipant) {
-        this.maxParticipant = maxParticipant;
+    public int getNumberParticipant() {
+        return numberParticipant;
     }
 
     public int getAgeLimit() {
         return ageLimit;
     }
 
-    public void setAgeLimit(int ageLimit) {
-        this.ageLimit = ageLimit;
+    public List<Participant> getParticipants() {
+        return participants;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Competition that = (Competition) o;
+        return numberParticipant == that.numberParticipant &&
+                ageLimit == that.ageLimit &&
+                Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, numberParticipant, ageLimit);
+    }
+
+    @Override
+    public String toString() {
+        return "A number of participants: " + numberParticipant;
+                //name + numberParticipant + ageLimit;
     }
 }
