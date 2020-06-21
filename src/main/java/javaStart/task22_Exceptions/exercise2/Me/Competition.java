@@ -1,18 +1,12 @@
 package javaStart.task22_Exceptions.exercise2.Me;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 class Competition {
     private String name;
     private int numberParticipant;
     private int ageLimit;
-    private List<Participant> participants = new ArrayList<>();
 
-
-    public Competition() {
-    }
 
     public Competition(String name, int numberParticipant,
                        int ageLimit) {
@@ -33,10 +27,6 @@ class Competition {
         return ageLimit;
     }
 
-    public List<Participant> getParticipants() {
-        return participants;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,6 +45,5 @@ class Competition {
     @Override
     public String toString() {
         return "A number of participants: " + numberParticipant;
-                //name + numberParticipant + ageLimit;
     }
 }
