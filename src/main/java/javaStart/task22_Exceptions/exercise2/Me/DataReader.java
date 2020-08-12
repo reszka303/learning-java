@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 class DataReader {
+
     private ConsolePrinter printer;
     private Scanner scanner = new Scanner(System.in);
 

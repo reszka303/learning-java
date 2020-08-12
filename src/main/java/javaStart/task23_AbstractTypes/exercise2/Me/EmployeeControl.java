@@ -59,28 +59,22 @@ public class EmployeeControl {
     }
 
     private void addEmployeesFullTime() {
-        try {
-            Employee employee = dataReader.createEmployeeFullTime();
-            company.addEmployeesFullTime(employee);
-        } catch (DuplicateException e) {
-            printer.printLineError("The employee with the given" +
-                    " identifier is already in the database: " +
-                    e.getEmployee().getFirstName()+ " " +
-                    e.getEmployee().getLastName()+ " " +
-                    e.getEmployee().getId());
-        }
+        Employee employee = dataReader.createEmployeeFullTime();
+        addEmployee(employee);
     }
 
     private void addEmployeesPartTimer(){
+        Employee employee = dataReader.createEmployeePartTimer();
+        addEmployee(employee);
+        }
+
+    private void addEmployee(Employee employee) {
         try {
-            Employee employee = dataReader.createEmployeePartTimer();
-            company.addEmployeesPartTimer(employee);
+            company.addEmployee(employee);
         } catch (DuplicateException e) {
             printer.printLineError("The employee with the given" +
                     " identifier is already in the database: " +
-                    e.getEmployee().getFirstName()+ " " +
-                    e.getEmployee().getLastName()+ " " +
-                    e.getEmployee().getId());
+                    e.getEmployee().getShortInfo());
         }
     }
 
@@ -103,5 +97,42 @@ public class EmployeeControl {
     private void exit() {
         printer.printLine("End of program, bye!");
         dataReader.close();
+    }
+
+    private enum Option {
+        EXIT(0, "Exit the program"),
+        ADD_EMPLOYEE_FULL_TIME(1, "Addition employee full-time"),
+        ADD_EMPLOYEE_PART_TIMER(2, "Addition employee part-timer"),
+        PRINT_EMPLOYEE_FULL_TIME(3, "Display employee full-time"),
+        PRINT_EMPLOYEE_PART_TIMER(4, "Display employee part-timer");
+
+        private int value;
+        private String description;
+
+        Option(int value, String description) {
+            this.value = value;
+            this.description = description;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        @Override
+        public String toString() {
+            return value + " - " + description;
+        }
+
+        static Option createFromInt(int option) throws NoSuchOptionException {
+            try {
+                return Option.values()[option];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new NoSuchOptionException("No option with id " + option);
+            }
+        }
     }
 }

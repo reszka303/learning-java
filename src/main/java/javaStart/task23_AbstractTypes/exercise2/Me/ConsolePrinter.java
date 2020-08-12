@@ -29,6 +29,7 @@ public class ConsolePrinter {
         if (counter == 0)
             printLine("No employees part-timer in the company");
     }
+
     void printLine(String text) {
         System.out.println(text);
     }

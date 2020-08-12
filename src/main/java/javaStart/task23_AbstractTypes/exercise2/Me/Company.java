@@ -10,12 +10,7 @@ public class Company {
         return employees;
     }
 
-    void addEmployeesFullTime(Employee employee) {
-            checkDuplicate(employee);
-            employees.add(employee);
-    }
-
-    void addEmployeesPartTimer(Employee employee) {
+    void addEmployee(Employee employee) {
         checkDuplicate(employee);
         employees.add(employee);
     }

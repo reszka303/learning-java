@@ -29,6 +29,10 @@ public abstract class Employee {
 
     @Override
     public String toString() {
+        return "";
+    }
+
+    public String getShortInfo() {
         return firstName + " " + lastName + " " + id;
     }
 }
