@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDataReader {
-
     static List<Client> readClientsFromCSV(String fileName) throws IOException {
         List<Client> clients = new ArrayList<>();
         try (
