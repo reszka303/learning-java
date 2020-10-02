@@ -1,4 +1,4 @@
-package javaStart.task27_Wrapper.Me.exercise1;
+package javaStart.task27_Wrapper.Me.exercise1.extra;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,23 +8,27 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumbersReader {
+public class NumberReaderFlexible {
     public static void main(String[] args) {
-        String fileName = "C:\\Users\\Mateusz\\Desktop\\number.txt";
+        String fileName = "C:\\Users\\Mateusz\\Desktop\\numbers.txt";
+        final int lengthNumber = 10;
 
         try {
             List<BigInteger> integers = fromStringToBigInteger(fileName);
             printLine("The file contains the following numbers: ");
             printNumbers(integers);
-            BigInteger sumShortNumbers = addShortNumbers(integers);
-            BigInteger sumLongNumbers = addLongNumbers(integers);
             printLine("");
-            printLine("Sum of short numbers is: " + sumShortNumbers);
-            printLine("Sum of long numbers is: " + sumLongNumbers);
+            BigInteger sumShortNumber = sumShortNumbers(integers, lengthNumber);
+            BigInteger sumLongNumber = sumLongNumbers(integers, lengthNumber);
+            printLine("Sum of short numbers is: " + sumShortNumber );
+            printLine("Sum of long numbers is: " + sumLongNumber);
         } catch (FileNotFoundException e) {
             printLineError("No file: " + fileName);
         } catch (IOException e) {
             printLineError("Error read file: " + fileName);
+        } catch (NumberFormatException e) {
+            printLineError("The file is empty or" +
+                    " there is some empty line in the file: " + fileName);
         }
     }
 
@@ -39,15 +43,23 @@ public class NumbersReader {
         }
     }
 
-    private static BigInteger addLongNumbers(List<BigInteger> integers) {
-        BigInteger sum;
-            sum = integers.get(3).add(integers.get(4));
+    private static BigInteger sumLongNumbers(List<BigInteger> integers, int lengthDigit) {
+        BigInteger sum = new BigInteger("0");
+
+        for (BigInteger integer: integers) {
+            if (integer.toString().length() > lengthDigit)
+                sum = sum.add(integer);
+        }
         return sum;
     }
 
-    private static BigInteger addShortNumbers(List<BigInteger> integers) {
-        BigInteger sum;
-            sum = integers.get(0).add(integers.get(1).add(integers.get(2)));
+    private static BigInteger sumShortNumbers(List<BigInteger> integers, int lengthDigit) {
+        BigInteger sum = new BigInteger("0");
+
+        for (BigInteger integer: integers) {
+            if (integer.toString().length() <= lengthDigit)
+                sum = sum.add(integer);
+        }
         return sum;
     }
 
