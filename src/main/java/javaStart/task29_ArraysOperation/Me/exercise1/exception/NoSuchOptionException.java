@@ -1,7 +1,7 @@
-package javaStart.task23_AbstractTypes.exercise2.Me;
+package javaStart.task29_ArraysOperation.Me.exercise1.exception;
 
 public class NoSuchOptionException extends RuntimeException {
     public NoSuchOptionException(String message) {
-        super(message);
+        System.err.println(message);
     }
 }

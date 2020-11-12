@@ -1,0 +1,5 @@
+Generic
+
+1. Create a generic class with four private fields (features of some things)
+2. Create class which read and write a file (database)
+3. Create methods which sorts chosen elements.
