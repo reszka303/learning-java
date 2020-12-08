@@ -28,6 +28,7 @@ public class PersonDatabase {
 
     public boolean remove(Person person) {
         boolean removeOk = false;
+
         for (int i = 0; i < people.size(); i++) {
             if (people.get(i).getId().equals(person.getId())) {
                 people.remove(person);

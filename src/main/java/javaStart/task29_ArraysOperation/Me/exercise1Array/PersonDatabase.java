@@ -8,32 +8,36 @@ public class PersonDatabase {
     private final int INITIAL_CAPACITY = 1;
     private Person[] people = new Person[INITIAL_CAPACITY];
     private int personNumber = 0;
-    private int indexToRemove = 0;
-    private List<Person> peopleList = new ArrayList<>();
-    private Person[] copyPeople = new Person[INITIAL_CAPACITY];
-    private int sizeCopyPeople = 0;
 
     void add(Person person) {
         if (person == null) {
             throw new NullPointerException("Person cannot be null");
         }
         if (personNumber == people.length) {
-            people = Arrays.copyOf(people, people.length + 1);
+            people = Arrays.copyOf(people, people.length * 2);
         }
         people[personNumber] = person;
         personNumber++;
     }
 
-    void remove(Person person) {
-//        peopleList.remove(person);
-        for (int i = 0; i < people.length; i++) {
-            if (!people[i].getPesel().equals(person.getPesel())) {
-                indexToRemove = i;
-                sizeCopyPeople++;
+    boolean remove(Person person) {
+        final int NOT_FOUND = -1;
+        int found = NOT_FOUND;
+        int i = 0;
+        while (i < people.length && found == NOT_FOUND) {
+            if (person.equals(people[i])) {
+                found = i;
+            } else {
+                i++;
             }
         }
-//        people = System.arraycopy(people, 0, copyPeople, 0, people.length - indexToRemove);
 
+        if (found != NOT_FOUND) {
+            System.arraycopy(people, found + 1, people, found, people.length - found - 1);
+            personNumber--;
+        }
+
+        return found != NOT_FOUND;
     }
     
 

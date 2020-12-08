@@ -10,9 +10,8 @@ public class DatabaseRunner {
                 "Leonardo", "DiCaprio", "20");
 
         database.add(gregoryPeck);
-//        database.remove(null);
         database.add(leonardoDiCaprio);
-//        database.remove(null);
+
         printLine("" + database);
         printLine("");
 

@@ -137,13 +137,5 @@ public class PersonControl {
                 return Option.values()[option];
             }
         }
-
-        static Option createFromInt(int option) {
-            try {
-                return Option.values()[option];
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new NoSuchOptionException("No option is: " + option);
-            }
-        }
     }
 }
