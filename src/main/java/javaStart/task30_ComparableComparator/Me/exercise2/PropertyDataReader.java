@@ -14,9 +14,9 @@ public class PropertyDataReader {
                 bufferedReader.readLine();
                 String line = null;
                 while ((line = bufferedReader.readLine()) != null) {
-                    List<String> delimeters = Arrays.asList(line.split(";"));
+                    List<String> delimeter = Arrays.asList(line.split(";"));
 //                    String[] delimeter = line.split(";");
-                    Property property = createPropertyFromTxt(delimeters);
+                    Property property = createPropertyFromTxt(delimeter);
 //                    Property property = createPropertyFromTxt(delimeter);
                     properties.add(property);
                 }
@@ -24,13 +24,13 @@ public class PropertyDataReader {
             return properties;
         }
 
-    private static Property createPropertyFromTxt(String[] data) {
-        String city = data[0];
-        double price = Double.parseDouble(data[1]);
-        double area = Double.parseDouble(data[2]);
-
-        return new Property(city, price, area);
-    }
+//    private static Property createPropertyFromTxt(String[] data) {
+//        String city = data[0];
+//        double price = Double.parseDouble(data[1]);
+//        double area = Double.parseDouble(data[2]);
+//
+//        return new Property(city, price, area);
+//    }
 
     private static Property createPropertyFromTxt(List<String> data) {
         String city = data.get(0);
