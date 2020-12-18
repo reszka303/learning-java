@@ -113,7 +113,7 @@ public class CompanyApp {
             return new Employee(firstName, lastName, salary);
         }
 
-        Employee getEmployee(String firstName, String lastName) {
+        private static Employee getEmployee(String firstName, String lastName) {
             String key = firstName.concat(lastName);
             return employees.get(key);
         }
