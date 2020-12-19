@@ -88,9 +88,8 @@ public class ProductApp {
     }
 
     private static class ProductReader {
-        private static Map<String, TreeSet<Product>> productsMap = new HashMap<>();
-
         private static Map<String, TreeSet<Product>> createFromTxt(String fileName) throws IOException {
+            Map<String, TreeSet<Product>> productsMap = new HashMap<>();
             try (var br = new BufferedReader(new FileReader(fileName));) {
                 br.readLine();
                 String line;
@@ -99,27 +98,20 @@ public class ProductApp {
                     String[] data = line.split(COMMA_DELIMITER);
                     String category = data[0];
                     Product product = new Product(data[1], Double.parseDouble(data[2]));
-                    if (productsMap.containsKey(category))
-                        productsMap = addProduct(category, product);
-                    else {
-                        productsMap = assignToCategory(category, product);
-
-                    }
+                    insertProductIntoMap(productsMap, category, product);
                 }
             }
             return productsMap;
         }
 
-        private static Map<String, TreeSet<Product>> assignToCategory(String category, Product product) {
-            TreeSet<Product> productsSet = new TreeSet<>();
-            productsSet.add(product);
-            productsMap.put(category, productsSet);
-            return productsMap;
-        }
-
-        private static Map<String, TreeSet<Product>> addProduct(String category, Product product) {
-            productsMap.get(category).add(product);
-            return productsMap;
+        private static void insertProductIntoMap(Map<String, TreeSet<Product>> productsMap, String category, Product product) {
+            if (productsMap.containsKey(category))
+                productsMap.get(category).add(product);
+            else {
+                TreeSet<Product> productsSet = new TreeSet<>();
+                productsSet.add(product);
+                productsMap.put(category, productsSet);
+            }
         }
     }
 

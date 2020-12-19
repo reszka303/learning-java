@@ -97,9 +97,18 @@ public class CompanyApp {
     private static class Company {
         private static Map<String, Employee> employees = new HashMap<>();
 
-        private static void add(Employee employee) {
-            employees.put(employee.getFirstName().concat(employee.getLastName()), employee);
-            printLine("Employee has been added to the database");
+        private static boolean add(Employee employee) {
+            String key = employee.getFirstName().concat(employee.getLastName());
+
+            if (employees.containsKey(key)) {
+                printLine("Employee hasn't been added because there is the employee with the same" +
+                        "first name and last name in the database");
+                return false;
+            } else {
+                employees.put(employee.getFirstName().concat(employee.getLastName()), employee);
+                printLine("Employee has been added to the database");
+                return true;
+            }
         }
 
         private static Employee create() {
