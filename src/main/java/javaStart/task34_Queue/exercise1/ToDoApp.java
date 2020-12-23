@@ -8,7 +8,6 @@ public class ToDoApp {
 
     public static void main(String[] args) {
         TaskManager.controlLoop();
-
     }
 
     private static class TaskManager {
@@ -43,21 +42,44 @@ public class ToDoApp {
                 printLine("Task to do");
                 printLine("" + nextTask);
             }
-
         }
 
         private static Task readAndCreateTask() {
+
             printLine("Enter the name of task");
             String name = input.nextLine();
             printLine("Enter the description of task");
             String description = input.nextLine();
             printLine("Enter priority");
             printPriority();
-
-            Task.Priority priority = Task.Priority.valueOf(input.nextLine().toUpperCase());
-
+            Task.Priority priority = Task.Priority.valueOf(getPriority());
             return new Task(name, description, priority);
         }
+    }
+
+    private static String getPriority() {
+        boolean priorityOk = false;
+        String priority = null;
+
+        while (!priorityOk) {
+            try {
+                priority = createFromString();
+                priorityOk = true;
+            } catch (IllegalArgumentException | NoSuchPriorityException e) {
+                e.getMessage();
+            }
+        }
+        return priority;
+    }
+
+    private static String createFromString() {
+        String value = input.nextLine().toUpperCase();
+        for (Task.Priority priority : Task.Priority.values()) {
+            if (value.equals(priority.name().toUpperCase())) {
+                return value;
+            }
+        }
+        throw new NoSuchPriorityException("Enter the priority value, try again");
     }
 
     private static void printPriority() {
@@ -167,6 +189,12 @@ public class ToDoApp {
         }
     }
 
+    private static class NoSuchPriorityException extends RuntimeException {
+        public NoSuchPriorityException(String message) {
+            printLineError(message);
+        }
+    }
+
     private static void printLine(String text) {
         System.out.println(text);
     }
@@ -187,5 +215,3 @@ public class ToDoApp {
         }
     }
 }
-
-
