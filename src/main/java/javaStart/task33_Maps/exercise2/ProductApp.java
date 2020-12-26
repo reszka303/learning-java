@@ -95,33 +95,46 @@ public class ProductApp {
                 String line;
 
                 while ((line = br.readLine()) != null) {
-                    String[] data = line.split(COMMA_DELIMITER);
-                    String category = data[0];
-                    Product product = new Product(data[1], Double.parseDouble(data[2]));
-                    insertProductIntoMap(productsMap, category, product);
+                    Product product = createProduct(line);
+                    insertProductIntoMap(productsMap, product.getCategory(), product);
                 }
             }
             return productsMap;
         }
 
+        private static Product createProduct(String line) {
+            String[] data = line.split(COMMA_DELIMITER);
+            String category = data[0];
+            String name = data[1];
+            double price = Double.valueOf(data[2]);
+
+            return new Product(category, name, price);
+        }
+
         private static void insertProductIntoMap(Map<String, TreeSet<Product>> productsMap, String category, Product product) {
-            if (productsMap.containsKey(category))
+            if (productsMap.containsKey(product.getCategory()))
                 productsMap.get(category).add(product);
             else {
                 TreeSet<Product> productsSet = new TreeSet<>();
                 productsSet.add(product);
-                productsMap.put(category, productsSet);
+                productsMap.put(product.getCategory(), productsSet);
             }
         }
     }
 
     private static class Product implements Comparable<Product> {
+        private String category;
         private String name;
         private double price;
 
-        public Product(String name, double price) {
+        public Product(String category, String name, double price) {
+            this.category = category;
             this.name = name;
             this.price = price;
+        }
+
+        public String getCategory() {
+            return category;
         }
 
         public String getName() {
@@ -130,19 +143,6 @@ public class ProductApp {
 
         public double getPrice() {
             return price;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Product product = (Product) o;
-            return Double.compare(product.price, price) == 0 && Objects.equals(name, product.name);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, price);
         }
 
         @Override
