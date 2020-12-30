@@ -1,4 +1,4 @@
-priority;name;description
-LOW;clean the room;I need to clean my room before Christmas Eve
-HIGH;java learning;I need write some app with HashMap
-LOW;eat some food;I need to eat a breakfast
+task,description,priority
+clean the room,I need to clean my room before Christmas Eve,LOW
+eat some food,I need to eat a breakfast,LOW
+java learning,I need write some app with HashMap,HIGH

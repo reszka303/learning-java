@@ -1,22 +1,50 @@
 package javaStart.task34_Queue.exercise2.io;
 
+import javaStart.task34_Queue.exercise2.exception.EmptyDatabaseWithPriorityException;
 import javaStart.task34_Queue.exercise2.model.Task;
 
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 public class ConsolePrinter {
     private Scanner input = new Scanner(System.in);
-    public void printTask(TreeSet<Task> taskTreeSet) {
-        for (Task task : taskTreeSet) {
-            printLine(task.toString());
+
+    public void printTasksByPriority(Queue<Task> taskQueue, Task.Priority priority) {
+        if (taskQueue.isEmpty()) {
+            printLine("There is no tasks in the database");
+        }
+
+        for (Task element : taskQueue) {
+            if (priority.equals(element.getPriority())) {
+                printLine(element.toString());
+            }
+
+
+//            } else if (element.isEmpty()) {
+//                throw new EmptyDatabaseWithPriorityException("The database is empty with " +
+//                        "the following priority: " + priority);
+//            }
+
+//            else if (element.getPriority().equals(null) && element.getPriority().equals(priority)) {
+//                throw new EmptyDatabaseWithPriorityException("The database is empty with " +
+//                        "the following priority: " + priority);
+//            }
+
+//            if (element.toString().isEmpty() || element.toString() == null ||
+//                    priority.toString().isEmpty() || priority.toString() == null) {
+//                throw new EmptyDatabaseWithPriorityException("The database is empty with " +
+//                            "the following priority: " + priority);
+//            }
         }
     }
 
-    public String readCategoryFromUser() {
-        printLine("Enter a name of priority to display statistics");
-        printLine("Enter: High, moderate or low");
-        return input.nextLine();
+    public void printAllTasks(Queue<Task> taskQueue) {
+        if (taskQueue.isEmpty()) {
+            printLine("There is no tasks in the database");
+        }
+
+        for (Task task : taskQueue) {
+            printLine(task.toString());
+        }
     }
 
     public void printPriority() {

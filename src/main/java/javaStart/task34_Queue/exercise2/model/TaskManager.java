@@ -1,55 +1,39 @@
 package javaStart.task34_Queue.exercise2.model;
 
-import java.io.*;
+import javaStart.task34_Queue.exercise2.exception.NameTaskAlreadyExistException;
+import javaStart.task34_Queue.exercise2.exception.NoIndicatedTaskException;
 
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 public class TaskManager {
-    private static final String COMMA_DELIMITER = ";";
+    private Map<String, Queue<Task>> taskMap = new HashMap<>();
+    private Queue<Task> taskQueue = new PriorityQueue<>();
 
-    public static Map<Task.Priority, TreeSet<Task>> readFile(String fileName) throws IOException {
-        Map<Task.Priority, TreeSet<Task>> priorityTaskEnumMap = new EnumMap<Task.Priority, TreeSet<Task>>(Task.Priority.class);
-        try (var bR = new BufferedReader(new FileReader(fileName))
-        ){
-            bR.readLine();
-            String line;
-
-            while ((line = bR.readLine()) != null) {
-                Task task = createTaskFromStringArray(line);
-                insertTaskToMap(priorityTaskEnumMap, task.getPriority(), task);
-            }
-        }
-        return priorityTaskEnumMap;
+    public Map<String, Queue<Task>> getTaskMap() {
+        return taskMap;
     }
 
-    private static Task createTaskFromStringArray(String line) {
-        String[] data = line.split(COMMA_DELIMITER);
-        Task.Priority priority = Task.Priority.valueOf(data[0]);
-        String name = data[1];
-        String description = data[2];
-
-        return new Task(priority, name, description);
+    public Queue<Task> getTaskQueue() {
+        return taskQueue;
     }
 
-    private static void insertTaskToMap(Map<Task.Priority, TreeSet<Task>> priorityTaskEnumMap, Task.Priority priority, Task task) {
-        if (priorityTaskEnumMap.containsKey(priority)) {
-            priorityTaskEnumMap.get(priority).add(task);
+    public void addTask(Task task) {
+        if (taskMap.containsKey(task.getName())) {
+            throw new NameTaskAlreadyExistException("There is a task with the same name" +
+                    " in the database: " + task.getName());
         } else {
-            TreeSet<Task> taskTreeSet = new TreeSet<>();
-            taskTreeSet.add(task);
-            priorityTaskEnumMap.put(priority, taskTreeSet);
+            taskQueue.add(task);
+            taskMap.put(task.getName(), taskQueue);
         }
     }
 
-//    private static Map<Task.Priority, TreeSet<Task>> writeFile(String fileName) throws IOException {
-//        Map<Task.Priority, TreeSet<Task>> priorityTaskEnumMap = new EnumMap<Task.Priority, TreeSet<Task>>(Task.Priority.class);
-//        try (var bw = new BufferedWriter(new FileWriter(fileName))
-//        ){
-//            bw.newLine();
-//            String line;
-//
-//        }
-//    }
+    public boolean removeTask(Task task) {
+        if (taskMap.containsKey(task.getName())) {
+            taskQueue.remove(task);
+            taskMap.remove(task.getName(), taskQueue);
+            return true;
+        } else {
+            throw new NoIndicatedTaskException("No indicated task");
+        }
+    }
 }

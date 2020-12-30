@@ -1,14 +1,20 @@
 package javaStart.task34_Queue.exercise2.model;
 
+import java.util.Objects;
+
 public class Task implements Comparable<Task> {
-    private Priority priority;
     private String name;
     private String description;
+    private Priority priority;
 
-    public Task(Priority priority, String name, String description) {
-        this.priority = priority;
+    public Task(String name, String description, Priority priority) {
         this.name = name;
         this.description = description;
+        this.priority = priority;
+    }
+
+    public Task(String name) {
+        this.name = name;
     }
 
     public Priority getPriority() {
@@ -22,18 +28,40 @@ public class Task implements Comparable<Task> {
     public String getDescription() {
         return description;
     }
+
+//    public boolean isEmpty() {
+//        return priority == null;
+//    }
+
+    public Task.Priority isNull() {
+        return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(name, task.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
     @Override
     public String toString() {
         var sb = new StringBuilder();
-        sb.append("Priority: " + priority.toString().substring(0,1).toUpperCase());
-        sb.append(priority.toString().substring(1).toLowerCase());
-        sb.append(", Task: " + name);
+        sb.append("Task: " + name);
         sb.append(", Description: " + description);
+        sb.append(", Priority: " + priority.toString().substring(0,1).toUpperCase());
+        sb.append(priority.toString().substring(1).toLowerCase());
         return sb.toString();
     }
 
     public String toCsv() {
-        return "";
+        return name + "," + description + "," + priority;
     }
 
     @Override
@@ -42,6 +70,10 @@ public class Task implements Comparable<Task> {
     }
 
     public enum Priority {
-        HIGH, MODERATE, LOW
+        HIGH, MODERATE, LOW;
+
+//        public Task.Priority isNull() {
+//            return null;
+//        }
     }
 }
