@@ -1,31 +1,51 @@
 package javaStart.task35_Iterator.lesson;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class PersonApp {
 
     public static void main(String[] args) {
         Map<String, Person> personMap = getMap();
 
-        printLine("Foreach:");
+        printLine("Map.Entry in Foreach:");
         for (Map.Entry<String, Person> entry : personMap.entrySet()) {
             printLine("" + entry.getValue());
         }
 
         printLine("");
 
-        printLine("Iterator:");
+        printLine("Map.Entry in Iterator:");
         Iterator<Map.Entry<String, Person>> entryIterator = personMap.entrySet().iterator();
         while (entryIterator.hasNext()) {
             Map.Entry<String, Person> entry = entryIterator.next();
             printLine("" + entry.getValue());
         }
+
+        printLine("");
+
+        printLine("Collection in foreach");
+        for (Person person : personMap.values()) {
+            printLine("" + person.toString());
+        }
+
+        printLine("");
+
+        printLine("Collection in Iterator");
+        Collection<Person> values = personMap.values();
+        Iterator<Person> personIterator = values.iterator();
+        while (personIterator.hasNext()) {
+            printLine(personIterator.next().toString());
+        }
     }
 
     private static Map<String, Person> getMap() {
-        Map<String, Person> personMap = new TreeMap<>();
+
+        Map<String, Person> personMap = new TreeMap<>(new Comparator<String>() {
+            @Override
+            public int compare(String lastName1, String lastName2) {
+                return lastName1.compareTo(lastName2);
+            }
+        });
 
         Person gregoryPeck = new Person("Gregory", "Peck", 82);
         Person leonardoDiCaprio = new Person("Leonardo", "DiCaprio", 46);
@@ -39,7 +59,7 @@ public class PersonApp {
         personMap.put(humphreyBogart.getLastName(), humphreyBogart);
         personMap.put(caryGrant.getLastName(), caryGrant);
         personMap.put(gregoryPecks.getLastName(), gregoryPecks);
-        personMap.put(marlonBrando.getFirstName(), marlonBrando);
+        personMap.put(marlonBrando.getLastName(), marlonBrando);
 
         return personMap;
     }
@@ -66,19 +86,6 @@ public class PersonApp {
         public int getAge() {
             return age;
         }
-
-//        @Override
-//        public boolean equals(Object o) {
-//            if (this == o) return true;
-//            if (o == null || getClass() != o.getClass()) return false;
-//            Person person = (Person) o;
-//            return Objects.equals(lastName, person.lastName);
-//        }
-//
-//        @Override
-//        public int hashCode() {
-//            return Objects.hash(lastName);
-//        }
 
         @Override
         public String toString() {
