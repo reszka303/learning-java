@@ -33,9 +33,9 @@ public class Task implements Comparable<Task> {
 //        return priority == null;
 //    }
 
-    public Task.Priority isNull() {
-        return null;
-    }
+//    public Task.Priority isNull() {
+//        return null;
+//    }
 
     @Override
     public boolean equals(Object o) {

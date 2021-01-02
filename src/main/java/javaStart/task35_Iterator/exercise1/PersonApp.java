@@ -1,4 +1,4 @@
-package javaStart.task35_Iterator.lesson;
+package javaStart.task35_Iterator.exercise1;
 
 import java.util.*;
 
