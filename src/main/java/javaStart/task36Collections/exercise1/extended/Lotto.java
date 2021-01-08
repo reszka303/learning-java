@@ -1,11 +1,11 @@
-package javaStart.task36Collections.exercise1;
+package javaStart.task36Collections.exercise1.extended;
 
 import java.util.*;
 
 public class Lotto {
-    private final Scanner input = new Scanner(System.in);
-    private final List<Integer> playerNumbers = new ArrayList<>();
-    private final List<Integer> lotteryNumbers = new ArrayList<>();
+    private Scanner input = new Scanner(System.in);
+    private List<Integer> playerNumbers = new ArrayList<>();
+    private List<Integer> lotteryNumbers = new ArrayList<>();
 
     public void run() {
         generate();
@@ -51,7 +51,6 @@ public class Lotto {
     private int getLottoNumber() {
         boolean lottoNumber = false;
         int number = 0;
-
         while (!lottoNumber) {
             try {
                 number = getDigit();
@@ -72,7 +71,6 @@ public class Lotto {
         int one = 1;
         int fortyNine = 49;
         int number = input.nextInt();
-
         if (number >= one && number <= fortyNine) {
             return number;
         } else {
@@ -100,3 +98,4 @@ public class Lotto {
         System.err.println(text);
     }
 }
+
