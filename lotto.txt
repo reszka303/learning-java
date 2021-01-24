@@ -1,1 +1,15 @@
+Lotto lottery
+Your numbers: [2, 15, 36, 20, 44, 45]
+Lottery result: [34, 31, 3, 39, 30, 27]
+The numbers of hit is: 0
+
+Lotto lottery
+Your numbers: [10, 23, 43, 37, 46, 33]
+Lottery result: [13, 47, 36, 19, 9, 41]
+The numbers of hit is: 0
+
+Lotto lottery
+Your numbers: [1, 2, 3, 4, 5, 6]
+Lottery result: [44, 36, 6, 4, 48, 35]
+The numbers of hit is: 2
 
