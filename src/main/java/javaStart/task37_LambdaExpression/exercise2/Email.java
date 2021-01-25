@@ -55,6 +55,10 @@ public class Email {
         this.sent = sent;
     }
 
+    public boolean isSenderOrRecipient(String emailAddress) {
+        return sender.equals(emailAddress) || recipient.equals(emailAddress);
+    }
+
     @Override
     public String toString() {
         return "Email{" +

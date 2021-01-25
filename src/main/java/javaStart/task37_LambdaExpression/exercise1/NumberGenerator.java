@@ -23,8 +23,7 @@ public class NumberGenerator {
     private static Supplier<Integer> randomNumber() {
         Random random = new Random();
         Supplier<Integer> supplier = () -> {
-            int number = random.nextInt(201) - 100;
-            return number;
+            return random.nextInt(201) - 100;
         };
         return supplier;
     }

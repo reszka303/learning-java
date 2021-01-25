@@ -2,36 +2,36 @@ package javaStart.task37_LambdaExpression.exercise2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class EmailManager {
     public static void main(String[] args) {
         List<Email> emailList = createEmailList();
-        //tylko wysłane emaile
-        List<Email> sentEmails = filterEmailsSent(emailList);
-        System.out.println("Wysłane maile:");
-        System.out.println(sentEmails);
-        //filtrowanie maili, w których nadawca lub odbiorca ma wskazany adres email
-        List<Email> bartEmails = filterEmailsBySenderOrRecipient(emailList, "bart@example.com");
-        System.out.println("Maile przefiltrowane na podstawie nadawcy lub odbiorcy");
-        System.out.println(bartEmails);
+        printLine(">>>Only sent emails");
+        List<Email> sentEmails = filterEmails(emailList, email -> email.isSent());
+        consumeList(sentEmails, email -> printLine("" + email));
+        printLine("");
+        printLine(">>>Sender or recipient having an indicated email address");
+        List<Email> senderOrRecipient = filterEmails(emailList,
+                email -> email.isSenderOrRecipient("bart@example.com"));
+        consumeList(senderOrRecipient, email -> printLine("" + email));
     }
 
-    private static List<Email> filterEmailsBySenderOrRecipient(List<Email> emails, String emailAddress) {
-        List<Email> filteredEmails = new ArrayList<>();
-        for (Email email : emails) {
-            if (email.getSender().equals(emailAddress) || email.getRecipient().equals(emailAddress))
-                filteredEmails.add(email);
+    private static <T> void consumeList(List<T> list, Consumer<T> consumer) {
+        for (T t : list) {
+            consumer.accept(t);
+        }
+    }
+
+    private static <T> List<T> filterEmails(List<T> list, Predicate<T> predicate) {
+        List<T> filteredEmails = new ArrayList<>();
+        for (T t : list) {
+            if (predicate.test(t)) {
+                filteredEmails.add(t);
+            }
         }
         return filteredEmails;
-    }
-
-    private static List<Email> filterEmailsSent(List<Email> emails) {
-        List<Email> sentEmails = new ArrayList<>();
-        for (Email email : emails) {
-            if (email.isSent())
-                sentEmails.add(email);
-        }
-        return sentEmails;
     }
 
     private static List<Email> createEmailList() {
@@ -58,5 +58,9 @@ public class EmailManager {
                 true)
         );
         return emails;
+    }
+
+    private static void printLine(String text) {
+        System.out.println(text);
     }
 }
