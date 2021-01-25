@@ -49,8 +49,6 @@ public class PersonOperators {
         printLine(">>>FirstNames");
         List<String> names = convertList(people, person -> person.getFirstName());
         consumeList(names, person -> printLine(person));
-
-
     }
 
     //Consumer T t -> void
