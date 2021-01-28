@@ -2,7 +2,7 @@ package javaStart.task39_Streams.lesson.TerminalMethod;
 
 import java.util.Objects;
 
-public class Course {
+public class Course implements Comparable {
     private Long id;
     private String name;
     private double price;
@@ -71,5 +71,10 @@ public class Course {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, price, category);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
