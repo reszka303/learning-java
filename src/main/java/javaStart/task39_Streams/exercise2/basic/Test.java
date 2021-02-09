@@ -1,7 +1,6 @@
-package javaStart.task39_Streams.exercise2;
+package javaStart.task39_Streams.exercise2.basic;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 

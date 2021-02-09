@@ -1,7 +1,6 @@
-package javaStart.task39_Streams.exercise2;
+package javaStart.task39_Streams.exercise2.basic;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,6 +13,7 @@ public class MatchResultManager {
                 new MatchResult("Brazil", "Germany", 3, 3),
                 new MatchResult("Italy", "Poland", 2, 1),
                 new MatchResult("Poland", "Portugal", 1,  0),
+                new MatchResult("Poland", "Sweden", 1,  1),
                 new MatchResult("Poland", "Ireland", 3,  0),
                 new MatchResult("England", "France", 4, 1)
         );
@@ -28,12 +28,6 @@ public class MatchResultManager {
     //write to list with the higher
     List<MatchResult> createListWinsHomeTeam(Stream<MatchResult> matches) {
         return matches.filter(MatchResult::sortWinsHomeTeam)
-                .sorted((m1, m2) -> Integer.compare(m1.getGoalsHomeTeam(), m2.getGoalsHomeTeam()))
-                .collect(Collectors.toList());
-    }
-
-    List<MatchResult> createListWinsAwayTeam(Stream<MatchResult> matches) {
-        return matches.filter(MatchResult::sortWinsAwayTeam)
                 .collect(Collectors.toList());
     }
 
@@ -43,19 +37,36 @@ public class MatchResultManager {
                 .collect(Collectors.toList());
     }
 
-    List<MatchResult> sortWinsAwayTeam(List<MatchResult> list) {
-        return list.stream()
-                .sorted(Comparator.comparingInt(MatchResult::getGoalsAwayTeam).reversed())
+    List<MatchResult> createListWinsAwayTeam(Stream<MatchResult> matches) {
+        return matches.filter(MatchResult::sortWinsAwayTeam)
                 .collect(Collectors.toList());
     }
 
-    List<MatchResult> sortTieResults(Stream<MatchResult> matches) {
+    List<MatchResult> sortWinsAwayTeam(List<MatchResult> list) {
+        return list.stream()
+                .sorted(Comparator.comparingInt(MatchResult::getGoalsAwayTeam))
+                .collect(Collectors.toList());
+    }
+
+    List<MatchResult> createTiesResults(Stream<MatchResult> matches) {
         return matches.filter(MatchResult::sortTieResults)
+                .collect(Collectors.toList());
+    }
+
+    List<MatchResult> sortTiesResults(List<MatchResult> list) {
+        return list.stream()
+                .sorted(Comparator.comparingInt(MatchResult::getGoalsHomeTeam))
                 .collect(Collectors.toList());
     }
 
     List<MatchResult> getResultsWithTeam(Stream<MatchResult> matches, String team) {
         return matches.filter(match -> match.containsTeam(team))
+                .collect(Collectors.toList());
+    }
+
+    List<MatchResult> combineList(List<MatchResult> list1, List<MatchResult> list2, List<MatchResult> list3) {
+        return Stream.of(list1, list2, list3)
+                .flatMap(Collection::stream)
                 .collect(Collectors.toList());
     }
 
@@ -78,7 +89,6 @@ public class MatchResultManager {
     long countGoalsAllMatches(Stream<MatchResult> matches) {
         return matches.mapToInt(MatchResult::getGoalsSum)
                 .sum();
-
     }
 
     void printLine(String text) {
