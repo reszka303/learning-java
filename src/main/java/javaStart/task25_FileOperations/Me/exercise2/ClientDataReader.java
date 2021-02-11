@@ -13,7 +13,7 @@ public class ClientDataReader {
                 var bufferedReader = new BufferedReader(new FileReader(fileName));
                 ) {
             bufferedReader.readLine();
-            String line = null;
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] delimiter = line.split(",");
                 Client client = createClientFromCSV(delimiter);

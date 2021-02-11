@@ -11,7 +11,7 @@ public class ClientControl {
 
     void run() {
         try {
-            List clients = readFile();
+            List<Client> clients = readFile();
             printClients(clients);
             ConsolePrinter.printLine("");
             mostValuableClient(clients);
@@ -27,8 +27,7 @@ public class ClientControl {
 
     private List<Client> readFile() {
         try {
-            List<Client> clients = ClientDataReader.readClientsFromCSV(fileName);
-            return clients;
+            return ClientDataReader.readClientsFromCSV(fileName);
         } catch (FileNotFoundException e) {
             throw new DataImportException("No file " + fileName);
         } catch (IOException e) {
