@@ -3,18 +3,6 @@ package javaStart.task40_CollectionProcessing.exercise1;
 import java.util.List;
 
 public class WordManager {
-    String printStatsWord(List<String> list) {
-        var builder = new StringBuilder();
-        long firstLetterS = wordsStartingWithS(list);
-        long lettersFiveLength = wordsWithLengthFiveLetter(list);
-        builder.append("Number of words with first letter 's': ");
-        builder.append(firstLetterS);
-        builder.append("\n");
-        builder.append("Number of words with 5 letters ");
-        builder.append(lettersFiveLength);
-        return builder.toString();
-    }
-
     long wordsStartingWithS(List<String> list) {
         return list.stream()
                 .filter(WordManager::wordsBySLetter)

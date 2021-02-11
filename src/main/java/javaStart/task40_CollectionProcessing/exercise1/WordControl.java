@@ -16,7 +16,7 @@ public class WordControl {
             printer.printLine("");
             printer.printList(words);
             printer.printLine("");
-            String stats = wordManager.printStatsWord(words);
+            String stats = printer.printStatsWord(words);
             printer.printLine(stats);
         } catch (DataReadException e) {
             e.getMessage();

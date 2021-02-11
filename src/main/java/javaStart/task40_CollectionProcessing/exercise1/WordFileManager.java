@@ -22,7 +22,7 @@ public class WordFileManager {
     }
 
     private static String removeCommaAndDot(String s) {
-        return s.replaceAll(",", " ").replaceAll("\\.", " ");
+        return s.replaceAll(",", "").replaceAll("\\.", "");
     }
 
     private static String[] splitText(String line) {
