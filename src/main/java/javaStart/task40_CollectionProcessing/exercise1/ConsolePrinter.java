@@ -4,14 +4,17 @@ import java.util.List;
 
 public class ConsolePrinter {
     WordManager wordManager = new WordManager();
+
     String printStatsWord(List<String> list) {
         var builder = new StringBuilder();
+        printLine("Number of words with first letter 's': ");
         long firstLetterS = wordManager.wordsStartingWithS(list);
+        printLine("Number of words with 5 letters: ");
         long lettersFiveLength = wordManager.wordsWithLengthFiveLetter(list);
         builder.append("Number of words with first letter 's': ");
         builder.append(firstLetterS);
         builder.append("\n");
-        builder.append("Number of words with 5 letters ");
+        builder.append("Number of words with 5 letters: ");
         builder.append(lettersFiveLength);
         return builder.toString();
     }
