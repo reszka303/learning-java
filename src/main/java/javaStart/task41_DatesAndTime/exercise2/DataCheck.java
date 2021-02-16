@@ -38,10 +38,14 @@ public class DataCheck {
     }
 
     private static void isAfter(LocalDate date1, LocalDate date2) {
-        if (date1.isAfter(date2)) {
-            printLine("Later date: " + date1);
+        if (date1.isEqual(date2)) {
+            printLine("Both date are equal");
         } else {
-            printLine("Later date: " + date2);
+            if (date1.isAfter(date2)) {
+                printLine("Later date: " + date1);
+            } else {
+                printLine("Later date: " + date2);
+            }
         }
     }
 
@@ -62,8 +66,12 @@ public class DataCheck {
         years = negativeToPositive(years);
         months = negativeToPositive(months);
         days = negativeToPositive(days);
-        printLine("Two dates are apart: " + years  + " years, " + months + " months, " +
-                days + " days");
+        if (years == 0 && months == 0 && days == 0) {
+
+        } else {
+            printLine("Two dates are apart: " + years  + " years, " + months + " months, " +
+                    days + " days");
+        }
     }
 
     private static void printLine(String text) {
