@@ -35,7 +35,6 @@ public class CsvFileManager {
         ){
             bR.readLine();
             String line;
-
             while ((line = bR.readLine()) != null) {
                 Task task = createTaskFromStringArray(line);
                 taskManager.addTask(task);
@@ -53,7 +52,6 @@ public class CsvFileManager {
         String name = data[0];
         String description = data[1];
         Task.Priority priority = Task.Priority.valueOf(data[2]);
-
         return new Task(name, description, priority);
     }
 

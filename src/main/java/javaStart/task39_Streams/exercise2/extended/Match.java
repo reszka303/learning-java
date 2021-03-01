@@ -6,7 +6,6 @@ public class Match {
     private int homeTeamGoal;
     private int awayTeamGoal;
 
-    private String team;
 
     public Match(String homeTeam, String awayTeam, int homeTeamGoal, int awayTeamGoal) {
         this.homeTeam = homeTeam;
@@ -15,12 +14,12 @@ public class Match {
         this.awayTeamGoal = awayTeamGoal;
     }
 
-    public String getTeam() {
-        return team;
+    public boolean recognizeHomeTeam(String name) {
+        return homeTeam.equals(name);
     }
 
-    public void setTeam(String team) {
-        this.team = team;
+    public boolean recognizeAwayTeam(String name) {
+        return awayTeam.equals(name);
     }
 
     public String getHomeTeam() {
@@ -42,9 +41,5 @@ public class Match {
     @Override
     public String toString() {
         return homeTeam + " - " + awayTeam + " (" + homeTeamGoal + ":" + awayTeamGoal + ")";
-    }
-
-    int goalsSum() {
-        return homeTeamGoal + awayTeamGoal;
     }
 }

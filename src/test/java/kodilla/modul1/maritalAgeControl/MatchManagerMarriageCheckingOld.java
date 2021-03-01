@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class TestMarriageCheckingOld {
+public class MatchManagerMarriageCheckingOld {
     @Test
     public void ageOfMan() {
         //Given - Arrange

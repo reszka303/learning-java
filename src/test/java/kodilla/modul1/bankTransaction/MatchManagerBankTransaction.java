@@ -2,7 +2,7 @@ package kodilla.modul1.bankTransaction;
 
 import org.junit.Test;
 
-public class TestBankTransaction {
+public class MatchManagerBankTransaction {
     @Test
     public void testATM() {
         //Given - Arrange

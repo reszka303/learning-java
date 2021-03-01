@@ -81,7 +81,7 @@ public class TaskControl {
 
     private void removeTask() {
         try {
-            Task task = dataReader.removeTask();
+            Task task = dataReader.writeName();
             if (taskManager.removeTask(task)) {
                 printer.printLine("The task has been removed from the database");
             }
@@ -93,6 +93,8 @@ public class TaskControl {
     private void printTaskByPriority() {
         Queue<Task> taskQueue = taskManager.getTaskQueue();
         Task.Priority priority = readPriorityFromUser();
+        boolean foundPriority = taskManager.findPriority(priority);
+        printer.printFoundPriority(foundPriority, priority);
         printer.printTasksByPriority(taskQueue, priority);
     }
 
@@ -105,14 +107,12 @@ public class TaskControl {
         printer.printPriority();
         printer.printLine("");
         String value = getPriority();
-        Task.Priority priority = Task.Priority.valueOf(value);
-        return priority;
+        return Task.Priority.valueOf(value);
     }
 
     private String getPriority() {
         boolean priorityOk = false;
         String priority = null;
-
         while (!priorityOk) {
             try {
                 priority = createFromString();

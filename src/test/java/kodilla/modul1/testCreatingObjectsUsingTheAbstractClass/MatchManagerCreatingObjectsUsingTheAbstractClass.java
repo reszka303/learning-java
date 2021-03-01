@@ -4,7 +4,7 @@ import kodilla.modul1.creatingObjectsUsingTheAbstractClass.FullTimeEmployee;
 import kodilla.modul1.creatingObjectsUsingTheAbstractClass.PieceworkEmployee;
 import org.junit.Test;
 
-public class TestCreatingObjectsUsingTheAbstractClass {
+public class MatchManagerCreatingObjectsUsingTheAbstractClass {
     @Test
     public void testPieceworkEmployee () {
         //Given - Arrange

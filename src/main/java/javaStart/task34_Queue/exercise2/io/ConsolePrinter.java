@@ -1,41 +1,31 @@
 package javaStart.task34_Queue.exercise2.io;
 
-import javaStart.task34_Queue.exercise2.exception.EmptyDatabaseWithPriorityException;
 import javaStart.task34_Queue.exercise2.model.Task;
 
 import java.util.*;
 
 public class ConsolePrinter {
-    private Scanner input = new Scanner(System.in);
-
     public void printTasksByPriority(Queue<Task> taskQueue, Task.Priority priority) {
         if (taskQueue.isEmpty()) {
             printLine("There is no tasks in the database");
         }
-
+//        int counter = 0;
         for (Task element : taskQueue) {
             if (priority.equals(element.getPriority())) {
+//                counter++;
                 printLine(element.toString());
             }
-
-
-//            } else if (element.isEmpty()) {
-//                throw new EmptyDatabaseWithPriorityException("The database is empty with " +
-//                        "the following priority: " + priority);
-//            }
-
-//            else if (element.getPriority().equals(null) && element.getPriority().equals(priority)) {
-//                throw new EmptyDatabaseWithPriorityException("The database is empty with " +
-//                        "the following priority: " + priority);
-//            }
-
-//            if (element.toString().isEmpty() || element.toString() == null ||
-//                    priority.toString().isEmpty() || priority.toString() == null) {
-//                throw new EmptyDatabaseWithPriorityException("The database is empty with " +
-//                            "the following priority: " + priority);
-//            }
         }
+//        if (counter == 0) {
+//            printLine("There is no task with priority " + priority);
+//        }
     }
+
+    public void printFoundPriority(boolean foundPriority, Task.Priority priority) {
+        if (!foundPriority)
+            printLine("There is no task with priority " + priority);
+    }
+
 
     public void printAllTasks(Queue<Task> taskQueue) {
         if (taskQueue.isEmpty()) {

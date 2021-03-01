@@ -29,14 +29,6 @@ public class Task implements Comparable<Task> {
         return description;
     }
 
-//    public boolean isEmpty() {
-//        return priority == null;
-//    }
-
-//    public Task.Priority isNull() {
-//        return null;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,9 +63,5 @@ public class Task implements Comparable<Task> {
 
     public enum Priority {
         HIGH, MODERATE, LOW;
-
-//        public Task.Priority isNull() {
-//            return null;
-//        }
     }
 }

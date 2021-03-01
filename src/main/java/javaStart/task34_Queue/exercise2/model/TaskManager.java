@@ -36,4 +36,13 @@ public class TaskManager {
             throw new NoIndicatedTaskException("No indicated task");
         }
     }
+
+    public boolean findPriority(Task.Priority priority) {
+        for (Task task : taskQueue) {
+            if (task.getPriority().equals(priority)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

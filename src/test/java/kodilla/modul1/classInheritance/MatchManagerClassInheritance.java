@@ -2,7 +2,7 @@ package kodilla.modul1.classInheritance;
 
 import org.junit.Test;
 
-public class TestClassInheritance {
+public class MatchManagerClassInheritance {
     @Test
     public void displayingAnimalMethods() {
         //Given - Arrange

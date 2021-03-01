@@ -6,7 +6,7 @@ import javaStart.task2_AggregationAndComposition.exercise1.Person;
 import javaStart.task2_AggregationAndComposition.exercise1.PlaceOfResidence;
 import org.junit.Test;
 
-public class TestAggregationAndComposition {
+public class MatchManagerAggregationAndComposition {
     @Test
     public void AggregationAndComposition() {
         Person person1 = new Person();

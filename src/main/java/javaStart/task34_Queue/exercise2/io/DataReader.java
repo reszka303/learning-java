@@ -21,7 +21,7 @@ public class DataReader {
         return new Task(name, description, priority);
     }
 
-    public Task removeTask() {
+    public Task writeName() {
         printer.printLine("Enter the name of task");
         String name = input.nextLine();
 

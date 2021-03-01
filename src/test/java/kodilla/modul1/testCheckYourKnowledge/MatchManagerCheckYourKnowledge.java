@@ -3,7 +3,7 @@ package kodilla.modul1.testCheckYourKnowledge;
 import kodilla.modul1.checkYourKnowledge.ForumUser;
 import org.junit.Test;
 
-public class TestCheckYourKnowledge {
+public class MatchManagerCheckYourKnowledge {
     @Test
     public void displayingForumUser() {
         //Given - Arrange

@@ -7,7 +7,7 @@ import kodilla.modul1.braveKnight.Quest;
 import org.junit.Test;
 
 
-public class TestBraveKnight {
+public class MatchManagerBraveKnight {
     @Test
     public void testDeadIslandQuest() {
         //Given - Arrange

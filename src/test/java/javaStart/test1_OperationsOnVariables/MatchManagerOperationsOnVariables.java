@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
-public class TestOperationsOnVariables {
+public class MatchManagerOperationsOnVariables {
     @Test
     public void operationsOnVariables() {
         //Given - Arrange

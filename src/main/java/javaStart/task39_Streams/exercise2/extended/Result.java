@@ -1,44 +1,29 @@
 package javaStart.task39_Streams.exercise2.extended;
 
 public class Result {
-    private Match match;
-    private int played;
-    private int won;
-    private int drawn;
-    private int loss;
+    private String name;
+    private int points;
     private int goalsFor;
     private int goalsAgainst;
     private int goalsDifference;
 
-    public Result(Match match, int played, int won, int drawn, int loss, int goalsFor, int goalsAgainst, int goalsDifference) {
-        this.match = match;
-        this.played = played;
-        this.won = won;
-        this.drawn = drawn;
-        this.loss = loss;
+    public Result(String name, int points, int goalsFor, int goalsAgainst, int goalsDifference) {
+        this.name = name;
+        this.points = points;
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
         this.goalsDifference = goalsDifference;
     }
 
-    public Match getMatch() {
-        return match;
+    public Result() {
     }
 
-    public int getPlayed() {
-        return played;
+    public String getName() {
+        return name;
     }
 
-    public int getWon() {
-        return won;
-    }
-
-    public int getDrawn() {
-        return drawn;
-    }
-
-    public int getLoss() {
-        return loss;
+    public int getPoints() {
+        return points;
     }
 
     public int getGoalsFor() {
@@ -55,7 +40,6 @@ public class Result {
 
     @Override
     public String toString() {
-        return  match + " " + played + " " + won + " " + drawn + " " + loss + " " + goalsFor + " " + goalsAgainst
-                + " " + goalsDifference;
+        return String.format("%-10s %-3s %-3s %-3s %-3s", name, points, goalsFor, goalsAgainst, goalsDifference);
     }
 }

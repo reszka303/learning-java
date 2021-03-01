@@ -2,7 +2,7 @@ package kodilla.modul1.atm;
 
 import org.junit.Test;
 
-public class TestAtm {
+public class MatchManagerAtm {
     @Test
     public void displayingMethodOfATM() {
         //Given - Arrange

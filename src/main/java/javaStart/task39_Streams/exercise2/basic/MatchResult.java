@@ -45,8 +45,7 @@ public class MatchResult {
     }
 
     List<String> getTeamsList() {
-        List<String> list = List.of(homeTeam, awayTeam);
-        return list;
+        return List.of(homeTeam, awayTeam);
     }
 
     int getGoalsSum() {
