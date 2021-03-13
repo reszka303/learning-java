@@ -15,8 +15,8 @@ public class MatchManager{
 //        System.out.println();
 
         List<Result> resultsPoland = getResults(matches, "Poland");
-//        resultsPoland.forEach(System.out::println);
-//        System.out.println();
+        resultsPoland.forEach(System.out::println);
+        System.out.println();
 
         List<Result> resultsItaly = getResults(matches, "Italy");
 //        resultsItaly.forEach(System.out::println);
