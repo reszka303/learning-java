@@ -2,30 +2,76 @@ package javaStart.task39_Streams.exercise2.combined.app.test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test1 {
     private static Scanner input = new Scanner(System.in);
     private static List<String> teamsList = new ArrayList<>();
+    private static List<Match> matches = new ArrayList<>();
     private static Map<Result, List<Result>> teamsMap = new HashMap<>();
+
     private static List<Result> results = new ArrayList<>();
 
     public static void main(String[] args) {
-        int numbers =  numbersTeams();
+        int numbers =  getNumbersTeams();
         printLine("" + numbers);
         teamsList = addTeams(numbers);
         teamsList.forEach(System.out::println);
-        List<Match> matches = createScores(teamsList);
+        List<String> namesTeam = teamsList;
+        System.out.println();
+        matches = createScores(teamsList);
         matches.forEach(System.out::println);
+
+        List<Match> matchesToOne = matches;
+
+        System.out.println();
+
+        System.out.println("Home away");
+        List<Match> homeTeam = sortByHomeGoals(matches);
+        homeTeam.forEach(System.out::println);
+        System.out.println();
+
+        List<Match> tied = sortByTied(matches);
+        System.out.println("Tied");
+        tied.forEach(System.out::println);
+        System.out.println();
+
+        List<Match> awayTeam = sortByAwayTeam(matches);
+        System.out.println("AwayTeam");
+        awayTeam.forEach(System.out::println);
+        System.out.println();
+
+        System.out.println();
+        List<Match> combinedList = addAllToList(homeTeam, tied, awayTeam);
+        System.out.println("List combined");
+        combinedList.forEach(System.out::println);
+
+        System.out.println();
+
+        System.out.println("List of Teams:");
+        teamsList.forEach(System.out::println);
+        System.out.println();
+        String team = getTeam(namesTeam);
+        List<Match> matchesOneTeam = sortByTeam(matchesToOne, team);
+        System.out.println("All matches one team");
+        matchesOneTeam.forEach(System.out::println);
+        System.out.println();
 
         results = getResults(matches, teamsList);
         results.forEach(System.out::println);
 
-        teamsMap = grouping(results);
+        teamsMap = group(results);
 
         printMap(teamsMap);
 
         System.out.println();
         System.out.println();
+
+        long teamNumbers = countByTeams(teamsList);
+        System.out.println("The team numbers is: " + teamNumbers);
+
+        long goalsNumbers = countByGoals(matches);
+        System.out.println("The goals numbers is:" + goalsNumbers);
 
         results = new ArrayList<>(teamsMap.keySet());
         System.out.println("List before sorting");
@@ -34,12 +80,84 @@ public class Test1 {
 
         System.out.println();
 
-        results = sorting(results);
+        results = sortByGoals(results);
         System.out.println("List after sorting");
         results.forEach(System.out::println);
     }
 
-    private static List<Result> sorting(List<Result> results) {
+    private static long countByGoals(List<Match> matches) {
+        return matches.stream()
+                .mapToInt(Match::getGoalsSum)
+                .sum();
+    }
+
+    private static long countByTeams(List<String> names) {
+        return names.size();
+    }
+
+    private static List<Match> sortByTeam(List<Match> matches, String team) {
+        return matches.stream()
+                .filter(match -> match.getHomeTeam().contains(team)
+                        || match.getAwayTeam().contains(team))
+                .collect(Collectors.toList());
+    }
+
+    private static String getTeam(List<String> teams) {
+        String name = "";
+        boolean teamOk = false;
+        int counter = 0;
+        while (!teamOk) {
+            try {
+                printLine("Enter a name of a team to display its all matches");
+                name = input.nextLine().toLowerCase();
+                for (String team : teams) {
+                    if (team.equals(name)) {
+                        counter++;
+                    }
+                }
+                if (counter == 1) {
+                    teamOk = true;
+                }
+                if (counter == 0) {
+                    throw new TeamNotFoundException("There is no team with given name, try again");
+                }
+            } catch (TeamNotFoundException e) {
+                e.getMessage();
+            }
+        }
+        return name;
+    }
+
+    private static List<Match> addAllToList(List<Match> list1, List<Match> list2, List<Match> list3) {
+        return Stream.of(list1, list2, list3)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+    }
+
+    private static List<Match> sortByAwayTeam(List<Match> matches) {
+        return matches.stream()
+                .filter(Match::awayTeamScores)
+                .sorted(Comparator.comparing(Match::getAwayTeamGoal)
+                        .thenComparing(Match::getHomeTeamGoal))
+                .collect(Collectors.toList());
+    }
+
+    private static List<Match> sortByTied(List<Match> matches) {
+        return matches.stream()
+                .filter(Match::tiedScore)
+                .sorted(Comparator.comparing(Match::getHomeTeamGoal)
+                        .thenComparing(Match::getAwayTeam).reversed())
+                .collect(Collectors.toList());
+    }
+
+    private static List<Match> sortByHomeGoals(List<Match> matches) {
+        return matches.stream()
+                .filter(Match::homeTeamScores)
+                .sorted(Comparator.comparing(Match::getHomeTeamGoal).reversed())
+                .collect(Collectors.toList());
+    }
+
+    private static List<Result> sortByGoals(List<Result> results) {
         return results.stream()
                 .sorted(Comparator.comparing(Result::getPoints)
                         .thenComparing(Result::getGoalsFor)
@@ -55,7 +173,7 @@ public class Test1 {
         }
     }
 
-    private static Map<Result, List<Result>> grouping(List<Result> results) {
+    private static Map<Result, List<Result>> group(List<Result> results) {
         return results.stream()
                 .collect(Collectors.groupingBy(Result::getName))
                 .entrySet().stream()
@@ -82,51 +200,6 @@ public class Test1 {
 //                        e -> e.getValue()));
 //
 //        System.out.println(map);
-
-    private static Map<String, Integer> getPoints(List<Result> results) {
-        return results.stream()
-                .collect(Collectors.groupingBy(Result::getName, Collectors.summingInt(Result::getPoints)));
-    }
-
-    private static Map<String, Integer> getGoalsFor(List<Result> results) {
-        return results.stream()
-                .collect(Collectors.groupingBy(Result::getName, Collectors.summingInt(Result::getGoalsFor)));
-    }
-
-    private static Map<String, Integer> getGoalsAgainst(List<Result> results) {
-        return results.stream()
-                .collect(Collectors.groupingBy(Result::getName, Collectors.summingInt(Result::getGoalsAgainst)));
-    }
-
-    private static Map<String, Integer> getGoalsDifference(List<Result> results) {
-        return results.stream()
-                .collect(Collectors.groupingBy(Result::getName, Collectors.summingInt(Result::getGoalsDifference)));
-
-    }
-
-    private static int sumPoints(List<Result> results) {
-        return results.stream()
-                .mapToInt(Result::getPoints)
-                .sum();
-    }
-
-    private static int sumGoalsFor(List<Result> results) {
-        return results.stream()
-                .mapToInt(Result::getGoalsFor)
-                .sum();
-    }
-
-    private static int sumGoalsAgainst(List<Result> results) {
-        return results.stream()
-                .mapToInt(Result::getGoalsAgainst)
-                .sum();
-    }
-
-    private static int sumGoalsDifference(List<Result> results) {
-        return results.stream()
-                .mapToInt(Result::getGoalsDifference)
-                .sum();
-    }
 
     private static List<Result> getResults(List<Match> matches, List<String> teams) {
         List<Result> results = new ArrayList<>();
@@ -183,14 +256,14 @@ public class Test1 {
         return teamsList;
     }
 
-    private static int numbersTeams() {
+    private static int getNumbersTeams() {
         printLine("Enter number of teams");
         return getNumber();
     }
 
     private static String createTeam() {
         printLine("Enter the name of team");
-        return input.nextLine();
+        return input.nextLine().toLowerCase();
     }
 
     private static int getNumber() {
@@ -225,11 +298,17 @@ public class Test1 {
         }
     }
 
-    private static void checkDuplicate(String team) {
-            for (int i = 0; i < teamsList.size(); i++)
-                if (teamsList.get(i).equals(team)) {
-                    throw new TeamDuplicateException("Team with given name exists already, try again");
-                }
+    private static class TeamNotFoundException extends RuntimeException {
+        public TeamNotFoundException(String message) {
+            printLineError(message);
+        }
+    }
+
+    private static void checkDuplicate(String name) {
+        for (String team : teamsList)
+            if (team.equals(name)) {
+                throw new TeamDuplicateException("Team with given name exists already, try again");
+            }
     }
 
     private static class TeamDuplicateException extends RuntimeException {
@@ -265,6 +344,26 @@ public class Test1 {
 
         public int getAwayTeamGoal() {
             return awayTeamGoal;
+        }
+
+        private boolean homeTeamScores() {
+            return homeTeamGoal > awayTeamGoal;
+        }
+
+        private boolean tiedScore() {
+            return homeTeamGoal == awayTeamGoal;
+        }
+
+        private boolean awayTeamScores() {
+            return homeTeamGoal < awayTeamGoal;
+        }
+
+        private List<String> getTeamList() {
+            return List.of(homeTeam, awayTeam);
+        }
+
+        private int getGoalsSum() {
+            return homeTeamGoal + awayTeamGoal;
         }
 
         @Override
@@ -325,57 +424,4 @@ public class Test1 {
     private static void printLineError(String text) {
         System.err.println(text);
     }
-
-
-
-//
-//    private static List<Result> getName(List<Result> results, List<String> teams) {
-//        List<Result> resultsAfterSum = new ArrayList<>();
-//        int sumPoints = 0;
-//        int sumGoalsFor = 0;
-//        int sumGoalsAgainst = 0;
-//        int sumGoalsDifference = 0;
-//        int counter = 0;
-//        for (int i = 0; i < teams.size(); i++) {
-//            for (int j = 0; j < results.size(); j++) {
-//                if (counter == teams.indexOf(teams.get(i))) {
-//                    String teamName = teams.get(i);
-//                    if (teamName.equals(results.get(j).getName())) {
-//                        sumPoints += results.get(j).getPoints();
-//                        sumGoalsFor += results.get(j).getGoalsFor();
-//                        sumGoalsAgainst += results.get(j).getGoalsAgainst();
-//                        sumGoalsDifference += results.get(j).getGoalsDifference();
-//                        resultsAfterSum.add(new Result(results.get(j).getName(), sumPoints,
-//                                sumGoalsFor, sumGoalsAgainst, sumGoalsDifference));
-//
-//                    }
-//                }
-//            }
-//            counter++;
-//        }
-//        return resultsAfterSum;
-//    }
-
-//    private static List<Result> getName(List<Result> results, List<String> teams) {
-//        List<Result> resultsAfterSum = new ArrayList<>();
-//        int sumPoints = 0;
-//        int sumGoalsFor = 0;
-//        int sumGoalsAgainst = 0;
-//        int sumGoalsDifference = 0;
-//        int counter = 0;
-//        for (int i = 0; i < teams.size(); i++) {
-//            for (Result result : results) {
-//                if (counter == teams.indexOf(teams.get(i))) {
-//                    sumPoints += result.getPoints();
-//                    sumGoalsFor += result.getGoalsFor();
-//                    sumGoalsAgainst += result.getGoalsAgainst();
-//                    sumGoalsDifference += result.getGoalsDifference();
-//                    resultsAfterSum.add(new Result(result.getName(), sumPoints,
-//                            sumGoalsFor, sumGoalsAgainst, sumGoalsDifference));
-//                }
-//            }
-//            counter++;
-//        }
-//        return resultsAfterSum;
-//    }
 }
