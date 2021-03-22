@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class Test2 {
+public class RemoveApp {
     private static Scanner input = new Scanner(System.in);
     private static int initialCapacity = 3;
     private static Person[] people = new Person[initialCapacity];
