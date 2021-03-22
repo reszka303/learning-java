@@ -70,6 +70,9 @@ public class Test1 {
         long teamNumbers = countByTeams(teamsList);
         System.out.println("The team numbers is: " + teamNumbers);
 
+        long teamNumbersMap = countByTeamsHashMap(teamsMap);
+        System.out.println("The team numbers in map is: " + teamNumbersMap);
+
         long goalsNumbers = countByGoals(matches);
         System.out.println("The goals numbers is:" + goalsNumbers);
 
@@ -88,6 +91,13 @@ public class Test1 {
     private static long countByGoals(List<Match> matches) {
         return matches.stream()
                 .mapToInt(Match::getGoalsSum)
+                .sum();
+    }
+
+    private static long countByTeamsHashMap(Map<Result, List<Result>> map) {
+        return map.keySet().stream()
+                .map(Result::getTeams)
+                .mapToLong(List::size)
                 .sum();
     }
 
@@ -405,6 +415,10 @@ public class Test1 {
 
         public int getGoalsDifference() {
             return goalsDifference;
+        }
+
+        private List<String> getTeams() {
+            return List.of(name);
         }
 
         @Override
