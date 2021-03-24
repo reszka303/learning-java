@@ -46,7 +46,7 @@ public class AddAndRemoveApp {
     private static Person[] remove() {
         List<Person> persons = new ArrayList<>(List.of(people));
         Person person = getId();
-        Iterator<Person> personIterator = getPersonToRemove(persons, person);
+        Iterator<Person> personsIterator = getPersonToRemove(persons, person);
         return getPeople(persons);
     }
 

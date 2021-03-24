@@ -2,14 +2,11 @@ package javaStart.task29_ArraysOperation.Me.AddAndRemove;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class RemoveApp {
     private static Scanner input = new Scanner(System.in);
-    private static int initialCapacity = 3;
+    private static int initialCapacity = 4;
     private static Person[] people = new Person[initialCapacity];
 
     public static void main(String[] args) {
@@ -17,11 +14,60 @@ public class RemoveApp {
         Instant start = Instant.now();
         people = create();
         print(people);
-        Person[] peopleRemove = remove();
+//        people = remove();
+        Person[] newPeople = removeToNull();
+        printLine(Arrays.toString(newPeople));
+        Person[] sortPeople = sortNullToEnd(newPeople);
+        printLine(Arrays.toString(sortPeople));
+        Person[] peopleRemove = removeLastIndex(sortPeople);
+        printLine(Arrays.toString(peopleRemove));
         print(peopleRemove);
         Instant end = Instant.now();
         System.out.println(Duration.between(start, end));
     }
+
+    private static Person[] removeToNull() {
+        int newPeopleSize = people.length;
+        Person[] newPeople = new Person[newPeopleSize];
+        Person person = getId();
+        for (int i = 0; i < people.length; i++) {
+            if (people[i].getId() != person.getId()) {
+                newPeople[i] = people[i];
+            }
+        }
+        return newPeople;
+    }
+
+    private static Person[] sortNullToEnd(Person[] people) {
+        int newPeopleSize = people.length;
+        Person[] newPeople = new Person[newPeopleSize];
+        int index = 0;
+        for (int i = 0; i < newPeopleSize; i++) {
+            if (people[i] != null) {
+                newPeople[index++] = people[i];
+            }
+        }
+        return newPeople;
+    }
+
+    private static Person[] removeLastIndex(Person[] people) {
+        int sizeNewPeople = people.length - 1;
+        Person[] newPeople = new Person[sizeNewPeople];
+        for (int i = 0; i < sizeNewPeople; i++) {
+            newPeople[i] = people[i];
+        }
+        return newPeople;
+    }
+
+//    private static Person[] add() {
+//        int resize = people.length;
+//        Person[] resizedPeople = new Person[resize + 1];
+//        for (int i = 0; i < resize; i++) {
+//            resizedPeople[i] = people[i];
+//        }
+//        resizedPeople[resize] = person;
+//        return resizedPeople;
+//    }
 
     private static Person[] remove() {
         List<Person> persons = new ArrayList<>(List.of(people));
@@ -54,9 +100,10 @@ public class RemoveApp {
     }
 
     private static Person[] create() {
-        people[0] = new Person("Leonardo", "DiCaprio", 1);
-        people[1] = new Person("David", "Cohen", 2);
-        people[2] = new Person("Sylvester", "Stallone", 3);
+        people[0] = new Person("Leonardo", "DiCaprio", 10);
+        people[1] = new Person("David", "Cohen", 11);
+        people[2] = new Person("Sylvester", "Stallone", 12);
+        people[3] = new Person("Gregory", "Peck", 13);
         return people;
     }
 
