@@ -54,10 +54,6 @@ public class RemoveArrayListApp {
             this.id = id;
         }
 
-        public Person(int id) {
-            this.id = id;
-        }
-
         public String getFirstName() {
             return firstName;
         }

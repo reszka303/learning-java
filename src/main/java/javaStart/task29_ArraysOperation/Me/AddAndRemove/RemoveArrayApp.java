@@ -2,12 +2,9 @@ package javaStart.task29_ArraysOperation.Me.AddAndRemove;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class RemoveArrayApp {
-    private static int initialCapacity = 3;
+    private static int initialCapacity = 4;
     private static Person[] people = new Person[initialCapacity];
 
     public static void main(String[] args) {
@@ -23,27 +20,64 @@ public class RemoveArrayApp {
     }
 
     private static Person[] remove() {
-        List<Person> persons = new ArrayList<>(List.of(people));
-        Iterator<Person> personIterator = persons.iterator();
-        iterate(personIterator);
-        return getPeople(persons);
+        int sizeArrayNullWherever = people.length;
+        Person[] arrayNullWherever = toNull(sizeArrayNullWherever);
+        Person[] arrayNullLastIndex = nullToLastIndex(sizeArrayNullWherever, arrayNullWherever);
+        return removeNull(arrayNullLastIndex);
     }
 
-    private static void iterate(Iterator<Person> personIterator) {
-        while (personIterator.hasNext()) {
-            if (personIterator.next().getId() == 3) {
-                personIterator.remove();
+    private static Person[] removeNull(Person[] arrayNullLastIndex) {
+        int sizeArrayNoNull = arrayNullLastIndex.length - 1;
+        Person[] arrayWithoutNull = new Person[sizeArrayNoNull];
+        for (int i = 0; i < sizeArrayNoNull; i++) {
+            arrayWithoutNull[i] = arrayNullLastIndex[i];
+        }
+        return arrayWithoutNull;
+    }
+
+    private static Person[] nullToLastIndex(int sizeArrayWithNull, Person[] arrayWithNull) {
+        int index = 0;
+        Person[] arrayNullLastIndex = new Person[sizeArrayWithNull];
+        for (int i = 0; i < sizeArrayWithNull; i++) {
+            if (arrayWithNull[i] != null) {
+                arrayNullLastIndex[index++] = arrayWithNull[i];
             }
         }
+        return arrayNullLastIndex;
     }
 
-    private static Person[] getPeople(List<Person> persons) {
-        Person[] newPeople = new Person[persons.size()];
-        for (int i = 0; i < persons.size(); i++) {
-            newPeople[i] = persons.get(i);
+    private static Person[] toNull(int sizeArrayWithNull) {
+        Person[] arrayWithNull = new Person[sizeArrayWithNull];
+        for (int i = 0; i < sizeArrayWithNull; i++) {
+            if (people[i].getId() != 3) {
+                arrayWithNull[i] = people[i];
+            }
         }
-        return newPeople;
+        return arrayWithNull;
     }
+
+//    private static Person[] remove() {
+//        List<Person> persons = new ArrayList<>(List.of(people));
+//        Iterator<Person> personIterator = persons.iterator();
+//        iterate(personIterator);
+//        return getPeople(persons);
+//    }
+//
+//    private static void iterate(Iterator<Person> personIterator) {
+//        while (personIterator.hasNext()) {
+//            if (personIterator.next().getId() == 3) {
+//                personIterator.remove();
+//            }
+//        }
+//    }
+//
+//    private static Person[] getPeople(List<Person> persons) {
+//        Person[] newPeople = new Person[persons.size()];
+//        for (int i = 0; i < persons.size(); i++) {
+//            newPeople[i] = persons.get(i);
+//        }
+//        return newPeople;
+//    }
 
     private static Person[] create() {
         people[0] = new Person("Leonardo", "DiCaprio", 1);
@@ -67,10 +101,6 @@ public class RemoveArrayApp {
         public Person(String firstName, String lastName, int id) {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.id = id;
-        }
-
-        public Person(int id) {
             this.id = id;
         }
 

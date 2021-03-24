@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\src\main\java\javaStart\task29_ArraysOperation\Me\AddAndRemove\RemoveArrayApp.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\main\java\javaStart\task29_ArraysOperation\Me\AddAndRemove\Test1.java">
           <value>
             <Attribute>
