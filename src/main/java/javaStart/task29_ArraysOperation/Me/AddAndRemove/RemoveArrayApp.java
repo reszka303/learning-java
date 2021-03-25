@@ -20,19 +20,20 @@ public class RemoveArrayApp {
     }
 
     private static Person[] remove() {
-        int sizeArrayNullWherever = people.length;
-        Person[] arrayNullWherever = toNull(sizeArrayNullWherever);
-        Person[] arrayNullLastIndex = nullToLastIndex(sizeArrayNullWherever, arrayNullWherever);
+        int sizeArrayWithNull = people.length;
+        Person[] arrayWithNull = toNull(sizeArrayWithNull);
+        Person[] arrayNullLastIndex = nullToLastIndex(sizeArrayWithNull, arrayWithNull);
         return removeNull(arrayNullLastIndex);
     }
 
-    private static Person[] removeNull(Person[] arrayNullLastIndex) {
-        int sizeArrayNoNull = arrayNullLastIndex.length - 1;
-        Person[] arrayWithoutNull = new Person[sizeArrayNoNull];
-        for (int i = 0; i < sizeArrayNoNull; i++) {
-            arrayWithoutNull[i] = arrayNullLastIndex[i];
+    private static Person[] toNull(int sizeArrayWithNull) {
+        Person[] arrayWithNull = new Person[sizeArrayWithNull];
+        for (int i = 0; i < sizeArrayWithNull; i++) {
+            if (people[i].getId() != 3) {
+                arrayWithNull[i] = people[i];
+            }
         }
-        return arrayWithoutNull;
+        return arrayWithNull;
     }
 
     private static Person[] nullToLastIndex(int sizeArrayWithNull, Person[] arrayWithNull) {
@@ -46,14 +47,13 @@ public class RemoveArrayApp {
         return arrayNullLastIndex;
     }
 
-    private static Person[] toNull(int sizeArrayWithNull) {
-        Person[] arrayWithNull = new Person[sizeArrayWithNull];
-        for (int i = 0; i < sizeArrayWithNull; i++) {
-            if (people[i].getId() != 3) {
-                arrayWithNull[i] = people[i];
-            }
+    private static Person[] removeNull(Person[] arrayNullLastIndex) {
+        int sizeArrayNoNull = arrayNullLastIndex.length - 1;
+        Person[] arrayWithoutNull = new Person[sizeArrayNoNull];
+        for (int i = 0; i < sizeArrayNoNull; i++) {
+            arrayWithoutNull[i] = arrayNullLastIndex[i];
         }
-        return arrayWithNull;
+        return arrayWithoutNull;
     }
 
 //    private static Person[] remove() {
