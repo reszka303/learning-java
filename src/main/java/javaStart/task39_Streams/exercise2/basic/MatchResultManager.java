@@ -20,7 +20,8 @@ public class MatchResultManager {
     }
 
     void printAllResultsSorted(Stream<MatchResult> matches) {
-        matches.sorted(Comparator.comparing(MatchResult::getGoalDifference).reversed()).forEach(System.out::println);
+        matches.sorted(Comparator.comparing(MatchResult::getGoalDifference).reversed())
+                .forEach(System.out::println);
     }
 
     //Steps

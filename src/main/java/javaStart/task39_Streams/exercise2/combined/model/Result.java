@@ -1,5 +1,7 @@
 package javaStart.task39_Streams.exercise2.combined.model;
 
+import java.util.List;
+
 public class Result {
     private String name;
     private int points;
@@ -33,6 +35,10 @@ public class Result {
 
     public int getGoalsDifference() {
         return goalsDifference;
+    }
+
+    public List<String> getTeams() {
+        return List.of(name);
     }
 
     @Override

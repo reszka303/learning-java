@@ -56,4 +56,8 @@ public class DataReader {
     void clearBuffer() {
         input.nextLine();
     }
+
+    public String toLowerCase() {
+        return input.nextLine().toLowerCase();
+    }
 }

@@ -1,8 +1,9 @@
 package javaStart.task39_Streams.exercise2.combined.io;
 
-import javaStart.task39_Streams.exercise2.combined.model.Match;
+import javaStart.task39_Streams.exercise2.combined.model.Result;
 
 import java.util.List;
+import java.util.Map;
 
 public class ConsolePrinter {
     public void printTeams(List<String> teams) {
@@ -26,6 +27,12 @@ public class ConsolePrinter {
             printLineError("You didn't add teams");
         } else {
             printLine("You added the following teams:");
+        }
+    }
+
+    public void printMap(Map<Result, List<Result>> map) {
+        for (Map.Entry<Result, List<Result>> entry : map.entrySet()) {
+            printLine("" + entry.getKey());
         }
     }
 

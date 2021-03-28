@@ -29,6 +29,22 @@ public class Match {
         return awayTeamGoal;
     }
 
+    public boolean getWinnersHomeTeam() {
+        return homeTeamGoal > awayTeamGoal;
+    }
+
+    public boolean getTies() {
+        return homeTeamGoal == awayTeamGoal;
+    }
+
+    public boolean getWinnersAwayTeam() {
+        return homeTeamGoal < awayTeamGoal;
+    }
+
+    public int getGoalsHomeAndAwayTeams() {
+        return homeTeamGoal + awayTeamGoal;
+    }
+
     @Override
     public String toString() {
         return homeTeam + " - " + awayTeam + " (" + homeTeamGoal + ":" + awayTeamGoal + ")";

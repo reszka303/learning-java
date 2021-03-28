@@ -7,6 +7,11 @@ public class MenuArray {
     private static Scanner input = new Scanner(System.in);
     private static int initialCapacity = 4;
     private static Option[] options = new Option[initialCapacity];
+    private static final int EXIT = 0;
+    private static final int ADD_PERSON = 1;
+    private static final int REMOVE_PERSON = 2;
+    private static final int PRINT_PERSON = 3;
+
 
     public static void main(String[] args) {
         controlLoop();
@@ -19,16 +24,16 @@ public class MenuArray {
             printOptions(options);
             option = getOption();
             switch (option) {
-                case 1:
+                case ADD_PERSON:
                     addPerson();
                     break;
-                case 2:
+                case REMOVE_PERSON:
                     removePerson();
                     break;
-                case 3:
+                case PRINT_PERSON:
                     printPerson();
                     break;
-                case 0:
+                case EXIT:
                     exit();
                     break;
             }
