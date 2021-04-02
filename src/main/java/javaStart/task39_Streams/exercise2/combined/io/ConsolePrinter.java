@@ -37,11 +37,11 @@ public class ConsolePrinter {
     }
 
     public void printStandingsShortcuts() {
-        System.out.printf("%-10s %-3s %-3s %-3s %-3s\n", "Team", "Pts", "GF", "GA", "GD");
+        System.out.printf("%-5s %-20s %-3s %-3s %-3s %-3s\n", "Pos", "Team", "Pts", "GF", "GA", "GD");
     }
 
     public String printStandingsShortcutsTable() {
-        return String.format("%-3s %-10s %-3s %-3s %-3s %-3s\n", "Place", "Team", "Pts", "GF", "GA", "GD");
+        return String.format("%-5s %-20s %-3s %-3s %-3s %-3s\n", "Pos", "Team", "Pts", "GF", "GA", "GD");
     }
 
     public void printLine(String text) {

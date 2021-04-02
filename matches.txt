@@ -1,36 +1,36 @@
 Teams taking part in the competition:
-Pl, Gre, Por, Eng
+Barcelona, Madryt, Liverpool, Dortmunt
 
 Results:
-Pl - Gre (1:4)
-Pl - Por (0:3)
-Pl - Eng (3:0)
-Gre - Por (4:3)
-Gre - Eng (4:3)
-Por - Eng (3:0)
+Barcelona - Madryt (4:4)
+Barcelona - Liverpool (0:2)
+Barcelona - Dortmunt (0:3)
+Madryt - Liverpool (4:1)
+Madryt - Dortmunt (0:1)
+Liverpool - Dortmunt (4:4)
 
 Results sorted by win to loss
-Gre - Por (4:3)
-Gre - Eng (4:3)
-Pl - Eng (3:0)
-Por - Eng (3:0)
-Pl - Por (0:3)
-Pl - Gre (1:4)
+Madryt - Liverpool (4:1)
+Barcelona - Madryt (4:4)
+Liverpool - Dortmunt (4:4)
+Madryt - Dortmunt (0:1)
+Barcelona - Liverpool (0:2)
+Barcelona - Dortmunt (0:3)
 
 The table of the results:
-Place Team       Pts GF  GA  GD 
 
-1.    Gre        9   12  7   5  
-1.    Por        6   9   4   5  
-1.    Pl         3   4   7   -3 
-1.    Eng        0   3   10  -7 
+Pos   Team                 Pts GF  GA  GD 
+1.    Dortmunt             7   8   4   4  
+2.    Madryt               4   8   6   2  
+3.    Liverpool            4   7   8   -1 
+4.    Barcelona            1   4   9   -5 
 
 Number of teams in the competition: 4
 
-Number of goals in the competition: 28
+Number of goals in the competition: 27
 
 All matches of the selected team
-Pl - Eng (3:0)
-Gre - Eng (4:3)
-Por - Eng (3:0)
+Barcelona - Madryt (4:4)
+Barcelona - Liverpool (0:2)
+Barcelona - Dortmunt (0:3)
 

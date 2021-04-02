@@ -10,7 +10,6 @@ import javaStart.task39_Streams.exercise2.combined.model.MatchManager;
 import javaStart.task39_Streams.exercise2.combined.model.Result;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -92,8 +91,9 @@ public class MatchControl {
         printer.printLine("Print List<Result> results");
         printer.printLine("Sorting:");
         printer.printStandingsShortcuts();
-//        matchManager.increasePlace(results);
-        matchManager.increasePlaceStream(results);
+        results = matchManager.increasePosition(results);
+//        matchManager.increasePlaceStream(results);
+        results.forEach(System.out::println);
     }
 
     private void sortByScores() {

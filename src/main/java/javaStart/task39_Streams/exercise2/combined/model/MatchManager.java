@@ -16,7 +16,6 @@ public class MatchManager {
     private List<Match> matches = new ArrayList<>();
     private List<Result> results = new ArrayList<>();
     private Map<Result, List<Result>> resultListMap = new HashMap<>();
-    private List<Table> tables = new ArrayList<>();
     private String team;
 
 
@@ -35,10 +34,6 @@ public class MatchManager {
 
     public Map<Result, List<Result>> getResultListMap() {
         return resultListMap;
-    }
-
-    public List<Table> getTables() {
-        return tables;
     }
 
     public String getTeam() {
@@ -109,22 +104,22 @@ public class MatchManager {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    results.add(new Result(0, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    results.add(new Result(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    results.add(new Result(0, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    results.add(new Result(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    results.add(new Result(0, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    results.add(new Result(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    results.add(new Result(0, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    results.add(new Result(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    results.add(new Result(0, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    results.add(new Result(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    results.add(new Result(0, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    results.add(new Result(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 }
             }
@@ -150,7 +145,7 @@ public class MatchManager {
                 .collect(Collectors.groupingBy(Result::getName))
                 .entrySet().stream()
                 .collect(Collectors.toMap(entry -> {
-                    int place = 0;
+                    int place = 1;
                     int sumPoints = entry.getValue().stream().mapToInt(Result::getPoints).sum();
                     int sumGoalsFor = entry.getValue().stream().mapToInt(Result::getGoalsFor).sum();
                     int sumGoalsAgainst = entry.getValue().stream().mapToInt(Result::getGoalsAgainst).sum();
@@ -187,31 +182,32 @@ public class MatchManager {
                 .collect(Collectors.toList());
     }
 
-//    public void increasePlace(List<Result> results) {
-//        int counter = 0;
-//        for (int i = 0; i < results.size(); i++) {
-//            if (i == counter) {
-//                results.get(i).setPlace(results.get(i).getPlace() + counter);
-//            }
-//            counter++;
-//        }
-//    }
+    public List<Result> increasePosition(List<Result> results) {
+        int counter = 0;
+        for (int i = 0; i < results.size(); i++) {
+            if (i == counter) {
+                results.get(i).setPosition(results.get(i).getPosition() + counter);
+            }
+            counter++;
+        }
+        return results;
+    }
     // do wyjaśnienia dlaczego bez strumienia wpisuję counter i liczy od 1, a w przypadku
     //metody peek liczenie zaczyna od 0 + 1 = 1
 
-    public void increasePlaceStream(List<Result> results) {
-        results.stream()
-                .peek(l -> {
-                    int counter = 0;
-                    for (int i = 0; i < results.size(); i++) {
-                        if (i == counter) {
-                            results.get(i).setPlace(results.get(i).getPlace() + 1);
-                        }
-                        counter++;
-                    }
-                })
-                .forEach(System.out::println);
-    }
+//    public void increasePlaceStream(List<Result> results) {
+//        results.stream()
+//                .peek(result -> {
+//                    int counter = 0;
+//                    for (int i = 0; i < results.size(); i++) {
+//                        if (i == counter) {
+//                            results.get(i).setPlace(results.get(i).getPlace() + 1);
+//                        }
+//                        counter++;
+//                    }
+//                })
+//                .forEach(System.out::println);
+//    }
 
     public List<Match> sortByWinnersAwayTeam(List<Match> matches) {
         return matches.stream()

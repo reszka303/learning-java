@@ -2,6 +2,7 @@ package javaStart.task39_Streams.exercise2.combined.app.test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Test5Table {
@@ -42,6 +43,10 @@ public class Test5Table {
                     }
         })
                 .forEach(System.out::println);
+
+        for (Result result : results) {
+            printLine(result.toString());
+        }
 
 
     }

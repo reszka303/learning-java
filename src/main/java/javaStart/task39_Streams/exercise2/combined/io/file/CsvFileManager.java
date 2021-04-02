@@ -81,8 +81,9 @@ public class CsvFileManager {
         writer.write("The table of the results:");
         writer.newLine();
         List<Result> results = group(matchManager);
-        writer.write(printer.printStandingsShortcutsTable());
         writer.newLine();
+        writer.write(printer.printStandingsShortcutsTable());
+        results = matchManager.increasePosition(results);
         writeList(writer, results);
         writeDoubleNewLine(writer);
     }
