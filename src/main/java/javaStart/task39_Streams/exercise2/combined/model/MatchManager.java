@@ -16,6 +16,10 @@ public class MatchManager {
     private List<Match> matches = new ArrayList<>();
     private List<Result> results = new ArrayList<>();
     private Map<Result, List<Result>> resultListMap = new HashMap<>();
+    private List<Table> tables = new ArrayList<>();
+    private String team;
+
+
 
     public List<String> getTeams() {
         return teams;
@@ -33,13 +37,21 @@ public class MatchManager {
         return resultListMap;
     }
 
+    public List<Table> getTables() {
+        return tables;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
     public List<String> addTeams(int numberTeam) {
         String team;
             while (teams.size() < numberTeam) {
                 try {
                     team = dataReader.createTeam();
-                    checkDuplicate(team);
-                    teams.add(team);
+                    checkDuplicate(printer.firstUpper(team));
+                    teams.add(printer.firstUpper(team));
                 } catch (TeamDuplicateException e) {
                     e.getMessage();
                 }
@@ -66,43 +78,84 @@ public class MatchManager {
         return matches;
     }
 
+//    public List<Result> getScores(List<Match> matches, List<String> teams) {
+//        for (String team : teams) {
+//            for (Match match : matches) {
+//                if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+//                    results.add(new Result(team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+//                        match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+//                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+//                    results.add(new Result(team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+//                        match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+//                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+//                    results.add(new Result(team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+//                        match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+//                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+//                    results.add(new Result(team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+//                        match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+//                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+//                    results.add(new Result(team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+//                        match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+//                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+//                results.add(new Result(team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+//                        match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+//                }
+//            }
+//        }
+//        return results;
+//    }
+
     public List<Result> getScores(List<Match> matches, List<String> teams) {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    results.add(new Result(team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
-                        match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                    results.add(new Result(0, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    results.add(new Result(team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
-                        match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                    results.add(new Result(0, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    results.add(new Result(team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
-                        match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                    results.add(new Result(0, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    results.add(new Result(team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
-                        match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                    results.add(new Result(0, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    results.add(new Result(team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
-                        match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                    results.add(new Result(0, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                results.add(new Result(team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
-                        match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                    results.add(new Result(0, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 }
             }
         }
         return results;
     }
 
-    public Map<Result, List<Result>> group(List<Result> results) {
+//    public Map<Result, List<Result>> groupByName(List<Result> results) {
+//        return resultListMap = results.stream()
+//                .collect(Collectors.groupingBy(Result::getName))
+//                .entrySet().stream()
+//                .collect(Collectors.toMap(entry -> {
+//                    int sumPoints = entry.getValue().stream().mapToInt(Result::getPoints).sum();
+//                    int sumGoalsFor = entry.getValue().stream().mapToInt(Result::getGoalsFor).sum();
+//                    int sumGoalsAgainst = entry.getValue().stream().mapToInt(Result::getGoalsAgainst).sum();
+//                    int sumGoalsDifference = entry.getValue().stream().mapToInt(Result::getGoalsDifference).sum();
+//                    return new Result(entry.getKey(), sumPoints, sumGoalsFor, sumGoalsAgainst, sumGoalsDifference);
+//                }, Map.Entry::getValue));
+//    }
+
+    public Map<Result, List<Result>> groupByName(List<Result> results) {
         return resultListMap = results.stream()
                 .collect(Collectors.groupingBy(Result::getName))
                 .entrySet().stream()
                 .collect(Collectors.toMap(entry -> {
+                    int place = 0;
                     int sumPoints = entry.getValue().stream().mapToInt(Result::getPoints).sum();
                     int sumGoalsFor = entry.getValue().stream().mapToInt(Result::getGoalsFor).sum();
                     int sumGoalsAgainst = entry.getValue().stream().mapToInt(Result::getGoalsAgainst).sum();
                     int sumGoalsDifference = entry.getValue().stream().mapToInt(Result::getGoalsDifference).sum();
-                    return new Result(entry.getKey(), sumPoints, sumGoalsFor, sumGoalsAgainst, sumGoalsDifference);
+                    return new Result(place, entry.getKey(), sumPoints, sumGoalsFor, sumGoalsAgainst, sumGoalsDifference);
                 }, Map.Entry::getValue));
     }
 
@@ -134,6 +187,32 @@ public class MatchManager {
                 .collect(Collectors.toList());
     }
 
+//    public void increasePlace(List<Result> results) {
+//        int counter = 0;
+//        for (int i = 0; i < results.size(); i++) {
+//            if (i == counter) {
+//                results.get(i).setPlace(results.get(i).getPlace() + counter);
+//            }
+//            counter++;
+//        }
+//    }
+    // do wyjaśnienia dlaczego bez strumienia wpisuję counter i liczy od 1, a w przypadku
+    //metody peek liczenie zaczyna od 0 + 1 = 1
+
+    public void increasePlaceStream(List<Result> results) {
+        results.stream()
+                .peek(l -> {
+                    int counter = 0;
+                    for (int i = 0; i < results.size(); i++) {
+                        if (i == counter) {
+                            results.get(i).setPlace(results.get(i).getPlace() + 1);
+                        }
+                        counter++;
+                    }
+                })
+                .forEach(System.out::println);
+    }
+
     public List<Match> sortByWinnersAwayTeam(List<Match> matches) {
         return matches.stream()
                 .filter(Match::getWinnersAwayTeam)
@@ -149,12 +228,14 @@ public class MatchManager {
 
     public String getTeam(List<String> teams) {
         boolean teamOk = false;
-        String team = null;
+        team = null;
+//        String team = null;
         int counter = 0;
         while (!teamOk) {
             try {
                 printer.printLine("Enter a name of a team to display its all matches");
                 team = dataReader.toLowerCase();
+                team = printer.firstUpper(team);
                 for (String s : teams) {
                     if (team.equals(s)) {
                         counter++;

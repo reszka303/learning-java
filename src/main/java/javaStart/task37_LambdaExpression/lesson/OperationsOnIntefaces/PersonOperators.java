@@ -1,4 +1,4 @@
-package javaStart.task37_LambdaExpression.lesson.operationsOnIntefaces;
+package javaStart.task37_LambdaExpression.lesson.OperationsOnIntefaces;
 
 import java.util.ArrayList;
 import java.util.List;

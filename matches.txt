@@ -1,0 +1,36 @@
+Teams taking part in the competition:
+Pl, Gre, Por, Eng
+
+Results:
+Pl - Gre (1:4)
+Pl - Por (0:3)
+Pl - Eng (3:0)
+Gre - Por (4:3)
+Gre - Eng (4:3)
+Por - Eng (3:0)
+
+Results sorted by win to loss
+Gre - Por (4:3)
+Gre - Eng (4:3)
+Pl - Eng (3:0)
+Por - Eng (3:0)
+Pl - Por (0:3)
+Pl - Gre (1:4)
+
+The table of the results:
+Place Team       Pts GF  GA  GD 
+
+1.    Gre        9   12  7   5  
+1.    Por        6   9   4   5  
+1.    Pl         3   4   7   -3 
+1.    Eng        0   3   10  -7 
+
+Number of teams in the competition: 4
+
+Number of goals in the competition: 28
+
+All matches of the selected team
+Pl - Eng (3:0)
+Gre - Eng (4:3)
+Por - Eng (3:0)
+

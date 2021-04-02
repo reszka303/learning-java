@@ -11,14 +11,14 @@ public class ConsolePrinter {
         for (String team : teams) {
             counter++;
             if (teams.size() == counter) {
-                printNoLine(getString(team) + "");
+                printNoLine(firstUpper(team) + "");
             } else {
-                printNoLine(getString(team) + ", ");
+                printNoLine(firstUpper(team) + ", ");
             }
         }
     }
 
-    private String getString(String team) {
+    public String firstUpper(String team) {
         return team.substring(0, 1).toUpperCase() + team.substring(1).toLowerCase();
     }
 
@@ -34,6 +34,14 @@ public class ConsolePrinter {
         for (Map.Entry<Result, List<Result>> entry : map.entrySet()) {
             printLine("" + entry.getKey());
         }
+    }
+
+    public void printStandingsShortcuts() {
+        System.out.printf("%-10s %-3s %-3s %-3s %-3s\n", "Team", "Pts", "GF", "GA", "GD");
+    }
+
+    public String printStandingsShortcutsTable() {
+        return String.format("%-3s %-10s %-3s %-3s %-3s %-3s\n", "Place", "Team", "Pts", "GF", "GA", "GD");
     }
 
     public void printLine(String text) {

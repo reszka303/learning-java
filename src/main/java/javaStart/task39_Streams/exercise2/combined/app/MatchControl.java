@@ -1,11 +1,16 @@
 package javaStart.task39_Streams.exercise2.combined.app;
 
+import javaStart.task39_Streams.exercise2.combined.exception.DataReadException;
+import javaStart.task39_Streams.exercise2.combined.exception.DataWriteException;
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
 import javaStart.task39_Streams.exercise2.combined.io.DataReader;
+import javaStart.task39_Streams.exercise2.combined.io.file.CsvFileManager;
 import javaStart.task39_Streams.exercise2.combined.model.Match;
 import javaStart.task39_Streams.exercise2.combined.model.MatchManager;
 import javaStart.task39_Streams.exercise2.combined.model.Result;
 
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,13 +18,21 @@ public class MatchControl {
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader();
     private MatchManager matchManager = new MatchManager();
+    private CsvFileManager csvFileManager = new CsvFileManager();
 
-    void run() {
+    public void run() {
+        try {
+            csvFileManager.readFile();
+        } catch (DataReadException e) {
+            e.getMessage();
+            printer.printLine("The new database has been initiated");
+            //pomyśleć co z drużynami dwuczłonowymi w drugim słowie są małe litery!!
+        }
         addTeams();
         printer.printLine("");
         printResultsGivenTeams();
         printer.printLine("");
-        groupingByName();
+        group();
         printer.printLine("Table of matches: ");
         printTable();
         printer.printLine("");
@@ -34,6 +47,13 @@ public class MatchControl {
         printer.printLine("");
         printer.printLine("Counting by goals");
         countByGoals();
+        try {
+            csvFileManager.writeFile(matchManager);
+            printer.printLine("Data write into file has been finished successfully");
+        } catch (DataWriteException e) {
+            e.getMessage();
+        }
+        printer.printLine("Match manager has finished its work");
     }
 
     private void addTeams() {
@@ -46,6 +66,8 @@ public class MatchControl {
 
     private void printResultsGivenTeams() {
         List<String> teams = matchManager.getTeams();
+        printer.printLine("Added teams are the following:");
+        teams.forEach(System.out::println);
         List<Match> matches = matchManager.createScores(teams);
         List<Result> results = matchManager.getScores(matches, teams);
         matches.forEach(System.out::println);
@@ -53,9 +75,9 @@ public class MatchControl {
         results.forEach(System.out::println);
     }
 
-    private void groupingByName() {
+    private void group() {
         List<Result> results = matchManager.getResults();
-        Map<Result, List<Result>> resultListMap = matchManager.group(results);
+        Map<Result, List<Result>> resultListMap = matchManager.groupByName(results);
         printer.printMap(resultListMap);
     }
 
@@ -69,7 +91,9 @@ public class MatchControl {
         printer.printLine("");
         printer.printLine("Print List<Result> results");
         printer.printLine("Sorting:");
-        results.forEach(System.out::println);
+        printer.printStandingsShortcuts();
+//        matchManager.increasePlace(results);
+        matchManager.increasePlaceStream(results);
     }
 
     private void sortByScores() {
@@ -81,13 +105,14 @@ public class MatchControl {
         matches.forEach(System.out::println);
     }
 
-    private void sortByTeam() {
+    private List<Match> sortByTeam() {
         List<String> teams = matchManager.getTeams();
         List<Match> matches = matchManager.getMatches();
         String team = matchManager.getTeam(teams);
         matches = matchManager.sortByTeam(matches, team);
         printer.printLine("All matches one team");
         matches.forEach(System.out::println);
+        return matches;
     }
 
     private void countByTeams() {
@@ -99,6 +124,6 @@ public class MatchControl {
     private void countByGoals() {
         List<Match> matches = matchManager.getMatches();
         long numberGoals = matchManager.countByGoals(matches);
-        printer.printLine("The team numbers is: " + numberGoals);
+        printer.printLine("The goal numbers is: " + numberGoals);
     }
 }
