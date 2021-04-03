@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Test1 {
+public class T1 {
     private static Scanner input = new Scanner(System.in);
     private static List<String> teamsList = new ArrayList<>();
     private static List<Match> matches = new ArrayList<>();

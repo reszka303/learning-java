@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Test5Table {
+public class T5ChangeValuePosition {
     public static void main(String[] args) {
         List<Result> results = create();
 //        results.forEach(System.out::println);

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Test2 {
+public class T2 {
     public static void main(String[] args) {
         List<String> teams = teams();
         List<Result> results = createResults();

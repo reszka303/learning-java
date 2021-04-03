@@ -6,8 +6,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DataReader {
-    private ConsolePrinter printer = new ConsolePrinter();
     private Scanner input = new Scanner(System.in);
+    private ConsolePrinter printer = new ConsolePrinter();
 
     public int numbersTeams() {
         printer.printLine("Enter number of teams");
@@ -42,7 +42,19 @@ public class DataReader {
 
     public String createTeam() {
         printer.printLine("Enter the name of team");
-        return input.nextLine();
+        String teamLetter = input.nextLine();
+        teamLetter = capitalizeFirstLetterEverySingleWord(teamLetter);
+        return teamLetter;
+    }
+
+    public String capitalizeFirstLetterEverySingleWord(String teamName) {
+        String[] arr = teamName.split(" ");
+        var builder = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            builder.append(Character.toUpperCase(arr[i].charAt(0)))
+                    .append(arr[i].substring(1)).append(" ");
+        }
+        return builder.toString().trim();
     }
 
     public int getInt() {
@@ -60,4 +72,12 @@ public class DataReader {
     public String toLowerCase() {
         return input.nextLine().toLowerCase();
     }
+
+//    void printLine(String text) {
+//        System.out.println(text);
+//    }
+//
+//    void printLineError(String text) {
+//        System.err.println(text);
+//    }
 }

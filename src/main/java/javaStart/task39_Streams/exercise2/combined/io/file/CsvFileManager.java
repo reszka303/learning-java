@@ -3,6 +3,7 @@ package javaStart.task39_Streams.exercise2.combined.io.file;
 import javaStart.task39_Streams.exercise2.combined.exception.DataReadException;
 import javaStart.task39_Streams.exercise2.combined.exception.DataWriteException;
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
+import javaStart.task39_Streams.exercise2.combined.io.DataReader;
 import javaStart.task39_Streams.exercise2.combined.model.Match;
 import javaStart.task39_Streams.exercise2.combined.model.MatchManager;
 import javaStart.task39_Streams.exercise2.combined.model.Result;
@@ -14,16 +15,16 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-
 public class CsvFileManager {
     private ConsolePrinter printer = new ConsolePrinter();
+    private DataReader dataReader = new DataReader();
     private static final String FILE_NAME = "D:\\INNE\\Programowanie\\Projects\\learning\\matches.txt";
 
     public void readFile() {
         try (var reader = new BufferedReader(new FileReader(FILE_NAME))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    printer.printLine(line);
+//                    printer.printLine(line);
                 }
         } catch (FileNotFoundException e) {
             throw new DataReadException("No file: " + FILE_NAME);
@@ -143,7 +144,7 @@ public class CsvFileManager {
     private List<String> upperLowerCase(List<String> list) {
         List<String> teams = new ArrayList<>();
         for (String str : list) {
-            teams.add(printer.firstUpper(str));
+            teams.add(dataReader.capitalizeFirstLetterEverySingleWord(str));
         }
         return teams;
     }

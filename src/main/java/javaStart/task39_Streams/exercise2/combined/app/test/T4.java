@@ -3,7 +3,7 @@ package javaStart.task39_Streams.exercise2.combined.app.test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test4 {
+public class T4 {
     public static void main(String[] args) {
         List<String> teams = create();
         teams = upperAndLowerCase(teams);

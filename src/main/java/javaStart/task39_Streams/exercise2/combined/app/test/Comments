@@ -1,0 +1,29 @@
+
+1.
+Został rzucony błąd StackOverflow ponieważ nie mogę w klasie DataReader oraz ConsolePrinter deklarować
+zmiennych referencyjnych wzajemnie w obu klasach.
+
+Zmienną referencyjną DataReader zadeklarowałem w ConsolePrinter i na odwrót.
+Nie mogłem więc wywołać metod printLine klasy ConsolePrinter w klasie DataReader.
+Aby wykonać zadanie zostałem zmuszony do zaimplementowania takiej samej metody w klasie DataReader, aby program
+mógł dalej działać.
+Wiem, że to jest źle bo klasa ConsolePrinter służy do wyświetlania, ale aby program zadziałał musiałem zrobić
+w ten sposób.
+
+2
+pseudo strumień, którego się nie powinno używać, wyczytane na stackoverflow
+
+    public void increasePlaceStream(List<Result> results) {
+        results.stream()
+                .peek(result -> {
+                    int counter = 0;
+                    for (int i = 0; i < results.size(); i++) {
+                        if (i == counter) {
+                            results.get(i).setPlace(results.get(i).getPlace() + 1);
+                        }
+                        counter++;
+                    }
+                })
+                .forEach(System.out::println);
+    }
+

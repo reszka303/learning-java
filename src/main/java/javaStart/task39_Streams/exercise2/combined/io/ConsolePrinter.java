@@ -11,20 +11,16 @@ public class ConsolePrinter {
         for (String team : teams) {
             counter++;
             if (teams.size() == counter) {
-                printNoLine(firstUpper(team) + "");
+                printNoLine(team + "");
             } else {
-                printNoLine(firstUpper(team) + ", ");
+                printNoLine(team + ", ");
             }
         }
     }
 
-    public String firstUpper(String team) {
-        return team.substring(0, 1).toUpperCase() + team.substring(1).toLowerCase();
-    }
-
     public void printInfoAboutAddedTeams(List<String> teams) {
         if (teams.isEmpty()) {
-            printLineError("You didn't add teams");
+            printLineError("You didn't add any teams");
         } else {
             printLine("You added the following teams:");
         }
