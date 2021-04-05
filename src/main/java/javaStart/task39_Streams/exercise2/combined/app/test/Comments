@@ -13,13 +13,13 @@ w ten sposób.
 2
 pseudo strumień, którego się nie powinno używać, wyczytane na stackoverflow
 
-    public void increasePlaceStream(List<Result> results) {
-        results.stream()
+    public void increasePlaceStream(List<Result> scorings) {
+        scorings.stream()
                 .peek(result -> {
                     int counter = 0;
-                    for (int i = 0; i < results.size(); i++) {
+                    for (int i = 0; i < scorings.size(); i++) {
                         if (i == counter) {
-                            results.get(i).setPlace(results.get(i).getPlace() + 1);
+                            scorings.get(i).setPlace(scorings.get(i).getPlace() + 1);
                         }
                         counter++;
                     }

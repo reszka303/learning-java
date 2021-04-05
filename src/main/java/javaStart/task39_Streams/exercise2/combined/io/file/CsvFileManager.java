@@ -6,7 +6,7 @@ import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
 import javaStart.task39_Streams.exercise2.combined.io.DataReader;
 import javaStart.task39_Streams.exercise2.combined.model.Match;
 import javaStart.task39_Streams.exercise2.combined.model.MatchManager;
-import javaStart.task39_Streams.exercise2.combined.model.Result;
+import javaStart.task39_Streams.exercise2.combined.model.Scoring;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class CsvFileManager {
     private void sortByTeam(MatchManager matchManager, BufferedWriter writer) throws IOException {
         writer.write("All matches of the selected team");
         writer.newLine();
-        List<Match> matches = matchManager.getMatches();
+        List<Match> matches = matchManager.getMatchFirstRound();
         String team = matchManager.getTeam();
         matches = matchManager.sortByTeam(matches, team);
         writeList(writer, matches);
@@ -65,28 +65,28 @@ public class CsvFileManager {
     }
 
     private void countByGoals(MatchManager matchManager, BufferedWriter writer) throws IOException {
-        List<Match> matches = matchManager.getMatches();
+        List<Match> matches = matchManager.getMatchFirstRound();
         long goalsNumber = matchManager.countByGoals(matches);
         writer.write("Number of goals in the competition: " + goalsNumber);
         writeDoubleNewLine(writer);
     }
 
     private void countByTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
-        Map<Result, List<Result>> resultListMap = matchManager.getResultListMap();
-        long teamsNumber = matchManager.countByTeams(resultListMap);
-        writer.write("Number of teams in the competition: " + teamsNumber);
-        writeDoubleNewLine(writer);
+//        Map<Scoring, List<Scoring>> resultListMap = matchManager.getScoringFirstRoundListMap();
+//        long teamsNumber = matchManager.countByTeams(resultListMap);
+//        writer.write("Number of teams in the competition: " + teamsNumber);
+//        writeDoubleNewLine(writer);
     }
 
     private void writeTable(MatchManager matchManager, BufferedWriter writer) throws IOException {
-        writer.write("The table of the results:");
-        writer.newLine();
-        List<Result> results = group(matchManager);
-        writer.newLine();
-        writer.write(printer.printStandingsShortcutsTable());
-        results = matchManager.increasePosition(results);
-        writeList(writer, results);
-        writeDoubleNewLine(writer);
+//        writer.write("The table of the results:");
+//        writer.newLine();
+//        List<Scoring> scorings = group(matchManager);
+//        writer.newLine();
+//        writer.write(printer.printStandingsShortcutsTable());
+//        scorings = matchManager.increasePosition(scorings);
+//        writeList(writer, scorings);
+//        writeDoubleNewLine(writer);
     }
 
     private void sortByWinsToLoses(MatchManager matchManager, BufferedWriter writer) throws IOException {
@@ -98,7 +98,7 @@ public class CsvFileManager {
     }
 
     private void matchesResults(MatchManager matchManager, BufferedWriter writer) throws IOException {
-        List<Match> matches = matchManager.getMatches();
+        List<Match> matches = matchManager.getMatchFirstRound();
         writer.write("Results:");
         writer.newLine();
         writeList(writer, matches);
@@ -119,19 +119,19 @@ public class CsvFileManager {
         writer.write(collect);
     }
 
-    private List<Result> group(MatchManager matchManager) {
-        List<Result> results = matchManager.getResults();
-        Map<Result, List<Result>> resultListMap = matchManager.groupByName(results);
-        results = matchManager.getKey(resultListMap);
-        return matchManager.sortByPointsAndGoals(results);
-    }
+//    private List<Scoring> group(MatchManager matchManager) {
+//        List<Scoring> scorings = matchManager.getScoringFirstRound();
+//        Map<Scoring, List<Scoring>> resultListMap = matchManager.groupByName(scorings);
+//        scorings = matchManager.getKey(resultListMap);
+//        return matchManager.sortByPointsAndGoals(scorings);
+//    }
 
     private List<Match> sortByScores(MatchManager matchManager) {
-        List<Match> matches = matchManager.getMatches();
+        List<Match> matches = matchManager.getMatchFirstRound();
         List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(matches);
         List<Match> ties = matchManager.sortByTies(matches);
         List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(matches);
-        return matchManager.combineLists(winnersHome, ties, winnersAway);
+        return matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
     }
 
     private void writeTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {

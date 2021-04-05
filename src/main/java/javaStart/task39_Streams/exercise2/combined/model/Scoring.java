@@ -2,7 +2,7 @@ package javaStart.task39_Streams.exercise2.combined.model;
 
 import java.util.List;
 
-public class Result {
+public class Scoring {
     private int position;
     private String name;
     private int points;
@@ -10,7 +10,7 @@ public class Result {
     private int goalsAgainst;
     private int goalsDifference;
 
-    public Result(int position, String name, int points, int goalsFor, int goalsAgainst, int goalsDifference) {
+    public Scoring(int position, String name, int points, int goalsFor, int goalsAgainst, int goalsDifference) {
         this.position = position;
         this.name = name;
         this.points = points;

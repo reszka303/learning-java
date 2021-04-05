@@ -13,25 +13,40 @@ public class MatchManager {
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader();
     private List<String> teams = new ArrayList<>();
-    private List<Match> matches = new ArrayList<>();
-    private List<Result> results = new ArrayList<>();
-    private Map<Result, List<Result>> resultListMap = new HashMap<>();
+    private List<Match> matchFirstRound = new ArrayList<>();
+    private List<Match> matchRematch = new ArrayList<>();
+    private List<Scoring> scoringFirstRound = new ArrayList<>();
+    private List<Scoring> scoringRematch = new ArrayList<>();
+    private Map<Scoring, List<Scoring>> scoringFirstRoundListMap = new HashMap<>();
+    private Map<Scoring, List<Scoring>> scoringRematchListMap = new HashMap<>();
     private String team;
 
     public List<String> getTeams() {
         return teams;
     }
 
-    public List<Match> getMatches() {
-        return matches;
+    public List<Match> getMatchFirstRound() {
+        return matchFirstRound;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<Match> getMatchRematch() {
+        return matchRematch;
     }
 
-    public Map<Result, List<Result>> getResultListMap() {
-        return resultListMap;
+    public List<Scoring> getScoringFirstRound() {
+        return scoringFirstRound;
+    }
+
+    public List<Scoring> getScoringRematch() {
+        return scoringRematch;
+    }
+
+    public Map<Scoring, List<Scoring>> getScoringFirstRoundListMap() {
+        return scoringFirstRoundListMap;
+    }
+
+    public Map<Scoring, List<Scoring>> getScoringRematchListMap() {
+        return scoringRematchListMap;
     }
 
     public String getTeam() {
@@ -59,70 +74,85 @@ public class MatchManager {
         }
     }
 
-    public List<Match> createScores(List<String> teams) {
+    public List<Match> createFirstRound(List<String> teams) {
         Random random = new Random();
         int upperbound = 5;
         for (int i = 0; i < teams.size() - 1; i++) {
             for (int j = i + 1; j < teams.size(); j++) {
-                Match match = new Match(teams.get(i), teams.get(j), random.nextInt(upperbound), random.nextInt(upperbound));
-                matches.add(match);
+                Match match = new Match(teams.get(i), teams.get(j),
+                        random.nextInt(upperbound), random.nextInt(upperbound));
+                matchFirstRound.add(match);
             }
         }
-        return matches;
+        return matchFirstRound;
     }
 
-    public List<Result> getScores(List<Match> matches, List<String> teams) {
+    public List<Match> createRematch(List<String> teams) {
+        Random random = new Random();
+        int upperbound = 5;
+        for (int i = 0; i < teams.size() - 1; i++) {
+            for (int j = i + 1; j < teams.size(); j++) {
+                Match match = new Match(teams.get(j), teams.get(i),
+                        random.nextInt(upperbound), random.nextInt(upperbound));
+                matchRematch.add(match);
+            }
+        }
+        return matchRematch;
+    }
+
+    public List<Scoring> createScoring(List<Match> matches, List<String> teams, List<Scoring> scoringRematch) {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    results.add(new Result(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringRematch.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    results.add(new Result(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringRematch.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    results.add(new Result(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringRematch.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    results.add(new Result(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringRematch.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    results.add(new Result(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringRematch.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    results.add(new Result(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringRematch.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 }
             }
         }
-        return results;
+        return scoringRematch;
     }
 
-    public Map<Result, List<Result>> groupByName(List<Result> results) {
-        return resultListMap = results.stream()
-                .collect(Collectors.groupingBy(Result::getName))
+    public Map<Scoring, List<Scoring>> groupByName(List<Scoring> scoring) {
+//        Map<Scoring, List<Scoring>> scoringListMap = new HashMap<>();
+        return  scoring.stream()
+                .collect(Collectors.groupingBy(Scoring::getName))
                 .entrySet().stream()
                 .collect(Collectors.toMap(entry -> {
                     int place = 1;
-                    int sumPoints = entry.getValue().stream().mapToInt(Result::getPoints).sum();
-                    int sumGoalsFor = entry.getValue().stream().mapToInt(Result::getGoalsFor).sum();
-                    int sumGoalsAgainst = entry.getValue().stream().mapToInt(Result::getGoalsAgainst).sum();
-                    int sumGoalsDifference = entry.getValue().stream().mapToInt(Result::getGoalsDifference).sum();
-                    return new Result(place, entry.getKey(), sumPoints, sumGoalsFor, sumGoalsAgainst, sumGoalsDifference);
+                    int sumPoints = entry.getValue().stream().mapToInt(Scoring::getPoints).sum();
+                    int sumGoalsFor = entry.getValue().stream().mapToInt(Scoring::getGoalsFor).sum();
+                    int sumGoalsAgainst = entry.getValue().stream().mapToInt(Scoring::getGoalsAgainst).sum();
+                    int sumGoalsDifference = entry.getValue().stream().mapToInt(Scoring::getGoalsDifference).sum();
+                    return new Scoring(place, entry.getKey(), sumPoints, sumGoalsFor, sumGoalsAgainst, sumGoalsDifference);
                 }, Map.Entry::getValue));
     }
 
-    public List<Result> getKey(Map<Result, List<Result>> map) {
+    public List<Scoring> getKey(Map<Scoring, List<Scoring>> map) {
         return new ArrayList<>(map.keySet());
     }
 
 
-    public List<Result> sortByPointsAndGoals(List<Result> results) {
-        return results.stream()
-                .sorted(Comparator.comparing(Result::getPoints)
-                        .thenComparing(Result::getGoalsFor).reversed()
-                        .thenComparing(Result::getGoalsAgainst)
-                        .thenComparing((Result::getGoalsDifference)))
+    public List<Scoring> sortByPointsAndGoals(List<Scoring> scoring) {
+        return scoring.stream()
+                .sorted(Comparator.comparing(Scoring::getPoints)
+                        .thenComparing(Scoring::getGoalsFor).reversed()
+                        .thenComparing(Scoring::getGoalsAgainst)
+                        .thenComparing((Scoring::getGoalsDifference)))
                 .collect(Collectors.toList());
     }
 
@@ -140,19 +170,6 @@ public class MatchManager {
                 .collect(Collectors.toList());
     }
 
-    public List<Result> increasePosition(List<Result> results) {
-        int counter = 0;
-        for (int i = 0; i < results.size(); i++) {
-            if (i == counter) {
-                results.get(i).setPosition(results.get(i).getPosition() + counter);
-            }
-            counter++;
-        }
-        return results;
-    }
-    // do wyjaśnienia dlaczego bez strumienia wpisuję counter i liczy od 1, a w przypadku
-    //metody peek liczenie zaczyna od 0 + 1 = 1
-
     public List<Match> sortByWinnersAwayTeam(List<Match> matches) {
         return matches.stream()
                 .filter(Match::getWinnersAwayTeam)
@@ -160,16 +177,38 @@ public class MatchManager {
                 .collect(Collectors.toList());
     }
 
-    public List<Match> combineLists(List<Match> list1, List<Match> list2, List<Match> list3) {
-        return Stream.of(list1, list2, list3)
+    public List<Scoring> increasePosition(List<Scoring> scorings) {
+        int counter = 0;
+        for (int i = 0; i < scorings.size(); i++) {
+            if (i == counter) {
+                scorings.get(i).setPosition(scorings.get(i).getPosition() + counter);
+            }
+            counter++;
+        }
+        return scorings;
+    }
+
+    public List<Match> joinWinTieLoss(List<Match> wins, List<Match> ties, List<Match> losses) {
+        return Stream.of(wins, ties, losses)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
+    }
+
+    public List<Match> joinAllSortedMatchesByWinTiesLoss(List<Match> firstRoundMatches, List<Match> rematches) {
+        return Stream.of(firstRoundMatches, rematches)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+    }
+
+    public List<Scoring> joinFirstRoundAndRematches(List<Scoring> scoringFirstRound, List<Scoring> rematches) {
+            return Stream.of(scoringFirstRound, rematches)
+                    .flatMap(Collection::stream)
+                    .collect(Collectors.toList());
     }
 
     public String getTeam(List<String> teams) {
         boolean teamOk = false;
         team = null;
-//        String team = null;
         int counter = 0;
         while (!teamOk) {
             try {
@@ -201,11 +240,8 @@ public class MatchManager {
                 .collect(Collectors.toList());
     }
 
-    public long countByTeams(Map<Result, List<Result>> map) {
-        return map.keySet().stream()
-                .map(Result::getTeams)
-                .mapToLong(List::size)
-                .sum();
+    public int countByTeams(List<String> teams) {
+        return teams.size();
     }
 
     public long countByGoals(List<Match> matches) {

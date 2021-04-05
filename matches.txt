@@ -1,36 +1,28 @@
 Teams taking part in the competition:
-Stany Zjednoczone, Emiraty Arabskie, Republika Południowej Afryki, Korea Południowa
+Polska, Niemcy, Czechy
 
 Results:
-Stany Zjednoczone - Emiraty Arabskie (0:2)
-Stany Zjednoczone - Republika Południowej Afryki (3:0)
-Stany Zjednoczone - Korea Południowa (1:0)
-Emiraty Arabskie - Republika Południowej Afryki (2:3)
-Emiraty Arabskie - Korea Południowa (0:1)
-Republika Południowej Afryki - Korea Południowa (0:4)
+Polska - Niemcy (0:2)
+Polska - Czechy (0:3)
+Niemcy - Czechy (3:4)
 
 Results sorted by win to loss
-Stany Zjednoczone - Republika Południowej Afryki (3:0)
-Stany Zjednoczone - Korea Południowa (1:0)
-Emiraty Arabskie - Korea Południowa (0:1)
-Stany Zjednoczone - Emiraty Arabskie (0:2)
-Emiraty Arabskie - Republika Południowej Afryki (2:3)
-Republika Południowej Afryki - Korea Południowa (0:4)
+Polska - Niemcy (0:2)
+Polska - Czechy (0:3)
+Niemcy - Czechy (3:4)
 
-The table of the results:
+The table of the scorings:
 
 Pos   Team                 Pts GF  GA  GD 
-1.    Korea Południowa     6   5   1   4  
-2.    Stany Zjednoczone    6   4   2   2  
-3.    Emiraty Arabskie     3   4   4   0  
-4.    Republika Południowej Afryki 3   3   9   -6 
+1.    Czechy               10  11  6   5  
+2.    Niemcy               6   10  9   1  
+3.    Polska               1   3   9   -6 
 
-Number of teams in the competition: 4
+Number of teams in the competition: 3
 
-Number of goals in the competition: 16
+Number of goals in the competition: 12
 
 All matches of the selected team
-Stany Zjednoczone - Korea Południowa (1:0)
-Emiraty Arabskie - Korea Południowa (0:1)
-Republika Południowej Afryki - Korea Południowa (0:4)
+Polska - Niemcy (0:2)
+Polska - Czechy (0:3)
 

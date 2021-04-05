@@ -1,6 +1,6 @@
 package javaStart.task39_Streams.exercise2.combined.io;
 
-import javaStart.task39_Streams.exercise2.combined.model.Result;
+import javaStart.task39_Streams.exercise2.combined.model.Scoring;
 
 import java.util.List;
 import java.util.Map;
@@ -26,8 +26,8 @@ public class ConsolePrinter {
         }
     }
 
-    public void printMap(Map<Result, List<Result>> map) {
-        for (Map.Entry<Result, List<Result>> entry : map.entrySet()) {
+    public void printMap(Map<Scoring, List<Scoring>> map) {
+        for (Map.Entry<Scoring, List<Scoring>> entry : map.entrySet()) {
             printLine("" + entry.getKey());
         }
     }

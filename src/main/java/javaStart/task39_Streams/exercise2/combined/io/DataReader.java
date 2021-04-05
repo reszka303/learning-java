@@ -72,12 +72,4 @@ public class DataReader {
     public String toLowerCase() {
         return input.nextLine().toLowerCase();
     }
-
-//    void printLine(String text) {
-//        System.out.println(text);
-//    }
-//
-//    void printLineError(String text) {
-//        System.err.println(text);
-//    }
 }
