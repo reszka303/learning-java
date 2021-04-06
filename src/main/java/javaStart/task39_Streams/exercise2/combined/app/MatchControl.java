@@ -1,5 +1,7 @@
 package javaStart.task39_Streams.exercise2.combined.app;
 
+import javaStart.task39_Streams.exercise2.combined.exception.DataReadException;
+import javaStart.task39_Streams.exercise2.combined.exception.DataWriteException;
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
 import javaStart.task39_Streams.exercise2.combined.io.DataReader;
 import javaStart.task39_Streams.exercise2.combined.io.file.CsvFileManager;
@@ -18,13 +20,12 @@ public class MatchControl {
     private CsvFileManager csvFileManager = new CsvFileManager();
 
     public void run() {
-//        try {
-//            csvFileManager.readFile();
-//        } catch (DataReadException e) {
-//            e.getMessage();
-//            printer.printLine("The new database has been initiated");
-//            //pomyśleć co z drużynami dwuczłonowymi w drugim słowie są małe litery!!
-//        }
+        try {
+            csvFileManager.readFile();
+        } catch (DataReadException e) {
+            e.getMessage();
+            printer.printLine("The new database has been initiated");
+        }
         addTeams();
         printer.printLine("");
         printer.printLine("");
@@ -49,13 +50,13 @@ public class MatchControl {
         countByTeams();
         printer.printLine("");
         countByGoals();
-//        try {
-//            csvFileManager.writeFile(matchManager);
-//            printer.printLine("Data write into file has been finished successfully");
-//        } catch (DataWriteException e) {
-//            e.getMessage();
-//        }
-//        printer.printLine("Match manager has finished its work");
+        try {
+            csvFileManager.writeFile(matchManager);
+            printer.printLine("Data write into file has been finished successfully");
+        } catch (DataWriteException e) {
+            e.getMessage();
+        }
+        printer.printLine("Match manager has finished its work");
     }
 
     private void addTeams() {
@@ -154,9 +155,9 @@ public class MatchControl {
     }
 
     private void sortByScoresAllMatches() {
-        List<Match> firstRoundMatches = matchManager.getMatchFirstRound();
+        List<Match> firstRound = matchManager.getMatchFirstRound();
         List<Match> rematches = matchManager.getMatchRematch();
-        List<Match> allMatches = matchManager.joinAllSortedMatchesByWinTiesLoss(firstRoundMatches, rematches);
+        List<Match> allMatches = matchManager.joinAllSortedMatchesByWinTiesLoss(firstRound, rematches);
         List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(allMatches);
         List<Match> ties = matchManager.sortByTies(allMatches);
         List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(allMatches);
@@ -172,7 +173,7 @@ public class MatchControl {
         List<Match> allMatches = matchManager.joinAllSortedMatchesByWinTiesLoss(firstRoundMatches, rematches);
         String team = matchManager.getTeam(teams);
         allMatches = matchManager.sortByTeam(allMatches, team);
-        printer.printLine("All matches of the one team");
+        printer.printLine("All matches of the following team: " + team);
         allMatches.forEach(System.out::println);
     }
 

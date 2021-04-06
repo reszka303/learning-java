@@ -17,8 +17,6 @@ public class MatchManager {
     private List<Match> matchRematch = new ArrayList<>();
     private List<Scoring> scoringFirstRound = new ArrayList<>();
     private List<Scoring> scoringRematch = new ArrayList<>();
-    private Map<Scoring, List<Scoring>> scoringFirstRoundListMap = new HashMap<>();
-    private Map<Scoring, List<Scoring>> scoringRematchListMap = new HashMap<>();
     private String team;
 
     public List<String> getTeams() {
@@ -39,14 +37,6 @@ public class MatchManager {
 
     public List<Scoring> getScoringRematch() {
         return scoringRematch;
-    }
-
-    public Map<Scoring, List<Scoring>> getScoringFirstRoundListMap() {
-        return scoringFirstRoundListMap;
-    }
-
-    public Map<Scoring, List<Scoring>> getScoringRematchListMap() {
-        return scoringRematchListMap;
     }
 
     public String getTeam() {
@@ -128,7 +118,6 @@ public class MatchManager {
     }
 
     public Map<Scoring, List<Scoring>> groupByName(List<Scoring> scoring) {
-//        Map<Scoring, List<Scoring>> scoringListMap = new HashMap<>();
         return  scoring.stream()
                 .collect(Collectors.groupingBy(Scoring::getName))
                 .entrySet().stream()
@@ -145,7 +134,6 @@ public class MatchManager {
     public List<Scoring> getKey(Map<Scoring, List<Scoring>> map) {
         return new ArrayList<>(map.keySet());
     }
-
 
     public List<Scoring> sortByPointsAndGoals(List<Scoring> scoring) {
         return scoring.stream()

@@ -1,28 +1,149 @@
 Teams taking part in the competition:
-Polska, Niemcy, Czechy
+Polska, Czechy, Słowacja, Grecja, Francja, Hiszpania
 
-Results:
-Polska - Niemcy (0:2)
-Polska - Czechy (0:3)
-Niemcy - Czechy (3:4)
+Results of first round:
+Polska - Czechy (0:1)
+Polska - Słowacja (0:2)
+Polska - Grecja (0:2)
+Polska - Francja (4:0)
+Polska - Hiszpania (2:0)
+Czechy - Słowacja (1:3)
+Czechy - Grecja (4:1)
+Czechy - Francja (0:4)
+Czechy - Hiszpania (1:1)
+Słowacja - Grecja (2:4)
+Słowacja - Francja (2:3)
+Słowacja - Hiszpania (1:4)
+Grecja - Francja (2:3)
+Grecja - Hiszpania (0:1)
+Francja - Hiszpania (4:2)
 
-Results sorted by win to loss
-Polska - Niemcy (0:2)
-Polska - Czechy (0:3)
-Niemcy - Czechy (3:4)
-
-The table of the scorings:
+The table of the results of first round:
 
 Pos   Team                 Pts GF  GA  GD 
-1.    Czechy               10  11  6   5  
-2.    Niemcy               6   10  9   1  
-3.    Polska               1   3   9   -6 
+1.    Francja              12  14  10  4  
+2.    Hiszpania            7   8   8   0  
+3.    Czechy               7   7   9   -2 
+4.    Słowacja             6   10  12  -2 
+5.    Grecja               6   9   10  -1 
+6.    Polska               6   6   5   1  
 
-Number of teams in the competition: 3
+Results of rematches:
+Czechy - Polska (1:3)
+Słowacja - Polska (2:0)
+Grecja - Polska (3:1)
+Francja - Polska (3:3)
+Hiszpania - Polska (0:0)
+Słowacja - Czechy (3:3)
+Grecja - Czechy (2:0)
+Francja - Czechy (2:0)
+Hiszpania - Czechy (1:0)
+Grecja - Słowacja (4:4)
+Francja - Słowacja (0:3)
+Hiszpania - Słowacja (4:1)
+Francja - Grecja (1:3)
+Hiszpania - Grecja (1:1)
+Hiszpania - Francja (2:4)
 
-Number of goals in the competition: 12
+The table of the results of rematches:
 
-All matches of the selected team
-Polska - Niemcy (0:2)
-Polska - Czechy (0:3)
+Pos   Team                 Pts GF  GA  GD 
+1.    Grecja               11  13  7   6  
+2.    Słowacja             8   13  11  2  
+3.    Hiszpania            8   8   6   2  
+4.    Francja              7   10  11  -1 
+5.    Polska               5   7   9   -2 
+6.    Czechy               1   4   11  -7 
+
+The table of the results of all matches
+
+1.    Francja              19  24  21  3  
+2.    Grecja               17  22  17  5  
+3.    Hiszpania            15  16  14  2  
+4.    Słowacja             14  23  23  0  
+5.    Polska               11  13  14  -1 
+6.    Czechy               8   11  20  -9 
+
+Number of teams in the competition: 6
+
+Number of goals in the competition by all rounds: 54
+
+Results sorted from win to loss by first round
+Polska - Francja (4:0)
+Czechy - Grecja (4:1)
+Francja - Hiszpania (4:2)
+Polska - Hiszpania (2:0)
+Czechy - Hiszpania (1:1)
+Polska - Czechy (0:1)
+Grecja - Hiszpania (0:1)
+Polska - Słowacja (0:2)
+Polska - Grecja (0:2)
+Czechy - Słowacja (1:3)
+Słowacja - Francja (2:3)
+Grecja - Francja (2:3)
+Czechy - Francja (0:4)
+Słowacja - Grecja (2:4)
+Słowacja - Hiszpania (1:4)
+
+Results sorted from win to loss by rematches
+Hiszpania - Słowacja (4:1)
+Grecja - Polska (3:1)
+Słowacja - Polska (2:0)
+Grecja - Czechy (2:0)
+Francja - Czechy (2:0)
+Hiszpania - Czechy (1:0)
+Grecja - Słowacja (4:4)
+Francja - Polska (3:3)
+Słowacja - Czechy (3:3)
+Hiszpania - Grecja (1:1)
+Hiszpania - Polska (0:0)
+Czechy - Polska (1:3)
+Francja - Słowacja (0:3)
+Francja - Grecja (1:3)
+Hiszpania - Francja (2:4)
+
+Results sorted from win to loss by all matches
+Polska - Francja (4:0)
+Czechy - Grecja (4:1)
+Francja - Hiszpania (4:2)
+Hiszpania - Słowacja (4:1)
+Grecja - Polska (3:1)
+Polska - Hiszpania (2:0)
+Słowacja - Polska (2:0)
+Grecja - Czechy (2:0)
+Francja - Czechy (2:0)
+Hiszpania - Czechy (1:0)
+Grecja - Słowacja (4:4)
+Francja - Polska (3:3)
+Słowacja - Czechy (3:3)
+Czechy - Hiszpania (1:1)
+Hiszpania - Grecja (1:1)
+Hiszpania - Polska (0:0)
+Polska - Czechy (0:1)
+Grecja - Hiszpania (0:1)
+Polska - Słowacja (0:2)
+Polska - Grecja (0:2)
+Czechy - Słowacja (1:3)
+Słowacja - Francja (2:3)
+Grecja - Francja (2:3)
+Czechy - Polska (1:3)
+Francja - Słowacja (0:3)
+Francja - Grecja (1:3)
+Czechy - Francja (0:4)
+Słowacja - Grecja (2:4)
+Słowacja - Hiszpania (1:4)
+Hiszpania - Francja (2:4)
+
+
+All matches of the following team: Słowacja
+Polska - Słowacja (0:2)
+Czechy - Słowacja (1:3)
+Słowacja - Grecja (2:4)
+Słowacja - Francja (2:3)
+Słowacja - Hiszpania (1:4)
+Słowacja - Polska (2:0)
+Słowacja - Czechy (3:3)
+Grecja - Słowacja (4:4)
+Francja - Słowacja (0:3)
+Hiszpania - Słowacja (4:1)
 
