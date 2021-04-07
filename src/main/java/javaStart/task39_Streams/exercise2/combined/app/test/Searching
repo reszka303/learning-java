@@ -41,6 +41,25 @@ element-in-a-list-in-ja
 How to capitalize the first character of each word in a string
 https://stackoverflow.com/questions/1892765/how-to-capitalize-the-first-character-of-each-word-in-a-string
 
+How can I change an all caps string to capitalize on first letter and then first letter following each space?
+(Java) [duplicate]
+https://stackoverflow.com/questions/38820519/how-can-i-change-an-all-caps-string-to-capitalize-on-first-letter-
+and-then-first
+
+Remove empty Strings after splitting a StringBuilder into Array Java
+https://stackoverflow.com/questions/54214149/remove-empty-strings-after-splitting-a-stringbuilder-into-array-java
+
+https://stackoverflow.com/questions/58778931/spliting-a-string-by-space-and-dot-and-comma-at-the-same-time
+spliting a string by space and dot and comma at the same time
+Remove all signs:
+String[] split = str.split("[ .,]+");
+String[] words = input.toLowerCase().split("[ ,.?!/'\\\\ <>@#$%^&*()+={};:~`-]+");
+
+How to split a java string at backslash
+https://stackoverflow.com/questions/23751618/how-to-split-a-java-string-at-backslash
+
+
+
 
 
 

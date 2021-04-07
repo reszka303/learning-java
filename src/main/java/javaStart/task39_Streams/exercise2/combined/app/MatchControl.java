@@ -20,12 +20,12 @@ public class MatchControl {
     private CsvFileManager csvFileManager = new CsvFileManager();
 
     public void run() {
-        try {
-            csvFileManager.readFile();
-        } catch (DataReadException e) {
-            e.getMessage();
-            printer.printLine("The new database has been initiated");
-        }
+//        try {
+//            csvFileManager.readFile();
+//        } catch (DataReadException e) {
+//            e.getMessage();
+//            printer.printLine("The new database has been initiated");
+//        }
         addTeams();
         printer.printLine("");
         printer.printLine("");
@@ -50,12 +50,12 @@ public class MatchControl {
         countByTeams();
         printer.printLine("");
         countByGoals();
-        try {
-            csvFileManager.writeFile(matchManager);
-            printer.printLine("Data write into file has been finished successfully");
-        } catch (DataWriteException e) {
-            e.getMessage();
-        }
+//        try {
+//            csvFileManager.writeFile(matchManager);
+//            printer.printLine("Data write into file has been finished successfully");
+//        } catch (DataWriteException e) {
+//            e.getMessage();
+//        }
         printer.printLine("Match manager has finished its work");
     }
 

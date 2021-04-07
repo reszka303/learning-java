@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="C:\Program Files\Java\jdk-11.0.6\lib\src.zip!\java.base\java\lang\StringIndexOutOfBoundsException.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\main\java\javaStart\task29_ArraysOperation\Me\AddAndRemove\MenuArray.java">
           <value>
             <Attribute>
@@ -39,6 +46,20 @@
           </value>
         </entry>
         <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\app\test\Comments">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\app\test\Searching">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\app\test\T10.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
