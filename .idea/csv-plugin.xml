@@ -45,6 +45,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\app\MatchControl.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\app\test\Comments">
           <value>
             <Attribute>
@@ -81,6 +88,13 @@
           </value>
         </entry>
         <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\io\file\CsvFileManager.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\model\League.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

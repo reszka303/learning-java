@@ -11,15 +11,15 @@ public class T10CapitalizeFirstLetterEveryWord {
     public static void main(String[] args) {
         String letter = create();
 //        letter = capitalizeFirstLetterEveryWordStream(letter);
-//        letter = capitalizeFirstLetterEveryWordCharBuilder(letter);
+        letter = capitalizeFirstLetterEveryWordCharBuilder(letter);
 //        letter = capitalizeFirstLetterEveryWordBuilder(letter);
-        letter = capitalizeFirstLetterEveryWordCharacterBuilder(letter);
+//        letter = capitalizeFirstLetterEveryWordCharacterBuilder(letter);
         printLine(letter);
+
     }
 
     private static String capitalizeFirstLetterEveryWordStream(String letter) {
-        return Arrays.stream(letter.toLowerCase().trim()
-                .split(SIGNS_TO_DELETE))
+        return Arrays.stream(letter.toLowerCase().trim().split(SIGNS_TO_DELETE))
                 .map(String::toCharArray)
                 .peek(arr -> arr[0] = Character.toUpperCase(arr[0]))
                 .map(String::valueOf)
@@ -70,9 +70,5 @@ public class T10CapitalizeFirstLetterEveryWord {
 
     private static void printLine(String text) {
         System.out.println(text);
-    }
-
-    private static void printNoLine(String text) {
-        System.out.print(text);
     }
 }

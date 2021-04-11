@@ -2,10 +2,13 @@ package javaStart.task39_Streams.exercise2.combined.io;
 
 import javaStart.task39_Streams.exercise2.combined.exception.NumberPositiveException;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class DataReader {
+    private static final String SIGNS_TO_DELETE = "[ ,.?!/'\\\\<>@#$%^&*()|+={};:~`-]+";
     private Scanner input = new Scanner(System.in);
     private ConsolePrinter printer = new ConsolePrinter();
 
@@ -47,14 +50,26 @@ public class DataReader {
         return teamLetter;
     }
 
+//    public String capitalizeFirstLetterEverySingleWord(String teamName) {
+//        String[] arr = teamName.split(SIGNS_TO_DELETE);
+//        var builder = new StringBuilder();
+//        for (int i = 0; i < arr.length; i++) {
+//            builder.append(Character.toUpperCase(arr[i].charAt(0)))
+//                    .append(arr[i].substring(1)).append(" ");
+//        }
+//        return builder.toString().trim();
+//    }
+
     public String capitalizeFirstLetterEverySingleWord(String teamName) {
-        String[] arr = teamName.split(" ");
-        var builder = new StringBuilder();
-        for (int i = 0; i < arr.length; i++) {
-            builder.append(Character.toUpperCase(arr[i].charAt(0)))
-                    .append(arr[i].substring(1)).append(" ");
-        }
-        return builder.toString().trim();
+        return Arrays.stream(teamName.trim().split(SIGNS_TO_DELETE))
+                .map(String::toCharArray)
+                .peek(DataReader::getUpperCaseFirstLetter)
+                .map(String::valueOf)
+                .collect(Collectors.joining(" "));
+    }
+
+    private static void getUpperCaseFirstLetter(char[] array) {
+        array[0] = Character.toUpperCase(array[0]);
     }
 
     public int getInt() {
@@ -71,5 +86,9 @@ public class DataReader {
 
     public String toLowerCase() {
         return input.nextLine().toLowerCase();
+    }
+
+    public void close() {
+        input.close();
     }
 }

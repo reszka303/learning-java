@@ -16,6 +16,7 @@ public class ConsolePrinter {
                 printNoLine(team + ", ");
             }
         }
+        printLine("");
     }
 
     public void printInfoAboutAddedTeams(List<String> teams) {

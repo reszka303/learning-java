@@ -1,15 +1,14 @@
 package javaStart.task39_Streams.exercise2.combined.app;
 
 import javaStart.task39_Streams.exercise2.combined.exception.DataReadException;
-import javaStart.task39_Streams.exercise2.combined.exception.DataWriteException;
+import javaStart.task39_Streams.exercise2.combined.exception.NoSuchOptionException;
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
 import javaStart.task39_Streams.exercise2.combined.io.DataReader;
 import javaStart.task39_Streams.exercise2.combined.io.file.CsvFileManager;
-import javaStart.task39_Streams.exercise2.combined.model.Match;
-import javaStart.task39_Streams.exercise2.combined.model.MatchManager;
-import javaStart.task39_Streams.exercise2.combined.model.Scoring;
+import javaStart.task39_Streams.exercise2.combined.model.*;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,174 +17,249 @@ public class MatchControl {
     private DataReader dataReader = new DataReader();
     private MatchManager matchManager = new MatchManager();
     private CsvFileManager csvFileManager = new CsvFileManager();
+    private Division division = new League();
 
-    public void run() {
-//        try {
-//            csvFileManager.readFile();
-//        } catch (DataReadException e) {
-//            e.getMessage();
-//            printer.printLine("The new database has been initiated");
-//        }
-        addTeams();
-        printer.printLine("");
-        printer.printLine("");
-        detailsFirstRound();
-        printer.printLine("");
-        groupFirstRound();
-        printer.printLine("");
-        detailsRematch();
-        printer.printLine("");
-        groupRematches();
-        printer.printLine("");
-        joinAndSortByPointsAndGoalsScoring();
-        printer.printLine("");
-        sortByScoresFirstRound();
-        printer.printLine("");
-        sortByScoresRematches();
-        printer.printLine("");
-        sortByScoresAllMatches();
-        printer.printLine("");
-        sortByTeam();
-        printer.printLine("");
-        countByTeams();
-        printer.printLine("");
-        countByGoals();
+    public MatchControl() {
+//        readFile();
+    }
+
+    void run() {
+        controlLoop();
+    }
+
+    public void controlLoop() {
+        Option option;
+        do {
+            printOption();
+            option = getOption();
+            switch (option) {
+                case CHOOSE_ON_YOUR_OWN_TEAMS_TAKING_PART_IN_THE_COMPETITION:
+                    chooseOnYourOwnTeamsTakingPartInCompetition();
+                    break;
+                case LA_LIGA:
+                    laLiga();
+                    break;
+                case PREMIER_LEAGUE:
+                    premierLeague();
+                    break;
+                case EXIT:
+                    exit();
+                    break;
+            }
+        } while (option != Option.EXIT);
+    }
+
+    private void readFile() {
+        try {
+            csvFileManager.readFile();
+        } catch (DataReadException e) {
+            e.getMessage();
+            printer.printLine("The new database has been initiated");
+        }
+    }
+
+    private void exit() {
 //        try {
 //            csvFileManager.writeFile(matchManager);
 //            printer.printLine("Data write into file has been finished successfully");
 //        } catch (DataWriteException e) {
 //            e.getMessage();
 //        }
+        dataReader.close();
         printer.printLine("Match manager has finished its work");
     }
 
-    private void addTeams() {
+    private void chooseOnYourOwnTeamsTakingPartInCompetition() {
+        userLeagueFirstRoundTable();
+        userLeagueFirstRoundStats();
+        userLeagueRematchesRoundTable();
+        userLeagueRematchesStats();
+        userLeagueAllMatches();
+        userLeagueAllMatchesStats();
+    }
+
+    private void laLiga() {
+        printer.printLine("LaLiga... work in progress");
+    }
+
+    private void premierLeague() {
+        printer.printLine("Premier League... work in progress");
+    }
+
+    private void userLeagueFirstRoundTable() {
         int number = dataReader.numbersTeams();
         List<String> teams = matchManager.addTeams(number);
+        printer.printLine("");
         printer.printInfoAboutAddedTeams(teams);
         printer.printTeams(teams);
-    }
-
-    private void detailsFirstRound() {
-        List<String> teams = matchManager.getTeams();
-        List<Match> matches = matchManager.createFirstRound(teams);
-        List<Scoring> scoringFirstRound = matchManager.getScoringFirstRound();
-        scoringFirstRound = matchManager.createScoring(matches, teams, scoringFirstRound);
-        printer.printLine("Matches of the first round");
-        matches.forEach(System.out::println);
+        List<Match> matchesFirstRound = matchManager.createFirstRoundUserChoice(teams);
         printer.printLine("");
-        printer.printLine("Scoring of the first round");
+        printer.printLine("Scores of the first round");
+        matchesFirstRound.forEach(System.out::println);
+        List<Scoring> scoringFirstRound =  matchManager.createScoringUserChoiceFirstRound(matchesFirstRound, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByNameScoringUserChoiceFirstRound(scoringFirstRound);
+        scoringFirstRound = matchManager.getKey(scoringListMap);
+        scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
+        scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
+        printer.printLine("");
+        printer.printLine("Table of the first round");
         scoringFirstRound.forEach(System.out::println);
-    }
-
-    private void detailsRematch() {
-        List<String> teams = matchManager.getTeams();
-        List<Match> matches = matchManager.createRematch(teams);
-        printer.printLine("Rematches");
-        matches.forEach(System.out::println);
-        List<Scoring> scoringRematches = matchManager.getScoringRematch();
-        scoringRematches = matchManager.createScoring(matches, teams, scoringRematches);
         printer.printLine("");
-        printer.printLine("Scoring of the rematches");
-        scoringRematches.forEach(System.out::println);
     }
 
-    private void groupFirstRound() {
-        List<Scoring> scoring = matchManager.getScoringFirstRound();
-        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoring);
-        printer.printLine("Grouping by the scoring of the first round");
-        printer.printMap(scoringListMap);
-        scoring = matchManager.getKey(scoringListMap);
-        scoring = matchManager.sortByPointsAndGoals(scoring);
+    private void userLeagueRematchesRoundTable() {
+        List<String> teams = matchManager.getTeamsUserChoice();
+//        printer.printInfoAboutAddedTeams(teams);
+//        printer.printTeams(teams);
+        List<Match> rematches = matchManager.createRematchUserChoice(teams);
         printer.printLine("");
-        printer.printLine("Sorted scoring Map for First Round");
-        printer.printStandingsShortcuts();
-        scoring = matchManager.increasePosition(scoring);
-        scoring.forEach(System.out::println);
-    }
-
-    private void groupRematches() {
-        List<Scoring> scoring = matchManager.getScoringRematch();
-        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoring);
-        printer.printLine("Grouping by the scoring of the rematches");
-        printer.printMap(scoringListMap);
+        printer.printLine("Scores of the rematches");
+        rematches.forEach(System.out::println);
+        List<Scoring> scoringFirstRound =  matchManager.createScoringUserChoiceRematch(rematches, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByNameScoringUserChoiceRematch(scoringFirstRound);
+        scoringFirstRound = matchManager.getKey(scoringListMap);
+        scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
+        scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
         printer.printLine("");
-        scoring = matchManager.getKey(scoringListMap);
-        scoring = matchManager.sortByPointsAndGoals(scoring);
-        printer.printLine("Sorted scoring Map for Rematches");
-        printer.printStandingsShortcuts();
-        scoring = matchManager.increasePosition(scoring);
-        scoring.forEach(System.out::println);
-    }
-
-    private void joinAndSortByPointsAndGoalsScoring() {
-        List<Scoring> scoringFirstRound = matchManager.getScoringFirstRound();
-        List<Scoring> scoringRematches = matchManager.getScoringRematch();
-        List<Scoring> allScoring = matchManager.joinFirstRoundAndRematches(scoringFirstRound, scoringRematches);
-        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(allScoring);
-        allScoring = matchManager.getKey(scoringListMap);
-        printer.printLine("Joined scoring First Round and Rematches but not sorted");
-        allScoring.forEach(System.out::println);
+        printer.printLine("Table of the rematches");
+        scoringFirstRound.forEach(System.out::println);
         printer.printLine("");
-        allScoring = matchManager.sortByPointsAndGoals(allScoring);
-        printer.printLine("Sorted scoring First Round and Rematches");
-        printer.printStandingsShortcuts();
-        allScoring = matchManager.increasePosition(allScoring);
-        allScoring.forEach(System.out::println);
     }
 
-    private void sortByScoresFirstRound() {
-        List<Match> matches = matchManager.getMatchFirstRound();
-        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(matches);
-        List<Match> ties = matchManager.sortByTies(matches);
-        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(matches);
-        matches = matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
-        printer.printLine("Sort by matches from wins to loses of scoring FirstRound");
-        matches.forEach(System.out::println);
-    }
-
-    private void sortByScoresRematches() {
-        List<Match> matches = matchManager.getMatchRematch();
-        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(matches);
-        List<Match> ties = matchManager.sortByTies(matches);
-        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(matches);
-        matches = matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
-        printer.printLine("Sort by matches from wins to loses of scoring Rematches");
-        matches.forEach(System.out::println);
-    }
-
-    private void sortByScoresAllMatches() {
-        List<Match> firstRound = matchManager.getMatchFirstRound();
-        List<Match> rematches = matchManager.getMatchRematch();
-        List<Match> allMatches = matchManager.joinAllSortedMatchesByWinTiesLoss(firstRound, rematches);
-        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(allMatches);
-        List<Match> ties = matchManager.sortByTies(allMatches);
-        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(allMatches);
-        allMatches = matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
-        printer.printLine("Sort by matches from wins to loses of scoring all matches");
-        allMatches.forEach(System.out::println);
-    }
-
-    private void sortByTeam() {
-        List<String> teams = matchManager.getTeams();
-        List<Match> firstRoundMatches = matchManager.getMatchFirstRound();
-        List<Match> rematches = matchManager.getMatchRematch();
-        List<Match> allMatches = matchManager.joinAllSortedMatchesByWinTiesLoss(firstRoundMatches, rematches);
+    private void userLeagueFirstRoundStats() {
+        List<String> teams = matchManager.getTeamsUserChoice();
         String team = matchManager.getTeam(teams);
-        allMatches = matchManager.sortByTeam(allMatches, team);
-        printer.printLine("All matches of the following team: " + team);
+        List<Match> matchesFirstRoundUserChoice = matchManager.getMatchUserChoiceFirstRound();
+        List<Match> matchesFirstRoundOneTeam = matchManager.sortByTeam(matchesFirstRoundUserChoice, team);
+        long countByGoals = matchManager.countByGoals(matchesFirstRoundUserChoice);
+        int countByTeams = matchManager.countByTeams(teams);
+        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(matchesFirstRoundUserChoice);
+        List<Match> ties = matchManager.sortByTies(matchesFirstRoundUserChoice);
+        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(matchesFirstRoundUserChoice);
+        List<Match> sortedMatchesFromWinnersToLosses = matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
+        printer.printLine("");
+        printer.printLine("Stats of the first round");
+        printer.printLine("Team numbers is " + countByTeams);
+        printer.printLine("");
+        printer.printLine("Goals numbers is " + countByGoals);
+        printer.printLine("");
+        printer.printLine("all " + team + " matches");
+        matchesFirstRoundOneTeam.forEach(System.out::println);
+        printer.printLine("");
+        printer.printLine("Sorted matches from wins to losses");
+        sortedMatchesFromWinnersToLosses.forEach(System.out::println);
+    }
+
+    private void userLeagueRematchesStats() {
+        List<String> teams = matchManager.getTeamsUserChoice();
+        String team = matchManager.getTeam(teams);
+        List<Match> rematchesUserChoice = matchManager.getMatchUserChoiceRematch();
+        List<Match> rematchesOneTeam = matchManager.sortByTeam(rematchesUserChoice, team);
+        long countByGoals = matchManager.countByGoals(rematchesUserChoice);
+        int countByTeams = matchManager.countByTeams(teams);
+        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(rematchesUserChoice);
+        List<Match> ties = matchManager.sortByTies(rematchesUserChoice);
+        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(rematchesUserChoice);
+        List<Match> sortedMatchesFromWinnersToLosses = matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
+        printer.printLine("");
+        printer.printLine("Stats of the rematches");
+        printer.printLine("Team numbers is " + countByTeams);
+        printer.printLine("");
+        printer.printLine("Goals numbers is " + countByGoals);
+        printer.printLine("");
+        printer.printLine("all " + team + " matches");
+        rematchesOneTeam.forEach(System.out::println);
+        printer.printLine("");
+        printer.printLine("Sorted matches from wins to losses");
+        sortedMatchesFromWinnersToLosses.forEach(System.out::println);
+    }
+
+    private void userLeagueAllMatches() {
+        printer.printLine("");
+        printer.printLine("All Matches");
+        List<String> teams = matchManager.getTeamsUserChoice();
+        List<Match> allMatches = matchManager.joinFirstRoundAndRematches();
         allMatches.forEach(System.out::println);
+        List<Scoring> scoringAllMatches = matchManager.createScoringUserChoiceAllMatches(allMatches, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByNameScoringUserAllMatches(scoringAllMatches);
+        scoringAllMatches = matchManager.getKey(scoringListMap);
+        scoringAllMatches = matchManager.sortByPointsAndGoals(scoringAllMatches);
+        scoringAllMatches = matchManager.increasePosition(scoringAllMatches);
+        printer.printLine("");
+        printer.printLine("Table all matches");
+        scoringAllMatches.forEach(System.out::println);
     }
 
-    private void countByTeams() {
-        List<String> teams = matchManager.getTeams();
-        long numberTeams = matchManager.countByTeams(teams);
-        printer.printLine("The team numbers is: " + numberTeams);
+    private void userLeagueAllMatchesStats() {
+        List<String> teams = matchManager.getTeamsUserChoice();
+        String team = matchManager.getTeam(teams);
+        List<Match> allMatchesUserChoice = matchManager.getMatchUserChoiceAllMatches();
+        List<Match> allMatchesOneTeam = matchManager.sortByTeam(allMatchesUserChoice, team);
+        long countByGoals = matchManager.countByGoals(allMatchesUserChoice);
+        int countByTeams = matchManager.countByTeams(teams);
+        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(allMatchesUserChoice);
+        List<Match> ties = matchManager.sortByTies(allMatchesUserChoice);
+        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(allMatchesUserChoice);
+        List<Match> sortedMatchesFromWinnersToLosses = matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
+        printer.printLine("");
+        printer.printLine("Stats of the rematches");
+        printer.printLine("Team numbers is " + countByTeams);
+        printer.printLine("");
+        printer.printLine("Goals numbers is " + countByGoals);
+        printer.printLine("");
+        printer.printLine("all " + team + " matches");
+        allMatchesOneTeam.forEach(System.out::println);
+        printer.printLine("");
+        printer.printLine("Sorted matches from wins to losses");
+        sortedMatchesFromWinnersToLosses.forEach(System.out::println);
     }
 
-    private void countByGoals() {
-        List<Match> matches = matchManager.getMatchFirstRound();
-        long numberGoals = matchManager.countByGoals(matches);
-        printer.printLine("The goal numbers is: " + numberGoals);
+    private Option getOption() {
+        boolean optionOk = false;
+        Option option = null;
+        while (!optionOk) {
+            try {
+                option = Option.createFromInt(dataReader.getInt());
+                optionOk = true;
+            } catch (NoSuchOptionException e) {
+                e.getMessage();
+            }
+        }
+        return option;
+    }
+
+    private void printOption() {
+        for (Option option : Option.values()) {
+            printer.printLine("" + option);
+        }
+    }
+
+    private enum Option{
+        EXIT(0, "Exit"),
+        CHOOSE_ON_YOUR_OWN_TEAMS_TAKING_PART_IN_THE_COMPETITION(1,
+                "Choose on your own teams taking part in the competition."),
+        LA_LIGA(2, "La Liga"),
+        PREMIER_LEAGUE(3, "Premier League");
+
+        private int value;
+        private String description;
+
+        Option(int value, String description) {
+            this.value = value;
+            this.description = description;
+        }
+
+        @Override
+        public String toString() {
+            return value + " - " + description;
+        }
+
+        private static Option createFromInt(int option) {
+            try {
+                return Option.values()[option];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new NoSuchOptionException("There is no such option " + option + " try again");
+            }
+        }
     }
 }
