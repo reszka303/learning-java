@@ -1,6 +1,7 @@
 package javaStart.task39_Streams.exercise2.combined.app;
 
 import javaStart.task39_Streams.exercise2.combined.exception.DataReadException;
+import javaStart.task39_Streams.exercise2.combined.exception.DataWriteException;
 import javaStart.task39_Streams.exercise2.combined.exception.NoSuchOptionException;
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
 import javaStart.task39_Streams.exercise2.combined.io.DataReader;
@@ -8,7 +9,6 @@ import javaStart.task39_Streams.exercise2.combined.io.file.CsvFileManager;
 import javaStart.task39_Streams.exercise2.combined.model.*;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +20,7 @@ public class MatchControl {
     private Division division = new League();
 
     public MatchControl() {
-//        readFile();
+        readFile();
     }
 
     void run() {
@@ -59,12 +59,12 @@ public class MatchControl {
     }
 
     private void exit() {
-//        try {
-//            csvFileManager.writeFile(matchManager);
-//            printer.printLine("Data write into file has been finished successfully");
-//        } catch (DataWriteException e) {
-//            e.getMessage();
-//        }
+        try {
+            csvFileManager.writeFile(matchManager);
+            printer.printLine("Data write into file has been finished successfully");
+        } catch (DataWriteException e) {
+            e.getMessage();
+        }
         dataReader.close();
         printer.printLine("Match manager has finished its work");
     }
@@ -97,7 +97,11 @@ public class MatchControl {
         printer.printLine("Scores of the first round");
         matchesFirstRound.forEach(System.out::println);
         List<Scoring> scoringFirstRound =  matchManager.createScoringUserChoiceFirstRound(matchesFirstRound, teams);
-        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByNameScoringUserChoiceFirstRound(scoringFirstRound);
+        System.out.println("lista nie posortowana");
+        scoringFirstRound.forEach(System.out::println);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
+        printer.printLine("Rysowanie mapy");
+        printer.printMap(scoringListMap);
         scoringFirstRound = matchManager.getKey(scoringListMap);
         scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
         scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
@@ -116,7 +120,7 @@ public class MatchControl {
         printer.printLine("Scores of the rematches");
         rematches.forEach(System.out::println);
         List<Scoring> scoringFirstRound =  matchManager.createScoringUserChoiceRematch(rematches, teams);
-        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByNameScoringUserChoiceRematch(scoringFirstRound);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
         scoringFirstRound = matchManager.getKey(scoringListMap);
         scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
         scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
@@ -128,7 +132,7 @@ public class MatchControl {
 
     private void userLeagueFirstRoundStats() {
         List<String> teams = matchManager.getTeamsUserChoice();
-        String team = matchManager.getTeam(teams);
+        String team = matchManager.getTeamFirstRound(teams);
         List<Match> matchesFirstRoundUserChoice = matchManager.getMatchUserChoiceFirstRound();
         List<Match> matchesFirstRoundOneTeam = matchManager.sortByTeam(matchesFirstRoundUserChoice, team);
         long countByGoals = matchManager.countByGoals(matchesFirstRoundUserChoice);
@@ -152,7 +156,7 @@ public class MatchControl {
 
     private void userLeagueRematchesStats() {
         List<String> teams = matchManager.getTeamsUserChoice();
-        String team = matchManager.getTeam(teams);
+        String team = matchManager.getTeamRematches(teams);
         List<Match> rematchesUserChoice = matchManager.getMatchUserChoiceRematch();
         List<Match> rematchesOneTeam = matchManager.sortByTeam(rematchesUserChoice, team);
         long countByGoals = matchManager.countByGoals(rematchesUserChoice);
@@ -181,7 +185,7 @@ public class MatchControl {
         List<Match> allMatches = matchManager.joinFirstRoundAndRematches();
         allMatches.forEach(System.out::println);
         List<Scoring> scoringAllMatches = matchManager.createScoringUserChoiceAllMatches(allMatches, teams);
-        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByNameScoringUserAllMatches(scoringAllMatches);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringAllMatches);
         scoringAllMatches = matchManager.getKey(scoringListMap);
         scoringAllMatches = matchManager.sortByPointsAndGoals(scoringAllMatches);
         scoringAllMatches = matchManager.increasePosition(scoringAllMatches);
@@ -192,7 +196,7 @@ public class MatchControl {
 
     private void userLeagueAllMatchesStats() {
         List<String> teams = matchManager.getTeamsUserChoice();
-        String team = matchManager.getTeam(teams);
+        String team = matchManager.getTeamAllMatches(teams);
         List<Match> allMatchesUserChoice = matchManager.getMatchUserChoiceAllMatches();
         List<Match> allMatchesOneTeam = matchManager.sortByTeam(allMatchesUserChoice, team);
         long countByGoals = matchManager.countByGoals(allMatchesUserChoice);

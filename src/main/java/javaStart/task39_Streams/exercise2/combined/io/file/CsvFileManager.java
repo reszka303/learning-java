@@ -1,6 +1,5 @@
 package javaStart.task39_Streams.exercise2.combined.io.file;
 
-import javaStart.task39_Streams.exercise2.combined.app.MatchControl;
 import javaStart.task39_Streams.exercise2.combined.exception.DataReadException;
 import javaStart.task39_Streams.exercise2.combined.exception.DataWriteException;
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
@@ -10,10 +9,7 @@ import javaStart.task39_Streams.exercise2.combined.model.MatchManager;
 import javaStart.task39_Streams.exercise2.combined.model.Scoring;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CsvFileManager {
@@ -36,213 +32,212 @@ public class CsvFileManager {
 
     public void writeFile(MatchManager matchManager) {
         try (var writer = new BufferedWriter(new FileWriter(FILE_NAME))){
-
-//            List<Match> matchesFirstRound = matchManager.createFirstRound(teams);
-//            printer.printLine("");
-//            printer.printLine("Scores of the first round");
-//            matchesFirstRound.forEach(System.out::println);
-//            List<Scoring> scoringFirstRound = new ArrayList<>();
-//            scoringFirstRound =  matchManager.createScoring(matchesFirstRound, teams, scoringFirstRound);
-//            Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
-//            scoringFirstRound = matchManager.getKey(scoringListMap);
-//            scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
-//            scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
-//            printer.printLine("");
-//            printer.printLine("Table of the first round");
-//            writeList(writer, scoringFirstRound);
-//            printer.printLine("");
-
-            //podane zespoły
-//            givenTeams(matchManager, writer);
-//            //wyniki meczów pierwsza runda
-////            resultsFirstRound(matchManager, writer);
-//            //rysowanie tabeli pierwsza runda
-//            writeTableFirstRound(matchManager, writer);
-//            //wyniki meczów mecze rewanżowe
-//            resultsRematches(matchManager, writer);
-//            //rysowanie tabeli mecze rewanżowe
-//            writeTableRematches(matchManager, writer);
-//            //rysowanie tabeli wszystkich meczów
-//            writeJoinedTableAllMatches(matchManager, writer);
-////            liczenie zespołów
-//            countByTeams(matchManager, writer);
-////            liczenie bramek
-//            countByGoals(matchManager, writer);
-////            sortowanie od wygranych do przegranych pierwsza runda
-//            sortFromWinsToLosesByFirstRound(matchManager, writer);
-//            //sortowanie od wygranych do przegranych rewanże
-//            sortFromWinsToLosesByRematches(matchManager, writer);
-////            sortowanie wszystkich meczów
-//            sortFromWinsToLosesByAllMatches(matchManager, writer);
-////            mecze wybranego zespołu przez użytkownika wszystkie mecze
-//            sortByTeam(matchManager, writer);
+            chooseOnYourOwnTeamsTakingPartInCompetition(matchManager, writer);
         } catch (IOException e) {
             throw new DataWriteException("Data write error into file: " + FILE_NAME);
         }
     }
 
-//    private void sortByTeam(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        writer.newLine();
-//        List<Match> firstRound = matchManager.getMatchFirstRound();
-//        List<Match> rematches = matchManager.getMatchRematch();
-//        List<Match> allMatches = matchManager.joinAllSortedMatchesByWinTiesLoss(firstRound, rematches);
-//        String team = matchManager.getTeam();
-//        firstRound = matchManager.sortByTeam(allMatches, team);
-//        writer.write("All matches of the following team: " + team);
-//        writer.newLine();
-//        writeList(writer, firstRound);
-//        writeDoubleNewLine(writer);
-//    }
+    private void chooseOnYourOwnTeamsTakingPartInCompetition(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        //zapis drużyn biorących udział w zawodach
+        writeTeams(matchManager, writer);
+        //zapis wyników pierwszej rundy
+        writeResultsFirstRound(matchManager, writer);
+        //zapis tabeli pierwszej rundy
+        writeTableFirstRound(matchManager, writer);
+        //zapis wyników meczy rewanżowych
+        writeResultsRematches(matchManager, writer);
+        //zapis tabeli meczów rewanżowych
+        writeTableRematches(matchManager, writer);
+        //zapis wyników wszystkich meczów
+        writeResultsAllMatches(matchManager, writer);
+        //zapis tabeli z wszystkich meczów
+        writeTableAllMatches(matchManager, writer);
+        writer.write("Statistics");
+        writer.newLine();
+        //STATYSTYKI
+        //liczenie zespołów
+        countByTeams(matchManager, writer);
+        //liczenie bramek w pierwszej rundzie
+        countByGoalsFirstRound(matchManager, writer);
+        //liczenie bramek rundy rewanżowej
+        countByGoalsRematches(matchManager, writer);
+        //liczenie wszystkich bramek
+        countByGoalsAllMatches(matchManager, writer);
+        //sortowanie wszystkich meczów od wygranych do porażek
+        sortFromWinsToLosesByAllMatches(matchManager, writer);
+        //sortowanie pierwsza runda jednego zespołu
+        sortByTeamFirstRound(matchManager, writer);
+        //sortowanie mecze rewanżowe jednego zespołu
+        sortByTeamRematches(matchManager, writer);
+        //sortowanie wszystkie mecze jednego zespołu
+        sortByTeamAllMatches(matchManager, writer);
+    }
 
-//    private void countByGoals(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        List<Match> matches = matchManager.getMatchFirstRound();
-//        long goalsNumber = matchManager.countByGoals(matches);
-//        writer.write("Number of goals in the competition by all rounds: " + goalsNumber);
-//        writeDoubleNewLine(writer);
-//    }
+    private void sortByTeamFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.newLine();
+        List<Match> allMatches = matchManager.getMatchUserChoiceFirstRound();
+        String team = matchManager.getTeamUserChoiceFirstRound();
+        List<Match> allMatchesOneTeam = matchManager.sortByTeam(allMatches, team);
+        writer.write("First round of the following single team: " + team);
+        writer.newLine();
+        printCollectionLine(writer, allMatchesOneTeam);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void countByTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//       List<String> teams = matchManager.getTeams();
-//        int teamsNumber = matchManager.countByTeams(teams);
-//        writer.write("Number of teams in the competition: " + teamsNumber);
-//        writeDoubleNewLine(writer);
-//    }
+    private void sortByTeamRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.newLine();
+        List<Match> allMatches = matchManager.getMatchUserChoiceRematch();
+        String team = matchManager.getTeamUserChoiceRematches();
+        List<Match> allMatchesOneTeam = matchManager.sortByTeam(allMatches, team);
+        writer.write("Rematches of the following single team: " + team);
+        writer.newLine();
+        printCollectionLine(writer, allMatchesOneTeam);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void writeTableFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        writer.write("The table of the results of first round:");
-//        writeDoubleNewLine(writer);
-//        List<Scoring> scoring = groupByFirstRound(matchManager);
-//        writer.write(printer.printStandingsShortcutsTable());
-//        scoring = matchManager.increasePosition(scoring);
-//        writeList(writer, scoring);
-//        writeDoubleNewLine(writer);
-//    }
+    private void sortByTeamAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.newLine();
+        List<Match> allMatches = matchManager.getMatchUserChoiceAllMatches();
+        String team = matchManager.getTeamUserChoiceAllMatches();
+        List<Match> allMatchesOneTeam = matchManager.sortByTeam(allMatches, team);
+        writer.write("All matches of the following single team: " + team);
+        writer.newLine();
+        printCollectionLine(writer, allMatchesOneTeam);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void writeTableRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        writer.write("The table of the results of rematches:");
-//        writeDoubleNewLine(writer);
-//        List<Scoring> scoring = groupByRematches(matchManager);
-//        writer.write(printer.printStandingsShortcutsTable());
-//        scoring = matchManager.increasePosition(scoring);
-//        writeList(writer, scoring);
-//        writeDoubleNewLine(writer);
-//    }
+    private void writeTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        Collection<String> teams = matchManager.getTeamsUserChoice();
+        writer.write("Teams taking part in the competition:");
+        writer.newLine();
+        printCollectionNoLine(writer, teams);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void writeJoinedTableAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        List<Scoring> scoringFirstRound = matchManager.getScoringFirstRound();
-//        List<Scoring> scoringRematches = matchManager.getScoringRematch();
-//        List<Scoring> allScoring = matchManager.joinFirstRoundAndRematches(scoringFirstRound, scoringRematches);
-//        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(allScoring);
-//        allScoring = matchManager.getKey(scoringListMap);
-//        allScoring = matchManager.sortByPointsAndGoals(allScoring);
-//        allScoring = matchManager.increasePosition(allScoring);
-//        writer.write("The table of the results of all matches");
-//        writeDoubleNewLine(writer);
-//        writeList(writer, allScoring);
-//        writeDoubleNewLine(writer);
-//    }
+    private void writeResultsFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> firstRound = matchManager.getMatchUserChoiceFirstRound();
+        writer.write("Results of the first round:");
+        writer.newLine();
+        printCollectionLine(writer, firstRound);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void sortFromWinsToLosesByFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        writer.write("Results sorted from win to loss by first round");
-//        writer.newLine();
-//        List<Match> matches = matchManager.getMatchFirstRound();
-//        matches = sortByScores(matchManager, matches);
-//        writeList(writer, matches);
-//        writeDoubleNewLine(writer);
-//    }
+    private void writeTableFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.write("The table of the first round:");
+        writer.newLine();
+        List<Scoring> firstRound = matchManager.getScoringUserChoiceFirstRound();
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(firstRound);
+        firstRound = matchManager.getKey(scoringListMap);
+        firstRound = matchManager.sortByPointsAndGoals(firstRound);
+        writer.write(printer.printStandingsShortcutsTable());
+        firstRound = matchManager.increasePosition(firstRound);
+        printCollectionLine(writer, firstRound);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void sortFromWinsToLosesByRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        writer.write("Results sorted from win to loss by rematches");
-//        writer.newLine();
-//        List<Match> matches = matchManager.getMatchRematch();
-//        matches = sortByScores(matchManager, matches);
-//        writeList(writer, matches);
-//        writeDoubleNewLine(writer);
-//    }
+    private void writeResultsRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> rematches = matchManager.getMatchUserChoiceRematch();
+        writer.write("Results of the rematches:");
+        writer.newLine();
+        printCollectionLine(writer, rematches);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void sortFromWinsToLosesByAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        writer.write("Results sorted from win to loss by all matches");
-//        writer.newLine();
-//        List<Match> firstRound = matchManager.getMatchFirstRound();
-//        List<Match> rematches = matchManager.getMatchRematch();
-//        List<Match> allMatches = matchManager.joinAllSortedMatchesByWinTiesLoss(firstRound, rematches);
-//        allMatches = sortByScores(matchManager, allMatches);
-//        writeList(writer, allMatches);
-//        writeDoubleNewLine(writer);
-//    }
+    private void writeTableRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.write("The table of the rematches:");
+        writer.newLine();
+        List<Scoring> rematches = matchManager.getScoringUserChoiceRematch();
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(rematches);
+        rematches = matchManager.getKey(scoringListMap);
+        rematches = matchManager.sortByPointsAndGoals(rematches);
+        writer.write(printer.printStandingsShortcutsTable());
+        rematches = matchManager.increasePosition(rematches);
+        printCollectionLine(writer, rematches);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void resultsFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        List<Match> matches = matchManager.getMatchFirstRound();
-//        writer.write("Results of first round:");
-//        writer.newLine();
-//        writeList(writer, matches);
-//        writeDoubleNewLine(writer);
-//    }
+    private void writeResultsAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> allMatches = matchManager.getMatchUserChoiceAllMatches();
+        writer.write("Results of the all matches:");
+        writer.newLine();
+        printCollectionLine(writer, allMatches);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void resultsRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        List<Match> matches = matchManager.getMatchRematch();
-//        writer.write("Results of rematches:");
-//        writer.newLine();
-//        writeList(writer, matches);
-//        writeDoubleNewLine(writer);
-//    }
+    private void writeTableAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.write("The table of the all matches:");
+        writer.newLine();
+        List<Scoring> allScores = matchManager.getScoringUserChoiceAllMatches();
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(allScores);
+        allScores = matchManager.getKey(scoringListMap);
+        allScores = matchManager.sortByPointsAndGoals(allScores);
+        writer.write(printer.printStandingsShortcutsTable());
+        allScores = matchManager.increasePosition(allScores);
+        printCollectionLine(writer, allScores);
+        writeDoubleNewLine(writer);
+    }
 
-//    private void givenTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        writer.write("Teams taking part in the competition:");
-//        writer.newLine();
-//        writeTeams(matchManager, writer);
-//        writeDoubleNewLine(writer);
-//    }
-//
-//    private <T> void writeList(BufferedWriter writer, List<T> list) throws IOException {
-//        String collect = list.stream()
-//                .map(Objects::toString)
-//                .collect(Collectors.joining("\n"));
-//        writer.write(collect);
-//    }
+    private void countByTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<String> teams = matchManager.getTeamsUserChoice();
+        int teamsNumber = matchManager.countByTeams(teams);
+        writer.write("Number of teams in the competition: " + teamsNumber);
+        writeDoubleNewLine(writer);
+    }
 
-//    private List<Scoring> groupByFirstRound(MatchManager matchManager) {
-//        List<Scoring> scoring = matchManager.getScoringFirstRound();
-//        Map<Scoring, List<Scoring>> resultListMap = matchManager.groupByName(scoring);
-//        scoring = matchManager.getKey(resultListMap);
-//        return matchManager.sortByPointsAndGoals(scoring);
-//    }
+    private void countByGoalsFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> matches = matchManager.getMatchUserChoiceFirstRound();
+        long goalsNumber = matchManager.countByGoals(matches);
+        writer.write("Number of goals in the competition by the first round: " + goalsNumber);
+        writeDoubleNewLine(writer);
+    }
 
-//    private List<Scoring> groupByRematches(MatchManager matchManager) {
-//        List<Scoring> scoring = matchManager.getScoringRematch();
-//        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoring);
-//        scoring = matchManager.getKey(scoringListMap);
-//        return matchManager.sortByPointsAndGoals(scoring);
-//    }
+    private void countByGoalsRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> matches = matchManager.getMatchUserChoiceRematch();
+        long goalsNumber = matchManager.countByGoals(matches);
+        writer.write("Number of goals in the competition by the rematches: " + goalsNumber);
+        writeDoubleNewLine(writer);
+    }
 
-//    private List<Match> sortByScores(MatchManager matchManager, List<Match> matches) {
-//        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(matches);
-//        List<Match> ties = matchManager.sortByTies(matches);
-//        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(matches);
-//        return matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
-//    }
-//
-//    private void writeTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
-//        List<String> teams = matchManager.getTeams();
-//        teams = upperLowerCase(teams);
-//        String collect = join(teams);
-//        writer.write(collect);
-//    }
-//
-//    private List<String> upperLowerCase(List<String> list) {
-//        List<String> teams = new ArrayList<>();
-//        for (String str : list) {
-//            teams.add(dataReader.capitalizeFirstLetterEverySingleWord(str));
-//        }
-//        return teams;
-//    }
-//
-//    private String join(List<String> teams) {
-//        return String.join(", ", teams);
-//    }
-//
-//    private void writeDoubleNewLine(BufferedWriter writer) throws IOException {
-//        writer.newLine();
-//        writer.newLine();
-//    }
+    private void countByGoalsAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> matches = matchManager.getMatchUserChoiceAllMatches();
+        long goalsNumber = matchManager.countByGoals(matches);
+        writer.write("Number of goals in the competition by all rounds: " + goalsNumber);
+        writeDoubleNewLine(writer);
+    }
+
+    private void sortFromWinsToLosesByAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.write("Sorted matches from win to loss by all matches");
+        writer.newLine();
+        List<Match> allMatches = matchManager.getMatchUserChoiceAllMatches();
+        allMatches = sortByScores(matchManager, allMatches);
+        printCollectionLine(writer, allMatches);
+        writer.newLine();
+    }
+
+    private <T> void printCollectionNoLine(BufferedWriter writer, Collection<T> list) throws IOException {
+        String collect = list.stream()
+                .map(Objects::toString)
+                .collect(Collectors.joining(", "));
+        writer.write(collect);
+    }
+
+    private <T> void printCollectionLine(BufferedWriter writer, Collection<T> list) throws IOException {
+        String collect = list.stream()
+                .map(Objects::toString)
+                .collect(Collectors.joining("\n"));
+        writer.write(collect);
+    }
+
+    private List<Match> sortByScores(MatchManager matchManager, List<Match> matches) {
+        List<Match> winnersHome = matchManager.sortByWinnersHomeTeam(matches);
+        List<Match> ties = matchManager.sortByTies(matches);
+        List<Match> winnersAway = matchManager.sortByWinnersAwayTeam(matches);
+        return matchManager.joinWinTieLoss(winnersHome, ties, winnersAway);
+    }
+
+    private void writeDoubleNewLine(BufferedWriter writer) throws IOException {
+        writer.newLine();
+        writer.newLine();
+    }
 }

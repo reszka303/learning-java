@@ -1,0 +1,97 @@
+Teams taking part in the competition:
+Polska, Zea, Usa, Rpa
+
+Results of the first round:
+Polska - Zea (4:0)
+Polska - Usa (4:4)
+Polska - Rpa (0:4)
+Zea - Usa (0:3)
+Zea - Rpa (4:3)
+Usa - Rpa (3:3)
+
+The table of the first round:
+Pos   Team                 Pts GF  GA  GD 
+1.    Usa                  5   10  7   3  
+2.    Rpa                  4   10  7   3  
+3.    Polska               4   8   8   0  
+4.    Zea                  3   4   10  -6 
+
+Results of the rematches:
+Zea - Polska (1:1)
+Usa - Polska (3:2)
+Rpa - Polska (2:4)
+Usa - Zea (0:2)
+Rpa - Zea (4:3)
+Rpa - Usa (4:3)
+
+The table of the rematches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Rpa                  6   10  10  0  
+2.    Polska               4   7   6   1  
+3.    Zea                  4   6   5   1  
+4.    Usa                  3   6   8   -2 
+
+Results of the all matches:
+Polska - Zea (4:0)
+Polska - Usa (4:4)
+Polska - Rpa (0:4)
+Zea - Usa (0:3)
+Zea - Rpa (4:3)
+Usa - Rpa (3:3)
+Zea - Polska (1:1)
+Usa - Polska (3:2)
+Rpa - Polska (2:4)
+Usa - Zea (0:2)
+Rpa - Zea (4:3)
+Rpa - Usa (4:3)
+
+The table of the all matches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Rpa                  10  20  17  3  
+2.    Usa                  8   16  15  1  
+3.    Polska               8   15  14  1  
+4.    Zea                  7   10  15  -5 
+
+Statistics
+Number of teams in the competition: 4
+
+Number of goals in the competition by the first round: 32
+
+Number of goals in the competition by the rematches: 29
+
+Number of goals in the competition by all rounds: 61
+
+Sorted matches from win to loss by all matches
+Polska - Zea (4:0)
+Zea - Rpa (4:3)
+Rpa - Zea (4:3)
+Rpa - Usa (4:3)
+Usa - Polska (3:2)
+Polska - Usa (4:4)
+Usa - Rpa (3:3)
+Zea - Polska (1:1)
+Usa - Zea (0:2)
+Zea - Usa (0:3)
+Polska - Rpa (0:4)
+Rpa - Polska (2:4)
+
+First round of the following single team: Polska
+Polska - Zea (4:0)
+Polska - Usa (4:4)
+Polska - Rpa (0:4)
+
+
+Rematches of the following single team: Zea
+Zea - Polska (1:1)
+Usa - Zea (0:2)
+Rpa - Zea (4:3)
+
+
+All matches of the following single team: Usa
+Polska - Usa (4:4)
+Zea - Usa (0:3)
+Usa - Rpa (3:3)
+Usa - Polska (3:2)
+Usa - Zea (0:2)
+Rpa - Usa (4:3)
+

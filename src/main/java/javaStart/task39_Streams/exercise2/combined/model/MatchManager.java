@@ -12,7 +12,6 @@ import java.util.stream.Stream;
 public class MatchManager {
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader();
-
     private List<String> teamsUserChoice = new ArrayList<>();
     private List<Match> matchUserChoiceFirstRound = new ArrayList<>();
     private List<Match> matchUserChoiceRematch = new ArrayList<>();
@@ -20,10 +19,9 @@ public class MatchManager {
     private List<Scoring> scoringUserChoiceFirstRound = new ArrayList<>();
     private List<Scoring> scoringUserChoiceRematch = new ArrayList<>();
     private List<Scoring> scoringUserChoiceAllMatches = new ArrayList<>();
-    private Map<Scoring, List<Scoring>> mapScoringListMapUserChoiceFirstRound = new HashMap<>();
-    private Map<Scoring, List<Scoring>> mapScoringListMapUserChoiceRematch = new HashMap<>();
-    private Map<Scoring, List<Scoring>> mapScoringListMapUserChoiceAllMatches = new HashMap<>();
-    private String teamUserChoice;
+    private String teamUserChoiceFirstRound;
+    private String teamUserChoiceRematches;
+    private String teamUserChoiceAllMatches;
 
 //    private List<String> teamsLaLiga = new ArrayList<>();
 //    private List<Match> matchFirstRoundLaLiga = new ArrayList<>();
@@ -61,18 +59,6 @@ public class MatchManager {
         return scoringUserChoiceAllMatches;
     }
 
-    public Map<Scoring, List<Scoring>> getMapScoringListMapUserChoiceFirstRound() {
-        return mapScoringListMapUserChoiceFirstRound;
-    }
-
-    public Map<Scoring, List<Scoring>> getMapScoringListMapUserChoiceRematch() {
-        return mapScoringListMapUserChoiceRematch;
-    }
-
-    public Map<Scoring, List<Scoring>> getMapScoringListMapUserChoiceAllMatches() {
-        return mapScoringListMapUserChoiceAllMatches;
-    }
-
     //    public List<String> getTeamsLaLiga() {
 //        return teamsLaLiga;
 //    }
@@ -93,8 +79,16 @@ public class MatchManager {
 //        return matchRematchPremierLeague;
 //    }
 
-    public String getTeamUserChoice() {
-        return teamUserChoice;
+    public String getTeamUserChoiceFirstRound() {
+        return teamUserChoiceFirstRound;
+    }
+
+    public String getTeamUserChoiceRematches() {
+        return teamUserChoiceRematches;
+    }
+
+    public String getTeamUserChoiceAllMatches() {
+        return teamUserChoiceAllMatches;
     }
 
     public List<String> addTeams(int numberTeam) {
@@ -277,36 +271,8 @@ public class MatchManager {
         return scoringUserChoiceAllMatches;
     }
 
-    public Map<Scoring, List<Scoring>> groupByNameScoringUserChoiceFirstRound(List<Scoring> scoring) {
-        return  mapScoringListMapUserChoiceFirstRound = scoring.stream()
-                .collect(Collectors.groupingBy(Scoring::getName))
-                .entrySet().stream()
-                .collect(Collectors.toMap(entry -> {
-                    int place = 1;
-                    int sumPoints = entry.getValue().stream().mapToInt(Scoring::getPoints).sum();
-                    int sumGoalsFor = entry.getValue().stream().mapToInt(Scoring::getGoalsFor).sum();
-                    int sumGoalsAgainst = entry.getValue().stream().mapToInt(Scoring::getGoalsAgainst).sum();
-                    int sumGoalsDifference = entry.getValue().stream().mapToInt(Scoring::getGoalsDifference).sum();
-                    return new Scoring(place, entry.getKey(), sumPoints, sumGoalsFor, sumGoalsAgainst, sumGoalsDifference);
-                }, Map.Entry::getValue));
-    }
-
-    public Map<Scoring, List<Scoring>> groupByNameScoringUserChoiceRematch(List<Scoring> scoring) {
-        return  mapScoringListMapUserChoiceRematch = scoring.stream()
-                .collect(Collectors.groupingBy(Scoring::getName))
-                .entrySet().stream()
-                .collect(Collectors.toMap(entry -> {
-                    int place = 1;
-                    int sumPoints = entry.getValue().stream().mapToInt(Scoring::getPoints).sum();
-                    int sumGoalsFor = entry.getValue().stream().mapToInt(Scoring::getGoalsFor).sum();
-                    int sumGoalsAgainst = entry.getValue().stream().mapToInt(Scoring::getGoalsAgainst).sum();
-                    int sumGoalsDifference = entry.getValue().stream().mapToInt(Scoring::getGoalsDifference).sum();
-                    return new Scoring(place, entry.getKey(), sumPoints, sumGoalsFor, sumGoalsAgainst, sumGoalsDifference);
-                }, Map.Entry::getValue));
-    }
-
-    public Map<Scoring, List<Scoring>> groupByNameScoringUserAllMatches(List<Scoring> scoring) {
-        return  mapScoringListMapUserChoiceAllMatches = scoring.stream()
+    public Map<Scoring, List<Scoring>> groupByName(List<Scoring> scoring) {
+        return  scoring.stream()
                 .collect(Collectors.groupingBy(Scoring::getName))
                 .entrySet().stream()
                 .collect(Collectors.toMap(entry -> {
@@ -349,7 +315,7 @@ public class MatchManager {
     public List<Match> sortByWinnersAwayTeam(List<Match> matches) {
         return matches.stream()
                 .filter(Match::getWinnersAwayTeam)
-                .sorted(Comparator.comparing(Match::getAwayTeamGoal).reversed())
+                .sorted(Comparator.comparing(Match::getAwayTeamGoal))
                 .collect(Collectors.toList());
     }
 
@@ -370,28 +336,23 @@ public class MatchManager {
                 .collect(Collectors.toList());
     }
 
-    public List<Match> joinAllSortedMatchesByWinTiesLoss(List<Match> firstRoundMatches, List<Match> rematches) {
-        return Stream.of(firstRoundMatches, rematches)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-    }
     public List<Match> joinFirstRoundAndRematches() {
             return matchUserChoiceAllMatches = Stream.of(matchUserChoiceFirstRound, matchUserChoiceRematch)
                     .flatMap(Collection::stream)
                     .collect(Collectors.toList());
     }
 
-    public String getTeam(List<String> teams) {
+    public String getTeamFirstRound(List<String> teams) {
         boolean teamOk = false;
-        teamUserChoice = null;
+        teamUserChoiceFirstRound = null;
         int counter = 0;
         while (!teamOk) {
             try {
                 printer.printLine("Enter a name of a team to display its all matches");
-                teamUserChoice = dataReader.toLowerCase();
-                teamUserChoice = dataReader.capitalizeFirstLetterEverySingleWord(teamUserChoice);
+                teamUserChoiceFirstRound = dataReader.toLowerCase();
+                teamUserChoiceFirstRound = dataReader.capitalizeFirstLetterEverySingleWord(teamUserChoiceFirstRound);
                 for (String s : teams) {
-                    if (teamUserChoice.equals(s)) {
+                    if (teamUserChoiceFirstRound.equals(s)) {
                         counter++;
                     }
                 }
@@ -405,7 +366,61 @@ public class MatchManager {
                 e.getMessage();
             }
         }
-        return teamUserChoice;
+        return teamUserChoiceFirstRound;
+    }
+
+    public String getTeamRematches(List<String> teams) {
+        boolean teamOk = false;
+        teamUserChoiceRematches = null;
+        int counter = 0;
+        while (!teamOk) {
+            try {
+                printer.printLine("Enter a name of a team to display its all matches");
+                teamUserChoiceRematches = dataReader.toLowerCase();
+                teamUserChoiceRematches = dataReader.capitalizeFirstLetterEverySingleWord(teamUserChoiceRematches);
+                for (String s : teams) {
+                    if (teamUserChoiceRematches.equals(s)) {
+                        counter++;
+                    }
+                }
+                if (counter == 1) {
+                    teamOk = true;
+                }
+                if (counter == 0) {
+                    throw new TeamNotFoundException("There is no team with given name, try again");
+                }
+            } catch (TeamNotFoundException e) {
+                e.getMessage();
+            }
+        }
+        return teamUserChoiceRematches;
+    }
+
+    public String getTeamAllMatches(List<String> teams) {
+        boolean teamOk = false;
+        teamUserChoiceAllMatches = null;
+        int counter = 0;
+        while (!teamOk) {
+            try {
+                printer.printLine("Enter a name of a team to display its all matches");
+                teamUserChoiceAllMatches = dataReader.toLowerCase();
+                teamUserChoiceAllMatches = dataReader.capitalizeFirstLetterEverySingleWord(teamUserChoiceAllMatches);
+                for (String s : teams) {
+                    if (teamUserChoiceAllMatches.equals(s)) {
+                        counter++;
+                    }
+                }
+                if (counter == 1) {
+                    teamOk = true;
+                }
+                if (counter == 0) {
+                    throw new TeamNotFoundException("There is no team with given name, try again");
+                }
+            } catch (TeamNotFoundException e) {
+                e.getMessage();
+            }
+        }
+        return teamUserChoiceAllMatches;
     }
 
     public List<Match> sortByTeam(List<Match> matches, String team) {
