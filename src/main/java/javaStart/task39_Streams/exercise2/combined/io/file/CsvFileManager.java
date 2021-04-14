@@ -32,17 +32,31 @@ public class CsvFileManager implements FileManager {
     public void writeFile(MatchManager matchManager) {
         try (var writer = new BufferedWriter(new FileWriter(FILE_NAME))){
 //            chooseOnYourOwnTeamsTakingPartInCompetition(matchManager, writer);
-            //zapis drużyn biorących udział w zawodach
-            writeTeamsLaLiga(matchManager, writer);
-            //zapis wyników pierwszej rundy
-            writeResultsFirstRoundLaLiga(matchManager, writer);
-            //zapis tabeli pierwszej rundy
-            writeTableFirstRoundLaLiga(matchManager, writer);
-
-
+            LaLiga(matchManager, writer);
         } catch (IOException e) {
             throw new DataWriteException("Data write error into file: " + FILE_NAME);
         }
+    }
+
+    private void LaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        //zapis drużyn biorących udział w zawodach
+        writeTeamsLaLiga(matchManager, writer);
+        //zapis wyników pierwszej rundy
+        writeResultsFirstRoundLaLiga(matchManager, writer);
+        //zapis tabeli pierwszej rundy
+        writeTableFirstRoundLaLiga(matchManager, writer);
+        //zapis wyników meczy rewanżowych
+        writeResultsRematchesLaLiga(matchManager, writer);
+        //zapis tabeli meczów rewanżowych
+        writeTableRematchesLaLiga(matchManager, writer);
+        //zapis tabeli z wszystkich meczów
+        writeTableAllMatchesLaLiga(matchManager, writer);
+        //liczenie bramek w pierwszej rundzie
+        countByGoalsFirstRoundLaLiga(matchManager, writer);
+        //liczenie bramek rundy rewanżowej
+        countByGoalsRematchesLaLiga(matchManager, writer);
+        //liczenie wszystkich bramek
+        countByGoalsAllMatchesLaLiga(matchManager, writer);
     }
 
     private void chooseOnYourOwnTeamsTakingPartInCompetition(MatchManager matchManager, BufferedWriter writer) throws IOException {
@@ -66,11 +80,11 @@ public class CsvFileManager implements FileManager {
         //liczenie zespołów
         countByTeams(matchManager, writer);
         //liczenie bramek w pierwszej rundzie
-        countByGoalsFirstRound(matchManager, writer);
+        countByGoalsFirstRoundUserChoice(matchManager, writer);
         //liczenie bramek rundy rewanżowej
-        countByGoalsRematches(matchManager, writer);
+        countByGoalsRematchesUserChoice(matchManager, writer);
         //liczenie wszystkich bramek
-        countByGoalsAllMatches(matchManager, writer);
+        countByGoalsAllMatchesUserChoice(matchManager, writer);
         //sortowanie wszystkich meczów od wygranych do porażek
         sortFromWinsToLosesByAllMatches(matchManager, writer);
         //sortowanie pierwsza runda jednego zespołu
@@ -130,14 +144,6 @@ public class CsvFileManager implements FileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeResultsFirstRoundUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
-        List<Match> firstRound = matchManager.getMatchUserChoiceFirstRound();
-        writer.write("Results of the first round:");
-        writer.newLine();
-        printCollectionLine(writer, firstRound);
-        writeDoubleNewLine(writer);
-    }
-
     private void writeResultsFirstRoundLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<Match> firstRound = matchManager.getMatchFirstRoundLaLiga();
         writer.write("Results of the first round:");
@@ -145,6 +151,23 @@ public class CsvFileManager implements FileManager {
         printCollectionLine(writer, firstRound);
         writeDoubleNewLine(writer);
 
+    }
+
+    private void writeResultsRematchesLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> firstRound = matchManager.getMatchRematchesLaLiga();
+        writer.write("Results of the rematches:");
+        writer.newLine();
+        printCollectionLine(writer, firstRound);
+        writeDoubleNewLine(writer);
+
+    }
+
+    private void writeResultsFirstRoundUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> firstRound = matchManager.getMatchUserChoiceFirstRound();
+        writer.write("Results of the first round:");
+        writer.newLine();
+        printCollectionLine(writer, firstRound);
+        writeDoubleNewLine(writer);
     }
 
     private void writeTableFirstRoundUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
@@ -170,6 +193,19 @@ public class CsvFileManager implements FileManager {
         writer.write(printer.printStandingsShortcutsTable());
         firstRound = matchManager.increasePosition(firstRound);
         printCollectionLine(writer, firstRound);
+        writeDoubleNewLine(writer);
+    }
+
+    private void writeTableRematchesLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.write("The table of the rematches:");
+        writer.newLine();
+        List<Scoring> rematches = matchManager.getScoringRematchesLaLiga();
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(rematches);
+        rematches = matchManager.getKey(scoringListMap);
+        rematches = matchManager.sortByPointsAndGoals(rematches);
+        writer.write(printer.printStandingsShortcutsTable());
+        rematches = matchManager.increasePosition(rematches);
+        printCollectionLine(writer, rematches);
         writeDoubleNewLine(writer);
     }
 
@@ -215,6 +251,19 @@ public class CsvFileManager implements FileManager {
         writeDoubleNewLine(writer);
     }
 
+    private void writeTableAllMatchesLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.write("The table of the all matches:");
+        writer.newLine();
+        List<Scoring> allScores = matchManager.getScoringAllMatchesLaLiga();
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(allScores);
+        allScores = matchManager.getKey(scoringListMap);
+        allScores = matchManager.sortByPointsAndGoals(allScores);
+        writer.write(printer.printStandingsShortcutsTable());
+        allScores = matchManager.increasePosition(allScores);
+        printCollectionLine(writer, allScores);
+        writeDoubleNewLine(writer);
+    }
+
     private void countByTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<String> teams = matchManager.getTeamsUserChoice();
         int teamsNumber = matchManager.countByTeams(teams);
@@ -222,24 +271,45 @@ public class CsvFileManager implements FileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void countByGoalsFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void countByGoalsFirstRoundUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<Match> matches = matchManager.getMatchUserChoiceFirstRound();
         long goalsNumber = matchManager.countByGoals(matches);
         writer.write("Number of goals in the competition by the first round: " + goalsNumber);
         writeDoubleNewLine(writer);
     }
 
-    private void countByGoalsRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void countByGoalsFirstRoundLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> matches = matchManager.getMatchFirstRoundLaLiga();
+        long goalsNumber = matchManager.countByGoals(matches);
+        writer.write("Number of goals of LaLiga by the first round: " + goalsNumber);
+        writeDoubleNewLine(writer);
+    }
+
+    private void countByGoalsRematchesUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<Match> matches = matchManager.getMatchUserChoiceRematch();
         long goalsNumber = matchManager.countByGoals(matches);
         writer.write("Number of goals in the competition by the rematches: " + goalsNumber);
         writeDoubleNewLine(writer);
     }
 
-    private void countByGoalsAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void countByGoalsRematchesLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> matches = matchManager.getMatchRematchesLaLiga();
+        long goalsNumber = matchManager.countByGoals(matches);
+        writer.write("Number of goals of LaLiga by rematches: " + goalsNumber);
+        writeDoubleNewLine(writer);
+    }
+
+    private void countByGoalsAllMatchesUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<Match> matches = matchManager.getMatchUserChoiceAllMatches();
         long goalsNumber = matchManager.countByGoals(matches);
         writer.write("Number of goals in the competition by all rounds: " + goalsNumber);
+        writeDoubleNewLine(writer);
+    }
+
+    private void countByGoalsAllMatchesLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> matches = matchManager.getMatchAllMatchesLaLiga();
+        long goalsNumber = matchManager.countByGoals(matches);
+        writer.write("Number of goals of LaLiga by the all matches: " + goalsNumber);
         writeDoubleNewLine(writer);
     }
 

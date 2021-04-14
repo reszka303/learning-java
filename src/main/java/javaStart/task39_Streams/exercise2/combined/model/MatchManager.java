@@ -33,9 +33,16 @@ public class MatchManager {
     private String teamFirstRoundLaLiga;
     private String teamRematchesLaLiga;
     private String teamAllMatchesLaLiga;
-//
-//    private List<Match> matchFirstRoundPremierLeague = new ArrayList<>();
-//    private List<Match> matchRematchPremierLeague = new ArrayList<>();
+    //PremierLeague's fields
+    private List<Match> matchFirstRoundPremierLeague = new ArrayList<>();
+    private List<Match> matchRematchesPremierLeague = new ArrayList<>();
+    private List<Match> matchAllMatchesPremierLeague = new ArrayList<>();
+    private List<Scoring> scoringFirstRoundPremierLeague = new ArrayList<>();
+    private List<Scoring> scoringRematchesPremierLeague = new ArrayList<>();
+    private List<Scoring> scoringAllMatchesPremierLeague = new ArrayList<>();
+    private String teamFirstRoundPremierLeague;
+    private String teamRematchesPremierLeague;
+    private String teamAllMatchesPremierLeague;
 
 
     public List<String> getTeamsUserChoice() {
