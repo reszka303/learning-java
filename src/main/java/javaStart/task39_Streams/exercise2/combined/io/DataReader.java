@@ -1,5 +1,7 @@
 package javaStart.task39_Streams.exercise2.combined.io;
 
+import javaStart.task39_Streams.exercise2.combined.exception.NoSuchCharacterException;
+import javaStart.task39_Streams.exercise2.combined.exception.TeamNameLengthException;
 import javaStart.task39_Streams.exercise2.combined.exception.NumberPositiveException;
 
 import java.util.Arrays;
@@ -47,7 +49,21 @@ public class DataReader {
         printer.printLine("Enter the name of team");
         String teamLetter = input.nextLine();
         teamLetter = capitalizeFirstLetterEverySingleWord(teamLetter);
+        try {
+            teamLetter = checkLength(teamLetter);
+        } catch (TeamNameLengthException e) {
+            e.getMessage();
+        }
         return teamLetter;
+    }
+
+    private String checkLength(String teamLetter) {
+        int maxLengthTeamName = 20;
+        if (teamLetter.length() > maxLengthTeamName) {
+            throw new TeamNameLengthException("Team name can be up to 20 digits long, please try again");
+        } else {
+            return teamLetter;
+        }
     }
 
 //    public String capitalizeFirstLetterEverySingleWord(String teamName) {
@@ -69,7 +85,11 @@ public class DataReader {
     }
 
     private static void getUpperCaseFirstLetter(char[] array) {
-        array[0] = Character.toUpperCase(array[0]);
+//        try {
+            array[0] = Character.toUpperCase(array[0]);
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            System.err.println("Enter a suitable character, try again");
+//        }
     }
 
     public int getInt() {

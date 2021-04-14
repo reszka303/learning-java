@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 public class MatchManager {
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader();
+    //UserChoice's fields
     private List<String> teamsUserChoice = new ArrayList<>();
     private List<Match> matchUserChoiceFirstRound = new ArrayList<>();
     private List<Match> matchUserChoiceRematch = new ArrayList<>();
@@ -22,10 +23,16 @@ public class MatchManager {
     private String teamUserChoiceFirstRound;
     private String teamUserChoiceRematches;
     private String teamUserChoiceAllMatches;
-
-//    private List<String> teamsLaLiga = new ArrayList<>();
-//    private List<Match> matchFirstRoundLaLiga = new ArrayList<>();
-//    private List<Match> matchRematchLaLiga = new ArrayList<>();
+    //LaLiga's fields
+    private List<Match> matchFirstRoundLaLiga = new ArrayList<>();
+    private List<Match> matchRematchesLaLiga = new ArrayList<>();
+    private List<Match> matchAllMatchesLaLiga = new ArrayList<>();
+    private List<Scoring> scoringFirstRoundLaLiga = new ArrayList<>();
+    private List<Scoring> scoringRematchesLaLiga = new ArrayList<>();
+    private List<Scoring> scoringAllMatchesLaLiga = new ArrayList<>();
+    private String teamFirstRoundLaLiga;
+    private String teamRematchesLaLiga;
+    private String teamAllMatchesLaLiga;
 //
 //    private List<Match> matchFirstRoundPremierLeague = new ArrayList<>();
 //    private List<Match> matchRematchPremierLeague = new ArrayList<>();
@@ -59,18 +66,43 @@ public class MatchManager {
         return scoringUserChoiceAllMatches;
     }
 
-    //    public List<String> getTeamsLaLiga() {
-//        return teamsLaLiga;
-//    }
-//
-//    public List<Match> getMatchFirstRoundLaLiga() {
-//        return matchFirstRoundLaLiga;
-//    }
-//
-//    public List<Match> getMatchRematchLaLiga() {
-//        return matchRematchLaLiga;
-//    }
-//
+    public List<Match> getMatchFirstRoundLaLiga() {
+        return matchFirstRoundLaLiga;
+    }
+
+    public List<Match> getMatchRematchesLaLiga() {
+        return matchRematchesLaLiga;
+    }
+
+    public List<Match> getMatchAllMatchesLaLiga() {
+        return matchAllMatchesLaLiga;
+    }
+
+    public List<Scoring> getScoringFirstRoundLaLiga() {
+        return scoringFirstRoundLaLiga;
+    }
+
+    public List<Scoring> getScoringRematchesLaLiga() {
+        return scoringRematchesLaLiga;
+    }
+
+    public List<Scoring> getScoringAllMatchesLaLiga() {
+        return scoringAllMatchesLaLiga;
+    }
+
+    public String getTeamFirstRoundLaLiga() {
+        return teamFirstRoundLaLiga;
+    }
+
+    public String getTeamRematchesLaLiga() {
+        return teamRematchesLaLiga;
+    }
+
+    public String getTeamAllMatchesLaLiga() {
+        return teamAllMatchesLaLiga;
+    }
+
+    //
 //    public List<Match> getMatchFirstRoundPremierLeague() {
 //        return matchFirstRoundPremierLeague;
 //    }
@@ -138,31 +170,31 @@ public class MatchManager {
         return matchUserChoiceRematch;
     }
 
-//    public List<Match> createFirstRoundLaLiga(List<String> teams) {
-//        Random random = new Random();
-//        int upperbound = 5;
-//        for (int i = 0; i < teams.size() - 1; i++) {
-//            for (int j = i + 1; j < teams.size(); j++) {
-//                Match match = new Match(teams.get(i), teams.get(j),
-//                        random.nextInt(upperbound), random.nextInt(upperbound));
-//                matchUserChoiceFirstRound.add(match);
-//            }
-//        }
-//        return matchUserChoiceFirstRound;
-//    }
-//
-//    public List<Match> createRematchLaLiga(List<String> teams) {
-//        Random random = new Random();
-//        int upperbound = 5;
-//        for (int i = 0; i < teams.size() - 1; i++) {
-//            for (int j = i + 1; j < teams.size(); j++) {
-//                Match match = new Match(teams.get(j), teams.get(i),
-//                        random.nextInt(upperbound), random.nextInt(upperbound));
-//                matchUserChoiceRematch.add(match);
-//            }
-//        }
-//        return matchUserChoiceRematch;
-//    }
+    public List<Match> createFirstRoundLaLiga(List<String> teams) {
+        Random random = new Random();
+        int upperbound = 5;
+        for (int i = 0; i < teams.size() - 1; i++) {
+            for (int j = i + 1; j < teams.size(); j++) {
+                Match match = new Match(teams.get(i), teams.get(j),
+                        random.nextInt(upperbound), random.nextInt(upperbound));
+                matchFirstRoundLaLiga.add(match);
+            }
+        }
+        return matchFirstRoundLaLiga;
+    }
+
+    public List<Match> createRematchLaLiga(List<String> teams) {
+        Random random = new Random();
+        int upperbound = 5;
+        for (int i = 0; i < teams.size() - 1; i++) {
+            for (int j = i + 1; j < teams.size(); j++) {
+                Match match = new Match(teams.get(j), teams.get(i),
+                        random.nextInt(upperbound), random.nextInt(upperbound));
+                matchRematchesLaLiga.add(match);
+            }
+        }
+        return matchRematchesLaLiga;
+    }
 
 //    public List<Match> createFirstRoundPremierLeague(List<String> teams) {
 //        Random random = new Random();
@@ -271,6 +303,87 @@ public class MatchManager {
         return scoringUserChoiceAllMatches;
     }
 
+    public List<Scoring> createScoringFirstRoundLaLiga(List<Match> matches, List<String> teams) {
+        for (String team : teams) {
+            for (Match match : matches) {
+                if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+                    scoringFirstRoundLaLiga.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+                    scoringFirstRoundLaLiga.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+                    scoringFirstRoundLaLiga.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+                    scoringFirstRoundLaLiga.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+                    scoringFirstRoundLaLiga.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+                    scoringFirstRoundLaLiga.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                }
+            }
+        }
+        return scoringFirstRoundLaLiga;
+    }
+
+    public List<Scoring> createScoringRematchLaLiga(List<Match> matches, List<String> teams) {
+        for (String team : teams) {
+            for (Match match : matches) {
+                if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+                    scoringRematchesLaLiga.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+                    scoringRematchesLaLiga.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+                    scoringRematchesLaLiga.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+                    scoringRematchesLaLiga.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+                    scoringRematchesLaLiga.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+                    scoringRematchesLaLiga.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                }
+            }
+        }
+        return scoringRematchesLaLiga;
+    }
+
+    public List<Scoring> createScoringAllMatchesLaLiga(List<Match> matches, List<String> teams) {
+        for (String team : teams) {
+            for (Match match : matches) {
+                if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+                    scoringAllMatchesLaLiga.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+                    scoringAllMatchesLaLiga.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+                    scoringAllMatchesLaLiga.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                            match.getHomeTeamGoal() - match.getAwayTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
+                    scoringAllMatchesLaLiga.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
+                    scoringAllMatchesLaLiga.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
+                    scoringAllMatchesLaLiga.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                            match.getAwayTeamGoal() - match.getHomeTeamGoal()));
+                }
+            }
+        }
+        return scoringAllMatchesLaLiga;
+    }
+
     public Map<Scoring, List<Scoring>> groupByName(List<Scoring> scoring) {
         return  scoring.stream()
                 .collect(Collectors.groupingBy(Scoring::getName))
@@ -336,10 +449,16 @@ public class MatchManager {
                 .collect(Collectors.toList());
     }
 
-    public List<Match> joinFirstRoundAndRematches() {
+    public List<Match> joinFirstRoundAndRematchesUserChoice() {
             return matchUserChoiceAllMatches = Stream.of(matchUserChoiceFirstRound, matchUserChoiceRematch)
                     .flatMap(Collection::stream)
                     .collect(Collectors.toList());
+    }
+
+    public List<Match> joinFirstRoundAndRematchesLaLiga() {
+        return matchAllMatchesLaLiga = Stream.of(matchFirstRoundLaLiga, matchRematchesLaLiga)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
     public String getTeamFirstRound(List<String> teams) {
@@ -421,6 +540,87 @@ public class MatchManager {
             }
         }
         return teamUserChoiceAllMatches;
+    }
+
+    public String getTeamFirstRoundLaLiga(List<String> teams) {
+        boolean teamOk = false;
+        teamFirstRoundLaLiga = null;
+        int counter = 0;
+        while (!teamOk) {
+            try {
+                printer.printLine("Enter a name of a team to display its all matches");
+                teamFirstRoundLaLiga = dataReader.toLowerCase();
+                teamFirstRoundLaLiga = dataReader.capitalizeFirstLetterEverySingleWord(teamFirstRoundLaLiga);
+                for (String s : teams) {
+                    if (teamFirstRoundLaLiga.equals(s)) {
+                        counter++;
+                    }
+                }
+                if (counter == 1) {
+                    teamOk = true;
+                }
+                if (counter == 0) {
+                    throw new TeamNotFoundException("There is no team with given name, try again");
+                }
+            } catch (TeamNotFoundException e) {
+                e.getMessage();
+            }
+        }
+        return teamFirstRoundLaLiga;
+    }
+
+    public String getTeamRematchesLaLiga(List<String> teams) {
+        boolean teamOk = false;
+        teamRematchesLaLiga = null;
+        int counter = 0;
+        while (!teamOk) {
+            try {
+                printer.printLine("Enter a name of a team to display its all matches");
+                teamRematchesLaLiga = dataReader.toLowerCase();
+                teamRematchesLaLiga = dataReader.capitalizeFirstLetterEverySingleWord(teamRematchesLaLiga);
+                for (String s : teams) {
+                    if (teamRematchesLaLiga.equals(s)) {
+                        counter++;
+                    }
+                }
+                if (counter == 1) {
+                    teamOk = true;
+                }
+                if (counter == 0) {
+                    throw new TeamNotFoundException("There is no team with given name, try again");
+                }
+            } catch (TeamNotFoundException e) {
+                e.getMessage();
+            }
+        }
+        return teamRematchesLaLiga;
+    }
+
+    public String getTeamAllMatchesLaLiga(List<String> teams) {
+        boolean teamOk = false;
+        teamAllMatchesLaLiga = null;
+        int counter = 0;
+        while (!teamOk) {
+            try {
+                printer.printLine("Enter a name of a team to display its all matches");
+                teamAllMatchesLaLiga = dataReader.toLowerCase();
+                teamAllMatchesLaLiga = dataReader.capitalizeFirstLetterEverySingleWord(teamAllMatchesLaLiga);
+                for (String s : teams) {
+                    if (teamAllMatchesLaLiga.equals(s)) {
+                        counter++;
+                    }
+                }
+                if (counter == 1) {
+                    teamOk = true;
+                }
+                if (counter == 0) {
+                    throw new TeamNotFoundException("There is no team with given name, try again");
+                }
+            } catch (TeamNotFoundException e) {
+                e.getMessage();
+            }
+        }
+        return teamAllMatchesLaLiga;
     }
 
     public List<Match> sortByTeam(List<Match> matches, String team) {

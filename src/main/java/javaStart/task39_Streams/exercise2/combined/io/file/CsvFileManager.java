@@ -4,17 +4,16 @@ import javaStart.task39_Streams.exercise2.combined.exception.DataReadException;
 import javaStart.task39_Streams.exercise2.combined.exception.DataWriteException;
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
 import javaStart.task39_Streams.exercise2.combined.io.DataReader;
-import javaStart.task39_Streams.exercise2.combined.model.Match;
-import javaStart.task39_Streams.exercise2.combined.model.MatchManager;
-import javaStart.task39_Streams.exercise2.combined.model.Scoring;
+import javaStart.task39_Streams.exercise2.combined.model.*;
 
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CsvFileManager {
+public class CsvFileManager implements FileManager {
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader();
+    private League league = new EuropeanLeague();
     private static final String FILE_NAME = "D:\\INNE\\Programowanie\\Projects\\learning\\matches\\matches.txt";
 
     public void readFile() {
@@ -32,7 +31,15 @@ public class CsvFileManager {
 
     public void writeFile(MatchManager matchManager) {
         try (var writer = new BufferedWriter(new FileWriter(FILE_NAME))){
-            chooseOnYourOwnTeamsTakingPartInCompetition(matchManager, writer);
+//            chooseOnYourOwnTeamsTakingPartInCompetition(matchManager, writer);
+            //zapis drużyn biorących udział w zawodach
+            writeTeamsLaLiga(matchManager, writer);
+            //zapis wyników pierwszej rundy
+            writeResultsFirstRoundLaLiga(matchManager, writer);
+            //zapis tabeli pierwszej rundy
+            writeTableFirstRoundLaLiga(matchManager, writer);
+
+
         } catch (IOException e) {
             throw new DataWriteException("Data write error into file: " + FILE_NAME);
         }
@@ -40,19 +47,19 @@ public class CsvFileManager {
 
     private void chooseOnYourOwnTeamsTakingPartInCompetition(MatchManager matchManager, BufferedWriter writer) throws IOException {
         //zapis drużyn biorących udział w zawodach
-        writeTeams(matchManager, writer);
+        writeTeamsUserChoice(matchManager, writer);
         //zapis wyników pierwszej rundy
-        writeResultsFirstRound(matchManager, writer);
+        writeResultsFirstRoundUserChoice(matchManager, writer);
         //zapis tabeli pierwszej rundy
-        writeTableFirstRound(matchManager, writer);
+        writeTableFirstRoundUserChoice(matchManager, writer);
         //zapis wyników meczy rewanżowych
-        writeResultsRematches(matchManager, writer);
+        writeResultsRematchesUserChoice(matchManager, writer);
         //zapis tabeli meczów rewanżowych
-        writeTableRematches(matchManager, writer);
+        writeTableRematchesUserChoice(matchManager, writer);
         //zapis wyników wszystkich meczów
-        writeResultsAllMatches(matchManager, writer);
+        writeResultsAllMatchesUserChoice(matchManager, writer);
         //zapis tabeli z wszystkich meczów
-        writeTableAllMatches(matchManager, writer);
+        writeTableAllMatchesUserChoice(matchManager, writer);
         writer.write("Statistics");
         writer.newLine();
         //STATYSTYKI
@@ -107,7 +114,7 @@ public class CsvFileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeTeams(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void writeTeamsUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         Collection<String> teams = matchManager.getTeamsUserChoice();
         writer.write("Teams taking part in the competition:");
         writer.newLine();
@@ -115,7 +122,15 @@ public class CsvFileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeResultsFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void writeTeamsLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        Collection<String> teams = league.laLiga();
+        writer.write("Teams taking part in the competition:");
+        writer.newLine();
+        printCollectionNoLine(writer, teams);
+        writeDoubleNewLine(writer);
+    }
+
+    private void writeResultsFirstRoundUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<Match> firstRound = matchManager.getMatchUserChoiceFirstRound();
         writer.write("Results of the first round:");
         writer.newLine();
@@ -123,7 +138,16 @@ public class CsvFileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeTableFirstRound(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void writeResultsFirstRoundLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        List<Match> firstRound = matchManager.getMatchFirstRoundLaLiga();
+        writer.write("Results of the first round:");
+        writer.newLine();
+        printCollectionLine(writer, firstRound);
+        writeDoubleNewLine(writer);
+
+    }
+
+    private void writeTableFirstRoundUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         writer.write("The table of the first round:");
         writer.newLine();
         List<Scoring> firstRound = matchManager.getScoringUserChoiceFirstRound();
@@ -136,7 +160,20 @@ public class CsvFileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeResultsRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void writeTableFirstRoundLaLiga(MatchManager matchManager, BufferedWriter writer) throws IOException {
+        writer.write("The table of the first round:");
+        writer.newLine();
+        List<Scoring> firstRound = matchManager.getScoringFirstRoundLaLiga();
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(firstRound);
+        firstRound = matchManager.getKey(scoringListMap);
+        firstRound = matchManager.sortByPointsAndGoals(firstRound);
+        writer.write(printer.printStandingsShortcutsTable());
+        firstRound = matchManager.increasePosition(firstRound);
+        printCollectionLine(writer, firstRound);
+        writeDoubleNewLine(writer);
+    }
+
+    private void writeResultsRematchesUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<Match> rematches = matchManager.getMatchUserChoiceRematch();
         writer.write("Results of the rematches:");
         writer.newLine();
@@ -144,7 +181,7 @@ public class CsvFileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeTableRematches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void writeTableRematchesUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         writer.write("The table of the rematches:");
         writer.newLine();
         List<Scoring> rematches = matchManager.getScoringUserChoiceRematch();
@@ -157,7 +194,7 @@ public class CsvFileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeResultsAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void writeResultsAllMatchesUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         List<Match> allMatches = matchManager.getMatchUserChoiceAllMatches();
         writer.write("Results of the all matches:");
         writer.newLine();
@@ -165,7 +202,7 @@ public class CsvFileManager {
         writeDoubleNewLine(writer);
     }
 
-    private void writeTableAllMatches(MatchManager matchManager, BufferedWriter writer) throws IOException {
+    private void writeTableAllMatchesUserChoice(MatchManager matchManager, BufferedWriter writer) throws IOException {
         writer.write("The table of the all matches:");
         writer.newLine();
         List<Scoring> allScores = matchManager.getScoringUserChoiceAllMatches();

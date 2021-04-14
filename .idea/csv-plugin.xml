@@ -87,6 +87,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\io\DataReader.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\main\java\javaStart\task39_Streams\exercise2\combined\io\file\CsvFileManager.java">
           <value>
             <Attribute>

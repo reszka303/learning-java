@@ -6,9 +6,11 @@ import javaStart.task39_Streams.exercise2.combined.exception.NoSuchOptionExcepti
 import javaStart.task39_Streams.exercise2.combined.io.ConsolePrinter;
 import javaStart.task39_Streams.exercise2.combined.io.DataReader;
 import javaStart.task39_Streams.exercise2.combined.io.file.CsvFileManager;
+import javaStart.task39_Streams.exercise2.combined.io.file.FileManager;
 import javaStart.task39_Streams.exercise2.combined.model.*;
 
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 
@@ -16,18 +18,15 @@ public class MatchControl {
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader();
     private MatchManager matchManager = new MatchManager();
-    private CsvFileManager csvFileManager = new CsvFileManager();
-    private Division division = new League();
-
-    public MatchControl() {
-        readFile();
-    }
+    private FileManager fileManager = new CsvFileManager();
+    private League league = new EuropeanLeague();
 
     void run() {
         controlLoop();
     }
 
     public void controlLoop() {
+        readFile();
         Option option;
         do {
             printOption();
@@ -51,7 +50,7 @@ public class MatchControl {
 
     private void readFile() {
         try {
-            csvFileManager.readFile();
+            fileManager.readFile();
         } catch (DataReadException e) {
             e.getMessage();
             printer.printLine("The new database has been initiated");
@@ -60,13 +59,22 @@ public class MatchControl {
 
     private void exit() {
         try {
-            csvFileManager.writeFile(matchManager);
+            fileManager.writeFile(matchManager);
             printer.printLine("Data write into file has been finished successfully");
         } catch (DataWriteException e) {
             e.getMessage();
         }
         dataReader.close();
         printer.printLine("Match manager has finished its work");
+    }
+
+    private void laLiga() {
+        laLigaFirstRound();
+        laLigaStatsFirstRound();
+        laLigaRematches();
+        laLigaStatsRematches();
+        allMatchesLaLiga();
+        laLigaStatsAllMatches();
     }
 
     private void chooseOnYourOwnTeamsTakingPartInCompetition() {
@@ -78,8 +86,78 @@ public class MatchControl {
         userLeagueAllMatchesStats();
     }
 
-    private void laLiga() {
-        printer.printLine("LaLiga... work in progress");
+    private void laLigaFirstRound() {
+        List<String> teams = league.laLiga();
+        printer.printLine("");
+        printer.printLine("Teams taking part in the competition");
+        printer.printTeams(teams);
+        printer.printLine("");
+        List<Match> matchesFirstRound = matchManager.createFirstRoundLaLiga(teams);
+        printer.printLine("__________________________________________________");
+        printer.printLine("Matches of the first round");
+        matchesFirstRound.forEach(System.out::println);
+        List<Scoring> scoringFirstRound =  matchManager.createScoringFirstRoundLaLiga(matchesFirstRound, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
+        scoringFirstRound = matchManager.getKey(scoringListMap);
+        scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
+        scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
+        printer.printLine("");
+        printer.printLine("Table of the first round");
+        scoringFirstRound.forEach(System.out::println);
+        printer.printLine("");
+    }
+
+    private void laLigaStatsFirstRound() {
+        List<Match> matchesFirstRound = matchManager.getMatchFirstRoundLaLiga();
+        long countByGoals = matchManager.countByGoals(matchesFirstRound);
+        printer.printLine("The number of goals in the first round of LaLiga is as follows: " + countByGoals);
+    }
+
+    private void laLigaRematches() {
+        printer.printLine("__________________________________________________");
+        printer.printLine("Rematches");
+        List<String> teams = league.laLiga();
+        printer.printLine("");
+        List<Match> rematchesLaLiga = matchManager.createRematchLaLiga(teams);
+        printer.printLine("Results of rematches");
+        rematchesLaLiga.forEach(System.out::println);
+        List<Scoring> scoringFirstRound =  matchManager.createScoringRematchLaLiga(rematchesLaLiga, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
+        scoringFirstRound = matchManager.getKey(scoringListMap);
+        scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
+        scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
+        printer.printLine("");
+        printer.printLine("Table of the rematches");
+        scoringFirstRound.forEach(System.out::println);
+        printer.printLine("");
+    }
+
+    private void laLigaStatsRematches() {
+        List<Match> rematches = matchManager.getMatchRematchesLaLiga();
+        long countByGoals = matchManager.countByGoals(rematches);
+        printer.printLine("The number of goals in the rematches of LaLiga is as follows: " + countByGoals);
+    }
+
+    private void allMatchesLaLiga() {
+        printer.printLine("__________________________________________________");
+        printer.printLine("All Matches");
+        List<String> teams = league.laLiga();
+        List<Match> allMatches = matchManager.joinFirstRoundAndRematchesLaLiga();
+//        allMatches.forEach(System.out::println);
+        List<Scoring> scoringAllMatches = matchManager.createScoringAllMatchesLaLiga(allMatches, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringAllMatches);
+        scoringAllMatches = matchManager.getKey(scoringListMap);
+        scoringAllMatches = matchManager.sortByPointsAndGoals(scoringAllMatches);
+        scoringAllMatches = matchManager.increasePosition(scoringAllMatches);
+        printer.printLine("");
+        printer.printLine("Table all matches");
+        scoringAllMatches.forEach(System.out::println);
+    }
+
+    private void laLigaStatsAllMatches() {
+        List<Match> allMatches = matchManager.getMatchAllMatchesLaLiga();
+        long countByGoals = matchManager.countByGoals(allMatches);
+        printer.printLine("The number of goals in the all matches of LaLiga is as follows: " + countByGoals);
     }
 
     private void premierLeague() {
@@ -97,11 +175,7 @@ public class MatchControl {
         printer.printLine("Scores of the first round");
         matchesFirstRound.forEach(System.out::println);
         List<Scoring> scoringFirstRound =  matchManager.createScoringUserChoiceFirstRound(matchesFirstRound, teams);
-        System.out.println("lista nie posortowana");
-        scoringFirstRound.forEach(System.out::println);
         Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
-        printer.printLine("Rysowanie mapy");
-        printer.printMap(scoringListMap);
         scoringFirstRound = matchManager.getKey(scoringListMap);
         scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
         scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
@@ -182,7 +256,7 @@ public class MatchControl {
         printer.printLine("");
         printer.printLine("All Matches");
         List<String> teams = matchManager.getTeamsUserChoice();
-        List<Match> allMatches = matchManager.joinFirstRoundAndRematches();
+        List<Match> allMatches = matchManager.joinFirstRoundAndRematchesUserChoice();
         allMatches.forEach(System.out::println);
         List<Scoring> scoringAllMatches = matchManager.createScoringUserChoiceAllMatches(allMatches, teams);
         Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringAllMatches);
@@ -227,6 +301,8 @@ public class MatchControl {
                 optionOk = true;
             } catch (NoSuchOptionException e) {
                 e.getMessage();
+            } catch (InputMismatchException e) {
+                printer.printLineError("Enter a digit, try again");
             }
         }
         return option;
