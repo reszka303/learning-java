@@ -1,6 +1,6 @@
 Arsenal London
 Aston Villa
-Brighton & Hove Albion
+Brighton & Albion
 Burnley Fc
 Chelsea London
 Crystal Palace
@@ -17,4 +17,4 @@ Southampton Fc
 Tottenham Hotspur
 West Bromwich Albion
 West Ham United
-Wolverhampton Wanderers
+Wolverhampton

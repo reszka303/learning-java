@@ -20,6 +20,11 @@ public class MatchControl {
     private MatchManager matchManager = new MatchManager();
     private FileManager fileManager = new CsvFileManager();
     private League league = new EuropeanLeague();
+//    private MatchManager matchManager;
+
+    public MatchControl() {
+//        matchManager = new MatchManager();
+    }
 
     void run() {
         controlLoop();
@@ -77,6 +82,15 @@ public class MatchControl {
         laLigaStatsAllMatches();
     }
 
+    private void premierLeague() {
+        premierLeagueFirstRound();
+        premierLeagueStatsFirstRound();
+        premierLeagueRematches();
+        premierLeagueStatsRematches();
+        allMatchesPremierLeague();
+        premierLeagueStatsAllMatches();
+    }
+
     private void chooseOnYourOwnTeamsTakingPartInCompetition() {
         userLeagueFirstRoundTable();
         userLeagueFirstRoundStats();
@@ -107,10 +121,37 @@ public class MatchControl {
         printer.printLine("");
     }
 
+    private void premierLeagueFirstRound() {
+        List<String> teams = league.premierLeague();
+        printer.printLine("");
+        printer.printLine("Teams taking part in the competition");
+        printer.printTeams(teams);
+        printer.printLine("");
+        List<Match> matchesFirstRound = matchManager.createFirstRoundPremierLeague(teams);
+        printer.printLine("__________________________________________________");
+        printer.printLine("Matches of the first round");
+        matchesFirstRound.forEach(System.out::println);
+        List<Scoring> scoringFirstRound =  matchManager.createScoringFirstRoundPremierLeague(matchesFirstRound, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
+        scoringFirstRound = matchManager.getKey(scoringListMap);
+        scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
+        scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
+        printer.printLine("");
+        printer.printLine("Table of the first round");
+        scoringFirstRound.forEach(System.out::println);
+        printer.printLine("");
+    }
+
     private void laLigaStatsFirstRound() {
         List<Match> matchesFirstRound = matchManager.getMatchFirstRoundLaLiga();
         long countByGoals = matchManager.countByGoals(matchesFirstRound);
         printer.printLine("The number of goals in the first round of LaLiga is as follows: " + countByGoals);
+    }
+
+    private void premierLeagueStatsFirstRound() {
+        List<Match> matchesFirstRound = matchManager.getMatchFirstRoundPremierLeague();
+        long countByGoals = matchManager.countByGoals(matchesFirstRound);
+        printer.printLine("The number of goals in the first round of Premier League is as follows: " + countByGoals);
     }
 
     private void laLigaRematches() {
@@ -118,10 +159,29 @@ public class MatchControl {
         printer.printLine("Rematches");
         List<String> teams = league.laLiga();
         printer.printLine("");
-        List<Match> rematchesLaLiga = matchManager.createRematchLaLiga(teams);
+        List<Match> rematchesLaLiga = matchManager.createRematchPremierLeague(teams);
         printer.printLine("Results of rematches");
         rematchesLaLiga.forEach(System.out::println);
         List<Scoring> scoringFirstRound =  matchManager.createScoringRematchLaLiga(rematchesLaLiga, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
+        scoringFirstRound = matchManager.getKey(scoringListMap);
+        scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
+        scoringFirstRound = matchManager.increasePosition(scoringFirstRound);
+        printer.printLine("");
+        printer.printLine("Table of the rematches");
+        scoringFirstRound.forEach(System.out::println);
+        printer.printLine("");
+    }
+
+    private void premierLeagueRematches() {
+        printer.printLine("__________________________________________________");
+        printer.printLine("Rematches");
+        List<String> teams = league.premierLeague();
+        printer.printLine("");
+        List<Match> rematchesPremierLeague = matchManager.createRematchPremierLeague(teams);
+        printer.printLine("Results of rematches");
+        rematchesPremierLeague.forEach(System.out::println);
+        List<Scoring> scoringFirstRound =  matchManager.createScoringRematchPremierLeague(rematchesPremierLeague, teams);
         Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringFirstRound);
         scoringFirstRound = matchManager.getKey(scoringListMap);
         scoringFirstRound = matchManager.sortByPointsAndGoals(scoringFirstRound);
@@ -136,6 +196,12 @@ public class MatchControl {
         List<Match> rematches = matchManager.getMatchRematchesLaLiga();
         long countByGoals = matchManager.countByGoals(rematches);
         printer.printLine("The number of goals in the rematches of LaLiga is as follows: " + countByGoals);
+    }
+
+    private void premierLeagueStatsRematches() {
+        List<Match> rematches = matchManager.getMatchRematchesPremierLeague();
+        long countByGoals = matchManager.countByGoals(rematches);
+        printer.printLine("The number of goals in the rematches of Premier League is as follows: " + countByGoals);
     }
 
     private void allMatchesLaLiga() {
@@ -154,14 +220,32 @@ public class MatchControl {
         scoringAllMatches.forEach(System.out::println);
     }
 
+    private void allMatchesPremierLeague() {
+        printer.printLine("__________________________________________________");
+        printer.printLine("All Matches");
+        List<String> teams = league.premierLeague();
+        List<Match> allMatches = matchManager.joinFirstRoundAndRematchesPremierLeague();
+//        allMatches.forEach(System.out::println);
+        List<Scoring> scoringAllMatches = matchManager.createScoringAllMatchesPremierLeague(allMatches, teams);
+        Map<Scoring, List<Scoring>> scoringListMap = matchManager.groupByName(scoringAllMatches);
+        scoringAllMatches = matchManager.getKey(scoringListMap);
+        scoringAllMatches = matchManager.sortByPointsAndGoals(scoringAllMatches);
+        scoringAllMatches = matchManager.increasePosition(scoringAllMatches);
+        printer.printLine("");
+        printer.printLine("Table all matches");
+        scoringAllMatches.forEach(System.out::println);
+    }
+
     private void laLigaStatsAllMatches() {
         List<Match> allMatches = matchManager.getMatchAllMatchesLaLiga();
         long countByGoals = matchManager.countByGoals(allMatches);
         printer.printLine("The number of goals in the all matches of LaLiga is as follows: " + countByGoals);
     }
 
-    private void premierLeague() {
-        printer.printLine("Premier League... work in progress");
+    private void premierLeagueStatsAllMatches() {
+        List<Match> allMatches = matchManager.getMatchAllMatchesPremierLeague();
+        long countByGoals = matchManager.countByGoals(allMatches);
+        printer.printLine("The number of goals in the all matches of Premier League is as follows: " + countByGoals);
     }
 
     private void userLeagueFirstRoundTable() {
@@ -206,7 +290,7 @@ public class MatchControl {
 
     private void userLeagueFirstRoundStats() {
         List<String> teams = matchManager.getTeamsUserChoice();
-        String team = matchManager.getTeamFirstRound(teams);
+        String team = matchManager.getTeamFirstRoundUserChoice(teams);
         List<Match> matchesFirstRoundUserChoice = matchManager.getMatchUserChoiceFirstRound();
         List<Match> matchesFirstRoundOneTeam = matchManager.sortByTeam(matchesFirstRoundUserChoice, team);
         long countByGoals = matchManager.countByGoals(matchesFirstRoundUserChoice);
@@ -230,7 +314,7 @@ public class MatchControl {
 
     private void userLeagueRematchesStats() {
         List<String> teams = matchManager.getTeamsUserChoice();
-        String team = matchManager.getTeamRematches(teams);
+        String team = matchManager.getTeamRematchesUserChoice(teams);
         List<Match> rematchesUserChoice = matchManager.getMatchUserChoiceRematch();
         List<Match> rematchesOneTeam = matchManager.sortByTeam(rematchesUserChoice, team);
         long countByGoals = matchManager.countByGoals(rematchesUserChoice);
@@ -270,7 +354,7 @@ public class MatchControl {
 
     private void userLeagueAllMatchesStats() {
         List<String> teams = matchManager.getTeamsUserChoice();
-        String team = matchManager.getTeamAllMatches(teams);
+        String team = matchManager.getTeamAllMatchesUserChoice(teams);
         List<Match> allMatchesUserChoice = matchManager.getMatchUserChoiceAllMatches();
         List<Match> allMatchesOneTeam = matchManager.sortByTeam(allMatchesUserChoice, team);
         long countByGoals = matchManager.countByGoals(allMatchesUserChoice);
