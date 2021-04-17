@@ -32,6 +32,7 @@ public class T10CapitalizeFirstLetterEveryWord {
         for (int i = 0; i < words.length; i++) {
             char[] word = words[i].toCharArray();
             word[0] = Character.toUpperCase(word[0]);
+//            word[0] = checkWord(word);
             if (i != 0) {
                 sb.append(" ");
             }
@@ -39,6 +40,24 @@ public class T10CapitalizeFirstLetterEveryWord {
         }
         return sb.toString();
     }
+
+//    private static char checkWord(char words) {
+//        boolean wordOk = false;
+//        char word = ' ';
+//        while (!wordOk) {
+//            try {
+//                if (word == '#') {
+//
+//                }
+//                wordOk = true;
+//            } catch (ArrayIndexOutOfBoundsException e) {
+//                System.err.println("Enter a suitable character, try again");
+//            } finally {
+//                input.nextLine();
+//            }
+//        }
+//
+//    }
 
     public static String capitalizeFirstLetterEveryWordBuilder(String letter){
         String[] words = letter.trim().split(SIGNS_TO_DELETE);

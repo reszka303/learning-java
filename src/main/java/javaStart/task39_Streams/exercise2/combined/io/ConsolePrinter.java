@@ -1,9 +1,9 @@
 package javaStart.task39_Streams.exercise2.combined.io;
 
-import javaStart.task39_Streams.exercise2.combined.model.Scoring;
+//import javaStart.task39_Streams.exercise2.combined.model.Scoring;
 
 import java.util.List;
-import java.util.Map;
+//import java.util.Map;
 
 public class ConsolePrinter {
     public void printTeams(List<String> teams) {
@@ -27,15 +27,15 @@ public class ConsolePrinter {
         }
     }
 
-    public void printMap(Map<Scoring, List<Scoring>> map) {
-        for (Map.Entry<Scoring, List<Scoring>> entry : map.entrySet()) {
-            printLine("" + entry.getKey());
-        }
-    }
-
-    public void printStandingsShortcuts() {
-        System.out.printf("%-5s %-20s %-3s %-3s %-3s %-3s\n", "Pos", "Team", "Pts", "GF", "GA", "GD");
-    }
+//    public void printMap(Map<Scoring, List<Scoring>> map) {
+//        for (Map.Entry<Scoring, List<Scoring>> entry : map.entrySet()) {
+//            printLine("" + entry.getKey());
+//        }
+//    }
+//
+//    public void printStandingsShortcuts() {
+//        System.out.printf("%-5s %-20s %-3s %-3s %-3s %-3s\n", "Pos", "Team", "Pts", "GF", "GA", "GD");
+//    }
 
     public String printStandingsShortcutsTable() {
         return String.format("%-5s %-20s %-3s %-3s %-3s %-3s\n", "Pos", "Team", "Pts", "GF", "GA", "GD");

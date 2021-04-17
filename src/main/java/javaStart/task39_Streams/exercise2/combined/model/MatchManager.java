@@ -14,14 +14,14 @@ public class MatchManager {
     private DataReader dataReader = new DataReader();
     //UserChoice's fields
     private List<String> teamsUserChoice = new ArrayList<>();
-    private List<Match> matchUserChoiceFirstRound = new ArrayList<>();
-    private List<Match> matchUserChoiceRematch = new ArrayList<>();
-    private List<Match> matchUserChoiceAllMatches = new ArrayList<>();
-    private List<Scoring> scoringUserChoiceFirstRound = new ArrayList<>();
-    private List<Scoring> scoringUserChoiceRematch = new ArrayList<>();
-    private List<Scoring> scoringUserChoiceAllMatches = new ArrayList<>();
-    private String teamUserChoiceFirstRound;
-    private String teamUserChoiceRematches;
+    private List<Match> matchFirstRoundUserChoice = new ArrayList<>();
+    private List<Match> matchRematchesUserChoice = new ArrayList<>();
+    private List<Match> matchAllMatchesUserChoice = new ArrayList<>();
+    private List<Scoring> scoringFirstRoundUserChoice = new ArrayList<>();
+    private List<Scoring> scoringRematchesUserChoice = new ArrayList<>();
+    private List<Scoring> scoringAllMatchesUserChoice = new ArrayList<>();
+    private String teamFirstRoundUserChoice;
+    private String teamRematchesUserChoice;
     private String teamUserChoiceAllMatches;
     //LaLiga's fields
     private List<Match> matchFirstRoundLaLiga = new ArrayList<>();
@@ -42,36 +42,36 @@ public class MatchManager {
         return teamsUserChoice;
     }
 
-    public List<Match> getMatchUserChoiceFirstRound() {
-        return matchUserChoiceFirstRound;
+    public List<Match> getMatchFirstRoundUserChoice() {
+        return matchFirstRoundUserChoice;
     }
 
-    public List<Match> getMatchUserChoiceRematch() {
-        return matchUserChoiceRematch;
+    public List<Match> getMatchRematchesUserChoice() {
+        return matchRematchesUserChoice;
     }
 
-    public List<Match> getMatchUserChoiceAllMatches() {
-        return matchUserChoiceAllMatches;
+    public List<Match> getMatchAllMatchesUserChoice() {
+        return matchAllMatchesUserChoice;
     }
 
-    public List<Scoring> getScoringUserChoiceFirstRound() {
-        return scoringUserChoiceFirstRound;
+    public List<Scoring> getScoringFirstRoundUserChoice() {
+        return scoringFirstRoundUserChoice;
     }
 
-    public List<Scoring> getScoringUserChoiceRematch() {
-        return scoringUserChoiceRematch;
+    public List<Scoring> getScoringRematchesUserChoice() {
+        return scoringRematchesUserChoice;
     }
 
-    public List<Scoring> getScoringUserChoiceAllMatches() {
-        return scoringUserChoiceAllMatches;
+    public List<Scoring> getScoringAllMatchesUserChoice() {
+        return scoringAllMatchesUserChoice;
     }
 
-    public String getTeamUserChoiceFirstRound() {
-        return teamUserChoiceFirstRound;
+    public String getTeamFirstRoundUserChoice() {
+        return teamFirstRoundUserChoice;
     }
 
-    public String getTeamUserChoiceRematches() {
-        return teamUserChoiceRematches;
+    public String getTeamRematchesUserChoice() {
+        return teamRematchesUserChoice;
     }
 
     public String getTeamUserChoiceAllMatches() {
@@ -154,23 +154,23 @@ public class MatchManager {
             for (int j = i + 1; j < teams.size(); j++) {
                 Match match = new Match(teams.get(i), teams.get(j),
                         random.nextInt(upperbound), random.nextInt(upperbound));
-                matchUserChoiceFirstRound.add(match);
+                matchFirstRoundUserChoice.add(match);
             }
         }
-        return matchUserChoiceFirstRound;
+        return matchFirstRoundUserChoice;
     }
 
-    public List<Match> createRematchUserChoice(List<String> teams) {
+    public List<Match> createRematchesUserChoice(List<String> teams) {
         Random random = new Random();
         int upperbound = 5;
         for (int i = 0; i < teams.size() - 1; i++) {
             for (int j = i + 1; j < teams.size(); j++) {
                 Match match = new Match(teams.get(j), teams.get(i),
                         random.nextInt(upperbound), random.nextInt(upperbound));
-                matchUserChoiceRematch.add(match);
+                matchRematchesUserChoice.add(match);
             }
         }
-        return matchUserChoiceRematch;
+        return matchRematchesUserChoice;
     }
 
     public List<Match> createFirstRoundLaLiga(List<String> teams) {
@@ -186,7 +186,7 @@ public class MatchManager {
         return matchFirstRoundLaLiga;
     }
 
-    public List<Match> createRematchLaLiga(List<String> teams) {
+    public List<Match> createRematchesLaLiga(List<String> teams) {
         Random random = new Random();
         int upperbound = 5;
         for (int i = 0; i < teams.size() - 1; i++) {
@@ -212,7 +212,7 @@ public class MatchManager {
         return matchFirstRoundPremierLeague;
     }
 
-    public List<Match> createRematchPremierLeague(List<String> teams) {
+    public List<Match> createRematchesPremierLeague(List<String> teams) {
         Random random = new Random();
         int upperbound = 5;
         for (int i = 0; i < teams.size() - 1; i++) {
@@ -225,85 +225,85 @@ public class MatchManager {
         return matchRematchesPremierLeague;
     }
 
-    public List<Scoring> createScoringUserChoiceFirstRound(List<Match> matches, List<String> teams) {
+    public List<Scoring> createScoringFirstRoundUserChoice(List<Match> matches, List<String> teams) {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    scoringUserChoiceFirstRound.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringFirstRoundUserChoice.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    scoringUserChoiceFirstRound.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringFirstRoundUserChoice.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    scoringUserChoiceFirstRound.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringFirstRoundUserChoice.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    scoringUserChoiceFirstRound.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringFirstRoundUserChoice.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    scoringUserChoiceFirstRound.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringFirstRoundUserChoice.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    scoringUserChoiceFirstRound.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringFirstRoundUserChoice.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 }
             }
         }
-        return scoringUserChoiceFirstRound;
+        return scoringFirstRoundUserChoice;
     }
 
-    public List<Scoring> createScoringUserChoiceRematch(List<Match> matches, List<String> teams) {
+    public List<Scoring> createScoringRematchesUserChoice(List<Match> matches, List<String> teams) {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    scoringUserChoiceRematch.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringRematchesUserChoice.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    scoringUserChoiceRematch.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringRematchesUserChoice.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    scoringUserChoiceRematch.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringRematchesUserChoice.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    scoringUserChoiceRematch.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringRematchesUserChoice.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    scoringUserChoiceRematch.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringRematchesUserChoice.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    scoringUserChoiceRematch.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringRematchesUserChoice.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 }
             }
         }
-        return scoringUserChoiceRematch;
+        return scoringRematchesUserChoice;
     }
 
     public List<Scoring> createScoringUserChoiceAllMatches(List<Match> matches, List<String> teams) {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    scoringUserChoiceAllMatches.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringAllMatchesUserChoice.add(new Scoring(1, team, 3, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    scoringUserChoiceAllMatches.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringAllMatchesUserChoice.add(new Scoring(1, team, 1, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    scoringUserChoiceAllMatches.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
+                    scoringAllMatchesUserChoice.add(new Scoring(1, team, 0, match.getHomeTeamGoal(), match.getAwayTeamGoal(),
                             match.getHomeTeamGoal() - match.getAwayTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
-                    scoringUserChoiceAllMatches.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringAllMatchesUserChoice.add(new Scoring(1, team, 0, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() == match.getAwayTeamGoal()) {
-                    scoringUserChoiceAllMatches.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringAllMatchesUserChoice.add(new Scoring(1, team, 1, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 } else if (team.equals(match.getAwayTeam()) && match.getHomeTeamGoal() < match.getAwayTeamGoal()) {
-                    scoringUserChoiceAllMatches.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
+                    scoringAllMatchesUserChoice.add(new Scoring(1, team, 3, match.getAwayTeamGoal(), match.getHomeTeamGoal(),
                             match.getAwayTeamGoal() - match.getHomeTeamGoal()));
                 }
             }
         }
-        return scoringUserChoiceAllMatches;
+        return scoringAllMatchesUserChoice;
     }
 
     public List<Scoring> createScoringFirstRoundLaLiga(List<Match> matches, List<String> teams) {
@@ -333,7 +333,7 @@ public class MatchManager {
         return scoringFirstRoundLaLiga;
     }
 
-    public List<Scoring> createScoringRematchLaLiga(List<Match> matches, List<String> teams) {
+    public List<Scoring> createScoringRematchesLaLiga(List<Match> matches, List<String> teams) {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
@@ -414,7 +414,7 @@ public class MatchManager {
         return scoringFirstRoundPremierLeague;
     }
 
-    public List<Scoring> createScoringRematchPremierLeague(List<Match> matches, List<String> teams) {
+    public List<Scoring> createScoringRematchesPremierLeague(List<Match> matches, List<String> teams) {
         for (String team : teams) {
             for (Match match : matches) {
                 if (team.equals(match.getHomeTeam()) && match.getHomeTeamGoal() > match.getAwayTeamGoal()) {
@@ -534,7 +534,7 @@ public class MatchManager {
     }
 
     public List<Match> joinFirstRoundAndRematchesUserChoice() {
-            return matchUserChoiceAllMatches = Stream.of(matchUserChoiceFirstRound, matchUserChoiceRematch)
+            return matchAllMatchesUserChoice = Stream.of(matchFirstRoundUserChoice, matchRematchesUserChoice)
                     .flatMap(Collection::stream)
                     .collect(Collectors.toList());
     }
@@ -553,15 +553,15 @@ public class MatchManager {
 
     public String getTeamFirstRoundUserChoice(List<String> teams) {
         boolean teamOk = false;
-        teamUserChoiceFirstRound = null;
+        teamFirstRoundUserChoice = null;
         int counter = 0;
         while (!teamOk) {
             try {
                 printer.printLine("Enter a name of a team to display its all matches");
-                teamUserChoiceFirstRound = dataReader.toLowerCase();
-                teamUserChoiceFirstRound = dataReader.capitalizeFirstLetterEverySingleWord(teamUserChoiceFirstRound);
+                teamFirstRoundUserChoice = dataReader.toLowerCase();
+                teamFirstRoundUserChoice = dataReader.capitalizeFirstLetterEverySingleWord(teamFirstRoundUserChoice);
                 for (String s : teams) {
-                    if (teamUserChoiceFirstRound.equals(s)) {
+                    if (teamFirstRoundUserChoice.equals(s)) {
                         counter++;
                     }
                 }
@@ -575,20 +575,20 @@ public class MatchManager {
                 e.getMessage();
             }
         }
-        return teamUserChoiceFirstRound;
+        return teamFirstRoundUserChoice;
     }
 
     public String getTeamRematchesUserChoice(List<String> teams) {
         boolean teamOk = false;
-        teamUserChoiceRematches = null;
+        teamRematchesUserChoice = null;
         int counter = 0;
         while (!teamOk) {
             try {
                 printer.printLine("Enter a name of a team to display its all matches");
-                teamUserChoiceRematches = dataReader.toLowerCase();
-                teamUserChoiceRematches = dataReader.capitalizeFirstLetterEverySingleWord(teamUserChoiceRematches);
+                teamRematchesUserChoice = dataReader.toLowerCase();
+                teamRematchesUserChoice = dataReader.capitalizeFirstLetterEverySingleWord(teamRematchesUserChoice);
                 for (String s : teams) {
-                    if (teamUserChoiceRematches.equals(s)) {
+                    if (teamRematchesUserChoice.equals(s)) {
                         counter++;
                     }
                 }
@@ -602,7 +602,7 @@ public class MatchManager {
                 e.getMessage();
             }
         }
-        return teamUserChoiceRematches;
+        return teamRematchesUserChoice;
     }
 
     public String getTeamAllMatchesUserChoice(List<String> teams) {

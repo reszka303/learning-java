@@ -10,7 +10,8 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class DataReader {
-    private static final String SIGNS_TO_DELETE = "[ ,.?!/'\\\\<>@#$%^&*()|+={};:~`-]+";
+    private static Scanner inputStatic = new Scanner(System.in);
+//    private static final String SIGNS_TO_DELETE = "[ ,.?!/'\\\\<>@#$%^&*()|+={};:~`-]+";
     private Scanner input = new Scanner(System.in);
     private ConsolePrinter printer = new ConsolePrinter();
 
@@ -46,14 +47,19 @@ public class DataReader {
     }
 
     public String createTeam() {
+        boolean nameOk = false;
+        String teamLetter = null;
         printer.printLine("Enter the name of team");
-        String teamLetter = input.nextLine();
-        teamLetter = capitalizeFirstLetterEverySingleWord(teamLetter);
-        try {
-            teamLetter = checkLength(teamLetter);
-        } catch (TeamNameLengthException e) {
-            e.getMessage();
-        }
+       while (!nameOk) {
+           try {
+               teamLetter = input.nextLine();
+               teamLetter = capitalizeFirstLetterEverySingleWord(teamLetter);
+               teamLetter = checkLength(teamLetter);
+               nameOk = true;
+           } catch (TeamNameLengthException e) {
+               e.getMessage();
+           }
+       }
         return teamLetter;
     }
 
@@ -66,18 +72,8 @@ public class DataReader {
         }
     }
 
-//    public String capitalizeFirstLetterEverySingleWord(String teamName) {
-//        String[] arr = teamName.split(SIGNS_TO_DELETE);
-//        var builder = new StringBuilder();
-//        for (int i = 0; i < arr.length; i++) {
-//            builder.append(Character.toUpperCase(arr[i].charAt(0)))
-//                    .append(arr[i].substring(1)).append(" ");
-//        }
-//        return builder.toString().trim();
-//    }
-
     public String capitalizeFirstLetterEverySingleWord(String teamName) {
-        return Arrays.stream(teamName.trim().split(SIGNS_TO_DELETE))
+        return Arrays.stream(teamName.trim().split(" "))
                 .map(String::toCharArray)
                 .peek(DataReader::getUpperCaseFirstLetter)
                 .map(String::valueOf)
@@ -85,11 +81,7 @@ public class DataReader {
     }
 
     private static void getUpperCaseFirstLetter(char[] array) {
-//        try {
-            array[0] = Character.toUpperCase(array[0]);
-//        } catch (ArrayIndexOutOfBoundsException e) {
-//            System.err.println("Enter a suitable character, try again");
-//        }
+        array[0] = Character.toUpperCase(array[0]);
     }
 
     public int getInt() {
