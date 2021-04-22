@@ -1,0 +1,1021 @@
+Teams taking part in the competition:
+Polska, Włochy, Hiszpania, Niemcy
+
+Results of the first round:
+Polska - Włochy (2:0)
+Polska - Hiszpania (4:1)
+Polska - Niemcy (2:3)
+Włochy - Hiszpania (0:0)
+Włochy - Niemcy (2:0)
+Hiszpania - Niemcy (0:3)
+
+The table of the first round:
+Pos   Team                 Pts GF  GA  GD 
+1.    Polska               6   8   4   4  
+2.    Niemcy               6   6   4   2  
+3.    Włochy               4   2   2   0  
+4.    Hiszpania            1   1   7   -6 
+
+Results of the rematches:
+Włochy - Polska (3:2)
+Hiszpania - Polska (1:3)
+Niemcy - Polska (0:4)
+Hiszpania - Włochy (4:1)
+Niemcy - Włochy (1:1)
+Niemcy - Hiszpania (1:4)
+
+The table of the rematches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Polska               6   9   4   5  
+2.    Hiszpania            6   9   5   4  
+3.    Włochy               4   5   7   -2 
+4.    Niemcy               1   2   9   -7 
+
+Results of the all matches:
+Polska - Włochy (2:0)
+Polska - Hiszpania (4:1)
+Polska - Niemcy (2:3)
+Włochy - Hiszpania (0:0)
+Włochy - Niemcy (2:0)
+Hiszpania - Niemcy (0:3)
+Włochy - Polska (3:2)
+Hiszpania - Polska (1:3)
+Niemcy - Polska (0:4)
+Hiszpania - Włochy (4:1)
+Niemcy - Włochy (1:1)
+Niemcy - Hiszpania (1:4)
+
+The table of the all matches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Polska               12  17  8   9  
+2.    Włochy               8   7   9   -2 
+3.    Hiszpania            7   10  12  -2 
+4.    Niemcy               7   8   13  -5 
+
+Statistics
+Number of teams in the competition: 4
+
+Number of goals in the competition by the first round: 17
+
+Number of goals in the competition by the rematches: 25
+
+The competition goals in all rounds: 42
+
+Sorted matches from win to loss by all matches
+Polska - Hiszpania (4:1)
+Hiszpania - Włochy (4:1)
+Włochy - Polska (3:2)
+Polska - Włochy (2:0)
+Włochy - Niemcy (2:0)
+Niemcy - Włochy (1:1)
+Włochy - Hiszpania (0:0)
+Polska - Niemcy (2:3)
+Hiszpania - Niemcy (0:3)
+Hiszpania - Polska (1:3)
+Niemcy - Polska (0:4)
+Niemcy - Hiszpania (1:4)
+
+First round of the following single team: Polska
+Polska - Włochy (2:0)
+Polska - Hiszpania (4:1)
+Polska - Niemcy (2:3)
+
+
+Rematches of the following single team: Niemcy
+Niemcy - Polska (0:4)
+Niemcy - Włochy (1:1)
+Niemcy - Hiszpania (1:4)
+
+
+All matches of the following single team: Hiszpania
+Polska - Hiszpania (4:1)
+Włochy - Hiszpania (0:0)
+Hiszpania - Niemcy (0:3)
+Hiszpania - Polska (1:3)
+Hiszpania - Włochy (4:1)
+Niemcy - Hiszpania (1:4)
+
+Teams taking part in the competition:
+Alavés, Athletic Club, Atlético Madrid, Barcelona, Cádiz, Celta Vigo, Eibar, Elche, Getafe, Granada, Huesca, Levante, Osasuna, Real Betis, Real Madrid, Real Sociedad, Sevilla, Valencia, Valladolid, Villarreal
+
+Results of the first round:
+Alavés - Athletic Club (1:0)
+Alavés - Atlético Madrid (2:1)
+Alavés - Barcelona (1:2)
+Alavés - Cádiz (2:4)
+Alavés - Celta Vigo (2:4)
+Alavés - Eibar (3:3)
+Alavés - Elche (3:4)
+Alavés - Getafe (1:1)
+Alavés - Granada (4:2)
+Alavés - Huesca (0:3)
+Alavés - Levante (3:4)
+Alavés - Osasuna (3:2)
+Alavés - Real Betis (0:1)
+Alavés - Real Madrid (0:2)
+Alavés - Real Sociedad (4:4)
+Alavés - Sevilla (0:3)
+Alavés - Valencia (2:1)
+Alavés - Valladolid (1:4)
+Alavés - Villarreal (2:1)
+Athletic Club - Atlético Madrid (2:1)
+Athletic Club - Barcelona (1:4)
+Athletic Club - Cádiz (1:3)
+Athletic Club - Celta Vigo (0:1)
+Athletic Club - Eibar (0:2)
+Athletic Club - Elche (2:0)
+Athletic Club - Getafe (2:1)
+Athletic Club - Granada (4:0)
+Athletic Club - Huesca (2:4)
+Athletic Club - Levante (1:0)
+Athletic Club - Osasuna (1:2)
+Athletic Club - Real Betis (4:3)
+Athletic Club - Real Madrid (2:4)
+Athletic Club - Real Sociedad (4:1)
+Athletic Club - Sevilla (4:3)
+Athletic Club - Valencia (3:1)
+Athletic Club - Valladolid (1:2)
+Athletic Club - Villarreal (1:0)
+Atlético Madrid - Barcelona (1:0)
+Atlético Madrid - Cádiz (2:1)
+Atlético Madrid - Celta Vigo (2:4)
+Atlético Madrid - Eibar (0:4)
+Atlético Madrid - Elche (4:1)
+Atlético Madrid - Getafe (2:2)
+Atlético Madrid - Granada (3:4)
+Atlético Madrid - Huesca (3:3)
+Atlético Madrid - Levante (2:3)
+Atlético Madrid - Osasuna (4:2)
+Atlético Madrid - Real Betis (0:3)
+Atlético Madrid - Real Madrid (3:0)
+Atlético Madrid - Real Sociedad (2:4)
+Atlético Madrid - Sevilla (4:2)
+Atlético Madrid - Valencia (1:0)
+Atlético Madrid - Valladolid (4:4)
+Atlético Madrid - Villarreal (2:0)
+Barcelona - Cádiz (4:3)
+Barcelona - Celta Vigo (0:2)
+Barcelona - Eibar (2:2)
+Barcelona - Elche (3:0)
+Barcelona - Getafe (1:2)
+Barcelona - Granada (4:3)
+Barcelona - Huesca (4:2)
+Barcelona - Levante (1:4)
+Barcelona - Osasuna (0:1)
+Barcelona - Real Betis (3:3)
+Barcelona - Real Madrid (1:3)
+Barcelona - Real Sociedad (4:2)
+Barcelona - Sevilla (3:0)
+Barcelona - Valencia (2:4)
+Barcelona - Valladolid (2:4)
+Barcelona - Villarreal (1:1)
+Cádiz - Celta Vigo (2:3)
+Cádiz - Eibar (2:0)
+Cádiz - Elche (2:4)
+Cádiz - Getafe (0:3)
+Cádiz - Granada (3:0)
+Cádiz - Huesca (1:1)
+Cádiz - Levante (1:2)
+Cádiz - Osasuna (3:1)
+Cádiz - Real Betis (2:2)
+Cádiz - Real Madrid (3:4)
+Cádiz - Real Sociedad (2:4)
+Cádiz - Sevilla (3:0)
+Cádiz - Valencia (2:1)
+Cádiz - Valladolid (2:2)
+Cádiz - Villarreal (1:0)
+Celta Vigo - Eibar (4:0)
+Celta Vigo - Elche (4:1)
+Celta Vigo - Getafe (3:1)
+Celta Vigo - Granada (0:0)
+Celta Vigo - Huesca (2:4)
+Celta Vigo - Levante (3:1)
+Celta Vigo - Osasuna (4:3)
+Celta Vigo - Real Betis (2:0)
+Celta Vigo - Real Madrid (3:3)
+Celta Vigo - Real Sociedad (1:4)
+Celta Vigo - Sevilla (1:0)
+Celta Vigo - Valencia (3:4)
+Celta Vigo - Valladolid (1:0)
+Celta Vigo - Villarreal (3:2)
+Eibar - Elche (3:1)
+Eibar - Getafe (2:3)
+Eibar - Granada (1:3)
+Eibar - Huesca (4:4)
+Eibar - Levante (4:2)
+Eibar - Osasuna (2:4)
+Eibar - Real Betis (4:1)
+Eibar - Real Madrid (2:1)
+Eibar - Real Sociedad (1:0)
+Eibar - Sevilla (3:3)
+Eibar - Valencia (1:4)
+Eibar - Valladolid (1:4)
+Eibar - Villarreal (2:4)
+Elche - Getafe (0:2)
+Elche - Granada (0:1)
+Elche - Huesca (0:4)
+Elche - Levante (2:3)
+Elche - Osasuna (3:3)
+Elche - Real Betis (3:2)
+Elche - Real Madrid (2:1)
+Elche - Real Sociedad (3:1)
+Elche - Sevilla (4:1)
+Elche - Valencia (4:0)
+Elche - Valladolid (2:3)
+Elche - Villarreal (3:0)
+Getafe - Granada (0:2)
+Getafe - Huesca (2:3)
+Getafe - Levante (1:2)
+Getafe - Osasuna (3:3)
+Getafe - Real Betis (3:0)
+Getafe - Real Madrid (3:3)
+Getafe - Real Sociedad (1:3)
+Getafe - Sevilla (4:0)
+Getafe - Valencia (2:4)
+Getafe - Valladolid (2:0)
+Getafe - Villarreal (3:0)
+Granada - Huesca (2:3)
+Granada - Levante (3:1)
+Granada - Osasuna (3:3)
+Granada - Real Betis (0:3)
+Granada - Real Madrid (2:0)
+Granada - Real Sociedad (0:4)
+Granada - Sevilla (4:3)
+Granada - Valencia (2:0)
+Granada - Valladolid (3:0)
+Granada - Villarreal (1:1)
+Huesca - Levante (0:1)
+Huesca - Osasuna (0:4)
+Huesca - Real Betis (4:4)
+Huesca - Real Madrid (1:4)
+Huesca - Real Sociedad (3:2)
+Huesca - Sevilla (0:0)
+Huesca - Valencia (2:2)
+Huesca - Valladolid (1:3)
+Huesca - Villarreal (2:3)
+Levante - Osasuna (1:3)
+Levante - Real Betis (3:4)
+Levante - Real Madrid (0:2)
+Levante - Real Sociedad (1:2)
+Levante - Sevilla (4:1)
+Levante - Valencia (4:0)
+Levante - Valladolid (1:3)
+Levante - Villarreal (4:2)
+Osasuna - Real Betis (1:1)
+Osasuna - Real Madrid (3:3)
+Osasuna - Real Sociedad (4:4)
+Osasuna - Sevilla (3:0)
+Osasuna - Valencia (1:1)
+Osasuna - Valladolid (3:3)
+Osasuna - Villarreal (1:4)
+Real Betis - Real Madrid (1:0)
+Real Betis - Real Sociedad (2:3)
+Real Betis - Sevilla (0:1)
+Real Betis - Valencia (4:0)
+Real Betis - Valladolid (0:3)
+Real Betis - Villarreal (2:2)
+Real Madrid - Real Sociedad (2:4)
+Real Madrid - Sevilla (3:1)
+Real Madrid - Valencia (0:3)
+Real Madrid - Valladolid (0:3)
+Real Madrid - Villarreal (4:2)
+Real Sociedad - Sevilla (2:4)
+Real Sociedad - Valencia (1:2)
+Real Sociedad - Valladolid (4:4)
+Real Sociedad - Villarreal (1:3)
+Sevilla - Valencia (2:0)
+Sevilla - Valladolid (4:0)
+Sevilla - Villarreal (2:4)
+Valencia - Valladolid (4:0)
+Valencia - Villarreal (3:2)
+Valladolid - Villarreal (1:4)
+
+The table of the first round:
+Pos   Team                 Pts GF  GA  GD 
+1.    Celta Vigo           44  48  29  19 
+2.    Valladolid           31  43  40  3  
+3.    Levante              30  41  38  3  
+4.    Athletic Club        30  35  33  2  
+5.    Granada              30  35  37  -2 
+6.    Getafe               28  39  31  8  
+7.    Real Sociedad        27  50  47  3  
+8.    Huesca               27  44  43  1  
+9.    Barcelona            27  41  39  2  
+10.   Atlético Madrid      27  41  41  0  
+11.   Cádiz                27  40  36  4  
+12.   Real Madrid          27  39  39  0  
+13.   Osasuna              26  47  43  4  
+14.   Valencia             26  34  38  -4 
+15.   Eibar                25  41  45  -4 
+16.   Elche                25  37  42  -5 
+17.   Real Betis           23  36  38  -2 
+18.   Villarreal           21  35  39  -4 
+19.   Alavés               21  34  46  -12
+20.   Sevilla              17  30  46  -16
+
+Results of the rematches:
+Athletic Club - Alavés (2:3)
+Atlético Madrid - Alavés (1:1)
+Barcelona - Alavés (3:3)
+Cádiz - Alavés (0:0)
+Celta Vigo - Alavés (3:3)
+Eibar - Alavés (0:3)
+Elche - Alavés (1:0)
+Getafe - Alavés (0:4)
+Granada - Alavés (3:2)
+Huesca - Alavés (3:0)
+Levante - Alavés (4:2)
+Osasuna - Alavés (1:0)
+Real Betis - Alavés (1:0)
+Real Madrid - Alavés (3:2)
+Real Sociedad - Alavés (1:3)
+Sevilla - Alavés (1:1)
+Valencia - Alavés (3:2)
+Valladolid - Alavés (3:3)
+Villarreal - Alavés (4:1)
+Atlético Madrid - Athletic Club (3:1)
+Barcelona - Athletic Club (1:1)
+Cádiz - Athletic Club (3:2)
+Celta Vigo - Athletic Club (2:4)
+Eibar - Athletic Club (1:2)
+Elche - Athletic Club (4:2)
+Getafe - Athletic Club (2:2)
+Granada - Athletic Club (4:4)
+Huesca - Athletic Club (0:4)
+Levante - Athletic Club (0:4)
+Osasuna - Athletic Club (2:3)
+Real Betis - Athletic Club (3:3)
+Real Madrid - Athletic Club (1:1)
+Real Sociedad - Athletic Club (3:1)
+Sevilla - Athletic Club (2:3)
+Valencia - Athletic Club (3:2)
+Valladolid - Athletic Club (0:2)
+Villarreal - Athletic Club (4:1)
+Barcelona - Atlético Madrid (0:2)
+Cádiz - Atlético Madrid (2:2)
+Celta Vigo - Atlético Madrid (2:0)
+Eibar - Atlético Madrid (3:1)
+Elche - Atlético Madrid (0:3)
+Getafe - Atlético Madrid (0:0)
+Granada - Atlético Madrid (2:0)
+Huesca - Atlético Madrid (1:2)
+Levante - Atlético Madrid (4:2)
+Osasuna - Atlético Madrid (0:0)
+Real Betis - Atlético Madrid (3:4)
+Real Madrid - Atlético Madrid (1:0)
+Real Sociedad - Atlético Madrid (3:3)
+Sevilla - Atlético Madrid (3:4)
+Valencia - Atlético Madrid (0:2)
+Valladolid - Atlético Madrid (1:0)
+Villarreal - Atlético Madrid (0:1)
+Cádiz - Barcelona (1:2)
+Celta Vigo - Barcelona (4:0)
+Eibar - Barcelona (4:4)
+Elche - Barcelona (4:3)
+Getafe - Barcelona (4:0)
+Granada - Barcelona (4:2)
+Huesca - Barcelona (0:2)
+Levante - Barcelona (4:4)
+Osasuna - Barcelona (3:0)
+Real Betis - Barcelona (0:2)
+Real Madrid - Barcelona (0:3)
+Real Sociedad - Barcelona (1:4)
+Sevilla - Barcelona (4:1)
+Valencia - Barcelona (2:3)
+Valladolid - Barcelona (3:3)
+Villarreal - Barcelona (0:0)
+Celta Vigo - Cádiz (2:4)
+Eibar - Cádiz (1:3)
+Elche - Cádiz (2:0)
+Getafe - Cádiz (2:0)
+Granada - Cádiz (2:3)
+Huesca - Cádiz (2:2)
+Levante - Cádiz (4:2)
+Osasuna - Cádiz (0:3)
+Real Betis - Cádiz (3:0)
+Real Madrid - Cádiz (2:1)
+Real Sociedad - Cádiz (4:1)
+Sevilla - Cádiz (3:0)
+Valencia - Cádiz (1:2)
+Valladolid - Cádiz (1:3)
+Villarreal - Cádiz (2:2)
+Eibar - Celta Vigo (4:0)
+Elche - Celta Vigo (3:2)
+Getafe - Celta Vigo (1:0)
+Granada - Celta Vigo (2:3)
+Huesca - Celta Vigo (2:2)
+Levante - Celta Vigo (4:3)
+Osasuna - Celta Vigo (3:0)
+Real Betis - Celta Vigo (1:3)
+Real Madrid - Celta Vigo (1:1)
+Real Sociedad - Celta Vigo (2:1)
+Sevilla - Celta Vigo (2:1)
+Valencia - Celta Vigo (1:2)
+Valladolid - Celta Vigo (1:0)
+Villarreal - Celta Vigo (4:1)
+Elche - Eibar (2:0)
+Getafe - Eibar (0:0)
+Granada - Eibar (0:0)
+Huesca - Eibar (4:3)
+Levante - Eibar (4:0)
+Osasuna - Eibar (1:4)
+Real Betis - Eibar (4:4)
+Real Madrid - Eibar (1:4)
+Real Sociedad - Eibar (4:0)
+Sevilla - Eibar (1:2)
+Valencia - Eibar (1:1)
+Valladolid - Eibar (2:1)
+Villarreal - Eibar (3:4)
+Getafe - Elche (0:0)
+Granada - Elche (1:2)
+Huesca - Elche (0:4)
+Levante - Elche (3:1)
+Osasuna - Elche (1:0)
+Real Betis - Elche (4:3)
+Real Madrid - Elche (0:2)
+Real Sociedad - Elche (3:4)
+Sevilla - Elche (1:1)
+Valencia - Elche (4:3)
+Valladolid - Elche (0:4)
+Villarreal - Elche (2:4)
+Granada - Getafe (3:4)
+Huesca - Getafe (1:0)
+Levante - Getafe (1:4)
+Osasuna - Getafe (0:2)
+Real Betis - Getafe (2:1)
+Real Madrid - Getafe (2:2)
+Real Sociedad - Getafe (1:0)
+Sevilla - Getafe (2:0)
+Valencia - Getafe (2:4)
+Valladolid - Getafe (3:0)
+Villarreal - Getafe (3:3)
+Huesca - Granada (3:3)
+Levante - Granada (0:4)
+Osasuna - Granada (4:0)
+Real Betis - Granada (3:3)
+Real Madrid - Granada (3:4)
+Real Sociedad - Granada (3:4)
+Sevilla - Granada (2:3)
+Valencia - Granada (3:3)
+Valladolid - Granada (3:2)
+Villarreal - Granada (4:1)
+Levante - Huesca (3:3)
+Osasuna - Huesca (2:0)
+Real Betis - Huesca (0:2)
+Real Madrid - Huesca (4:2)
+Real Sociedad - Huesca (2:0)
+Sevilla - Huesca (3:3)
+Valencia - Huesca (0:3)
+Valladolid - Huesca (1:4)
+Villarreal - Huesca (0:2)
+Osasuna - Levante (3:4)
+Real Betis - Levante (1:3)
+Real Madrid - Levante (4:1)
+Real Sociedad - Levante (3:3)
+Sevilla - Levante (3:4)
+Valencia - Levante (0:0)
+Valladolid - Levante (4:4)
+Villarreal - Levante (2:2)
+Real Betis - Osasuna (1:3)
+Real Madrid - Osasuna (2:0)
+Real Sociedad - Osasuna (1:4)
+Sevilla - Osasuna (3:0)
+Valencia - Osasuna (2:1)
+Valladolid - Osasuna (2:2)
+Villarreal - Osasuna (2:4)
+Real Madrid - Real Betis (2:0)
+Real Sociedad - Real Betis (1:3)
+Sevilla - Real Betis (0:3)
+Valencia - Real Betis (1:2)
+Valladolid - Real Betis (2:3)
+Villarreal - Real Betis (1:1)
+Real Sociedad - Real Madrid (3:4)
+Sevilla - Real Madrid (3:1)
+Valencia - Real Madrid (0:3)
+Valladolid - Real Madrid (3:1)
+Villarreal - Real Madrid (4:2)
+Sevilla - Real Sociedad (1:3)
+Valencia - Real Sociedad (1:2)
+Valladolid - Real Sociedad (0:2)
+Villarreal - Real Sociedad (3:3)
+Valencia - Sevilla (4:3)
+Valladolid - Sevilla (0:2)
+Villarreal - Sevilla (4:4)
+Valladolid - Valencia (0:0)
+Villarreal - Valencia (0:3)
+Villarreal - Valladolid (1:1)
+
+The table of the rematches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Elche                38  44  29  15 
+2.    Levante              33  52  49  3  
+3.    Real Sociedad        30  45  40  5  
+4.    Real Madrid          30  37  36  1  
+5.    Osasuna              29  34  29  5  
+6.    Atlético Madrid      29  30  27  3  
+7.    Real Betis           28  38  38  0  
+8.    Getafe               27  29  26  3  
+9.    Granada              26  48  48  0  
+10.   Athletic Club        26  44  41  3  
+11.   Huesca               26  35  37  -2 
+12.   Sevilla              25  43  38  5  
+13.   Cádiz                25  32  37  -5 
+14.   Barcelona            24  37  44  -7 
+15.   Valladolid           24  30  37  -7 
+16.   Villarreal           23  43  40  3  
+17.   Eibar                23  36  40  -4 
+18.   Valencia             22  31  38  -7 
+19.   Alavés               18  33  37  -4 
+20.   Celta Vigo           18  32  42  -10
+
+The table of the all matches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Levante              63  93  87  6  
+2.    Elche                63  81  71  10 
+3.    Celta Vigo           62  80  71  9  
+4.    Real Sociedad        57  95  87  8  
+5.    Real Madrid          57  76  75  1  
+6.    Granada              56  83  85  -2 
+7.    Athletic Club        56  79  74  5  
+8.    Atlético Madrid      56  71  68  3  
+9.    Osasuna              55  81  72  9  
+10.   Valladolid           55  73  77  -4 
+11.   Getafe               55  68  57  11 
+12.   Huesca               53  79  80  -1 
+13.   Cádiz                52  72  73  -1 
+14.   Barcelona            51  78  83  -5 
+15.   Real Betis           51  74  76  -2 
+16.   Eibar                48  77  85  -8 
+17.   Valencia             48  65  76  -11
+18.   Villarreal           44  78  79  -1 
+19.   Sevilla              42  73  84  -11
+20.   Alavés               39  67  83  -16
+
+La Liga goals in first round: 790
+
+La Liga goals in rematches: 753
+
+La Liga goals in all matches: 1543
+
+Teams taking part in the competition:
+Arsenal London, Aston Villa, Brighton & Albion, Burnley Fc, Chelsea London, Crystal Palace, Everton Fc, Fulham London, Leeds United, Leicester City, Liverpool Fc, Manchester City, Manchester United, Newcastle United, Sheffield United, Southampton Fc, Tottenham Hotspur, West Bromwich Albion, West Ham United, Wolverhampton
+
+Results of the first round:
+Arsenal London - Aston Villa (0:4)
+Arsenal London - Brighton & Albion (0:1)
+Arsenal London - Burnley Fc (4:2)
+Arsenal London - Chelsea London (1:0)
+Arsenal London - Crystal Palace (3:2)
+Arsenal London - Everton Fc (4:1)
+Arsenal London - Fulham London (1:4)
+Arsenal London - Leeds United (4:4)
+Arsenal London - Leicester City (1:3)
+Arsenal London - Liverpool Fc (2:1)
+Arsenal London - Manchester City (3:3)
+Arsenal London - Manchester United (0:3)
+Arsenal London - Newcastle United (2:4)
+Arsenal London - Sheffield United (3:3)
+Arsenal London - Southampton Fc (4:2)
+Arsenal London - Tottenham Hotspur (2:2)
+Arsenal London - West Bromwich Albion (1:1)
+Arsenal London - West Ham United (0:2)
+Arsenal London - Wolverhampton (4:2)
+Aston Villa - Brighton & Albion (4:1)
+Aston Villa - Burnley Fc (0:1)
+Aston Villa - Chelsea London (3:4)
+Aston Villa - Crystal Palace (1:0)
+Aston Villa - Everton Fc (1:3)
+Aston Villa - Fulham London (0:3)
+Aston Villa - Leeds United (4:4)
+Aston Villa - Leicester City (4:4)
+Aston Villa - Liverpool Fc (4:1)
+Aston Villa - Manchester City (4:2)
+Aston Villa - Manchester United (1:1)
+Aston Villa - Newcastle United (4:1)
+Aston Villa - Sheffield United (4:3)
+Aston Villa - Southampton Fc (1:2)
+Aston Villa - Tottenham Hotspur (4:0)
+Aston Villa - West Bromwich Albion (3:1)
+Aston Villa - West Ham United (1:1)
+Aston Villa - Wolverhampton (0:2)
+Brighton & Albion - Burnley Fc (4:0)
+Brighton & Albion - Chelsea London (4:1)
+Brighton & Albion - Crystal Palace (3:0)
+Brighton & Albion - Everton Fc (2:4)
+Brighton & Albion - Fulham London (1:1)
+Brighton & Albion - Leeds United (4:1)
+Brighton & Albion - Leicester City (2:4)
+Brighton & Albion - Liverpool Fc (2:2)
+Brighton & Albion - Manchester City (0:0)
+Brighton & Albion - Manchester United (1:0)
+Brighton & Albion - Newcastle United (0:0)
+Brighton & Albion - Sheffield United (2:1)
+Brighton & Albion - Southampton Fc (4:4)
+Brighton & Albion - Tottenham Hotspur (4:0)
+Brighton & Albion - West Bromwich Albion (0:3)
+Brighton & Albion - West Ham United (0:1)
+Brighton & Albion - Wolverhampton (2:2)
+Burnley Fc - Chelsea London (1:4)
+Burnley Fc - Crystal Palace (2:0)
+Burnley Fc - Everton Fc (0:0)
+Burnley Fc - Fulham London (2:1)
+Burnley Fc - Leeds United (4:2)
+Burnley Fc - Leicester City (0:0)
+Burnley Fc - Liverpool Fc (0:0)
+Burnley Fc - Manchester City (0:3)
+Burnley Fc - Manchester United (2:2)
+Burnley Fc - Newcastle United (0:3)
+Burnley Fc - Sheffield United (4:4)
+Burnley Fc - Southampton Fc (3:1)
+Burnley Fc - Tottenham Hotspur (1:0)
+Burnley Fc - West Bromwich Albion (4:4)
+Burnley Fc - West Ham United (1:2)
+Burnley Fc - Wolverhampton (3:1)
+Chelsea London - Crystal Palace (4:3)
+Chelsea London - Everton Fc (3:2)
+Chelsea London - Fulham London (2:1)
+Chelsea London - Leeds United (3:2)
+Chelsea London - Leicester City (1:2)
+Chelsea London - Liverpool Fc (4:4)
+Chelsea London - Manchester City (4:0)
+Chelsea London - Manchester United (2:1)
+Chelsea London - Newcastle United (4:4)
+Chelsea London - Sheffield United (2:4)
+Chelsea London - Southampton Fc (2:2)
+Chelsea London - Tottenham Hotspur (1:4)
+Chelsea London - West Bromwich Albion (2:2)
+Chelsea London - West Ham United (0:3)
+Chelsea London - Wolverhampton (0:2)
+Crystal Palace - Everton Fc (2:0)
+Crystal Palace - Fulham London (2:0)
+Crystal Palace - Leeds United (1:2)
+Crystal Palace - Leicester City (0:2)
+Crystal Palace - Liverpool Fc (1:2)
+Crystal Palace - Manchester City (4:4)
+Crystal Palace - Manchester United (0:3)
+Crystal Palace - Newcastle United (4:3)
+Crystal Palace - Sheffield United (0:3)
+Crystal Palace - Southampton Fc (2:0)
+Crystal Palace - Tottenham Hotspur (1:3)
+Crystal Palace - West Bromwich Albion (1:4)
+Crystal Palace - West Ham United (2:1)
+Crystal Palace - Wolverhampton (0:3)
+Everton Fc - Fulham London (3:4)
+Everton Fc - Leeds United (0:2)
+Everton Fc - Leicester City (4:2)
+Everton Fc - Liverpool Fc (2:0)
+Everton Fc - Manchester City (4:1)
+Everton Fc - Manchester United (0:1)
+Everton Fc - Newcastle United (4:3)
+Everton Fc - Sheffield United (0:3)
+Everton Fc - Southampton Fc (0:4)
+Everton Fc - Tottenham Hotspur (2:4)
+Everton Fc - West Bromwich Albion (1:4)
+Everton Fc - West Ham United (4:2)
+Everton Fc - Wolverhampton (4:1)
+Fulham London - Leeds United (2:2)
+Fulham London - Leicester City (3:3)
+Fulham London - Liverpool Fc (2:0)
+Fulham London - Manchester City (1:0)
+Fulham London - Manchester United (0:4)
+Fulham London - Newcastle United (1:4)
+Fulham London - Sheffield United (0:0)
+Fulham London - Southampton Fc (2:4)
+Fulham London - Tottenham Hotspur (2:3)
+Fulham London - West Bromwich Albion (0:2)
+Fulham London - West Ham United (1:0)
+Fulham London - Wolverhampton (0:4)
+Leeds United - Leicester City (0:2)
+Leeds United - Liverpool Fc (2:2)
+Leeds United - Manchester City (0:1)
+Leeds United - Manchester United (3:0)
+Leeds United - Newcastle United (4:0)
+Leeds United - Sheffield United (0:3)
+Leeds United - Southampton Fc (3:4)
+Leeds United - Tottenham Hotspur (2:3)
+Leeds United - West Bromwich Albion (2:2)
+Leeds United - West Ham United (4:3)
+Leeds United - Wolverhampton (4:1)
+Leicester City - Liverpool Fc (3:3)
+Leicester City - Manchester City (3:4)
+Leicester City - Manchester United (2:4)
+Leicester City - Newcastle United (2:1)
+Leicester City - Sheffield United (4:0)
+Leicester City - Southampton Fc (0:2)
+Leicester City - Tottenham Hotspur (2:3)
+Leicester City - West Bromwich Albion (0:2)
+Leicester City - West Ham United (4:4)
+Leicester City - Wolverhampton (3:4)
+Liverpool Fc - Manchester City (2:1)
+Liverpool Fc - Manchester United (1:2)
+Liverpool Fc - Newcastle United (0:3)
+Liverpool Fc - Sheffield United (1:3)
+Liverpool Fc - Southampton Fc (2:3)
+Liverpool Fc - Tottenham Hotspur (0:3)
+Liverpool Fc - West Bromwich Albion (2:2)
+Liverpool Fc - West Ham United (0:2)
+Liverpool Fc - Wolverhampton (3:4)
+Manchester City - Manchester United (2:0)
+Manchester City - Newcastle United (3:0)
+Manchester City - Sheffield United (0:1)
+Manchester City - Southampton Fc (2:4)
+Manchester City - Tottenham Hotspur (0:4)
+Manchester City - West Bromwich Albion (2:0)
+Manchester City - West Ham United (3:0)
+Manchester City - Wolverhampton (3:3)
+Manchester United - Newcastle United (1:0)
+Manchester United - Sheffield United (2:2)
+Manchester United - Southampton Fc (0:2)
+Manchester United - Tottenham Hotspur (3:3)
+Manchester United - West Bromwich Albion (3:3)
+Manchester United - West Ham United (1:2)
+Manchester United - Wolverhampton (4:0)
+Newcastle United - Sheffield United (0:3)
+Newcastle United - Southampton Fc (1:3)
+Newcastle United - Tottenham Hotspur (0:0)
+Newcastle United - West Bromwich Albion (0:2)
+Newcastle United - West Ham United (4:0)
+Newcastle United - Wolverhampton (4:0)
+Sheffield United - Southampton Fc (1:3)
+Sheffield United - Tottenham Hotspur (2:2)
+Sheffield United - West Bromwich Albion (1:1)
+Sheffield United - West Ham United (2:3)
+Sheffield United - Wolverhampton (2:4)
+Southampton Fc - Tottenham Hotspur (3:3)
+Southampton Fc - West Bromwich Albion (2:0)
+Southampton Fc - West Ham United (4:1)
+Southampton Fc - Wolverhampton (1:3)
+Tottenham Hotspur - West Bromwich Albion (2:0)
+Tottenham Hotspur - West Ham United (2:3)
+Tottenham Hotspur - Wolverhampton (1:3)
+West Bromwich Albion - West Ham United (4:3)
+West Bromwich Albion - Wolverhampton (0:3)
+West Ham United - Wolverhampton (0:2)
+
+The table of the first round:
+Pos   Team                 Pts GF  GA  GD 
+1.    Southampton Fc       39  50  34  16 
+2.    Wolverhampton        35  44  38  6  
+3.    Tottenham Hotspur    32  42  35  7  
+4.    Aston Villa          31  47  34  13 
+5.    Brighton & Albion    30  37  28  9  
+6.    Manchester United    29  35  26  9  
+7.    Chelsea London       28  43  45  -2 
+8.    West Bromwich Albion 28  37  32  5  
+9.    Sheffield United     27  41  35  6  
+10.   Burnley Fc           27  30  35  -5 
+11.   Leicester City       26  45  42  3  
+12.   Arsenal London       26  39  44  -5 
+13.   West Ham United      26  33  39  -6 
+14.   Everton Fc           25  38  43  -5 
+15.   Manchester City      25  34  37  -3 
+16.   Leeds United         23  43  43  0  
+17.   Fulham London        22  28  37  -9 
+18.   Newcastle United     21  35  37  -2 
+19.   Crystal Palace       16  25  43  -18
+20.   Liverpool Fc         12  26  45  -19
+
+Results of the rematches:
+Aston Villa - Arsenal London (0:2)
+Brighton & Albion - Arsenal London (4:1)
+Burnley Fc - Arsenal London (3:0)
+Chelsea London - Arsenal London (3:0)
+Crystal Palace - Arsenal London (4:4)
+Everton Fc - Arsenal London (2:3)
+Fulham London - Arsenal London (0:3)
+Leeds United - Arsenal London (3:1)
+Leicester City - Arsenal London (4:1)
+Liverpool Fc - Arsenal London (3:4)
+Manchester City - Arsenal London (0:4)
+Manchester United - Arsenal London (2:2)
+Newcastle United - Arsenal London (3:0)
+Sheffield United - Arsenal London (0:2)
+Southampton Fc - Arsenal London (4:0)
+Tottenham Hotspur - Arsenal London (1:3)
+West Bromwich Albion - Arsenal London (0:3)
+West Ham United - Arsenal London (3:2)
+Wolverhampton - Arsenal London (2:2)
+Brighton & Albion - Aston Villa (3:0)
+Burnley Fc - Aston Villa (3:1)
+Chelsea London - Aston Villa (0:4)
+Crystal Palace - Aston Villa (0:2)
+Everton Fc - Aston Villa (0:0)
+Fulham London - Aston Villa (0:2)
+Leeds United - Aston Villa (0:1)
+Leicester City - Aston Villa (2:0)
+Liverpool Fc - Aston Villa (4:3)
+Manchester City - Aston Villa (1:1)
+Manchester United - Aston Villa (3:3)
+Newcastle United - Aston Villa (4:1)
+Sheffield United - Aston Villa (0:2)
+Southampton Fc - Aston Villa (0:1)
+Tottenham Hotspur - Aston Villa (4:2)
+West Bromwich Albion - Aston Villa (0:4)
+West Ham United - Aston Villa (0:3)
+Wolverhampton - Aston Villa (4:4)
+Burnley Fc - Brighton & Albion (3:2)
+Chelsea London - Brighton & Albion (0:3)
+Crystal Palace - Brighton & Albion (3:3)
+Everton Fc - Brighton & Albion (2:1)
+Fulham London - Brighton & Albion (1:1)
+Leeds United - Brighton & Albion (1:3)
+Leicester City - Brighton & Albion (3:2)
+Liverpool Fc - Brighton & Albion (0:1)
+Manchester City - Brighton & Albion (0:0)
+Manchester United - Brighton & Albion (1:3)
+Newcastle United - Brighton & Albion (1:0)
+Sheffield United - Brighton & Albion (1:0)
+Southampton Fc - Brighton & Albion (0:2)
+Tottenham Hotspur - Brighton & Albion (3:2)
+West Bromwich Albion - Brighton & Albion (4:2)
+West Ham United - Brighton & Albion (3:2)
+Wolverhampton - Brighton & Albion (4:4)
+Chelsea London - Burnley Fc (3:4)
+Crystal Palace - Burnley Fc (4:0)
+Everton Fc - Burnley Fc (3:4)
+Fulham London - Burnley Fc (2:2)
+Leeds United - Burnley Fc (1:2)
+Leicester City - Burnley Fc (1:3)
+Liverpool Fc - Burnley Fc (2:3)
+Manchester City - Burnley Fc (2:1)
+Manchester United - Burnley Fc (0:0)
+Newcastle United - Burnley Fc (2:2)
+Sheffield United - Burnley Fc (0:1)
+Southampton Fc - Burnley Fc (1:3)
+Tottenham Hotspur - Burnley Fc (0:0)
+West Bromwich Albion - Burnley Fc (4:3)
+West Ham United - Burnley Fc (4:4)
+Wolverhampton - Burnley Fc (3:3)
+Crystal Palace - Chelsea London (1:0)
+Everton Fc - Chelsea London (1:0)
+Fulham London - Chelsea London (0:0)
+Leeds United - Chelsea London (0:3)
+Leicester City - Chelsea London (1:4)
+Liverpool Fc - Chelsea London (3:0)
+Manchester City - Chelsea London (0:3)
+Manchester United - Chelsea London (3:2)
+Newcastle United - Chelsea London (2:4)
+Sheffield United - Chelsea London (0:2)
+Southampton Fc - Chelsea London (3:0)
+Tottenham Hotspur - Chelsea London (1:0)
+West Bromwich Albion - Chelsea London (0:2)
+West Ham United - Chelsea London (4:3)
+Wolverhampton - Chelsea London (0:3)
+Everton Fc - Crystal Palace (0:3)
+Fulham London - Crystal Palace (1:3)
+Leeds United - Crystal Palace (1:3)
+Leicester City - Crystal Palace (2:2)
+Liverpool Fc - Crystal Palace (1:3)
+Manchester City - Crystal Palace (4:3)
+Manchester United - Crystal Palace (3:3)
+Newcastle United - Crystal Palace (3:1)
+Sheffield United - Crystal Palace (4:0)
+Southampton Fc - Crystal Palace (3:4)
+Tottenham Hotspur - Crystal Palace (1:2)
+West Bromwich Albion - Crystal Palace (3:2)
+West Ham United - Crystal Palace (1:0)
+Wolverhampton - Crystal Palace (4:3)
+Fulham London - Everton Fc (4:4)
+Leeds United - Everton Fc (3:1)
+Leicester City - Everton Fc (4:3)
+Liverpool Fc - Everton Fc (1:2)
+Manchester City - Everton Fc (4:1)
+Manchester United - Everton Fc (1:0)
+Newcastle United - Everton Fc (0:3)
+Sheffield United - Everton Fc (0:0)
+Southampton Fc - Everton Fc (1:2)
+Tottenham Hotspur - Everton Fc (0:4)
+West Bromwich Albion - Everton Fc (4:3)
+West Ham United - Everton Fc (2:0)
+Wolverhampton - Everton Fc (1:3)
+Leeds United - Fulham London (0:4)
+Leicester City - Fulham London (2:2)
+Liverpool Fc - Fulham London (0:4)
+Manchester City - Fulham London (1:4)
+Manchester United - Fulham London (1:2)
+Newcastle United - Fulham London (0:0)
+Sheffield United - Fulham London (1:4)
+Southampton Fc - Fulham London (0:0)
+Tottenham Hotspur - Fulham London (1:2)
+West Bromwich Albion - Fulham London (2:0)
+West Ham United - Fulham London (1:3)
+Wolverhampton - Fulham London (2:2)
+Leicester City - Leeds United (4:4)
+Liverpool Fc - Leeds United (4:0)
+Manchester City - Leeds United (2:4)
+Manchester United - Leeds United (0:1)
+Newcastle United - Leeds United (1:4)
+Sheffield United - Leeds United (1:4)
+Southampton Fc - Leeds United (0:3)
+Tottenham Hotspur - Leeds United (0:2)
+West Bromwich Albion - Leeds United (2:0)
+West Ham United - Leeds United (0:0)
+Wolverhampton - Leeds United (2:3)
+Liverpool Fc - Leicester City (0:3)
+Manchester City - Leicester City (4:1)
+Manchester United - Leicester City (2:0)
+Newcastle United - Leicester City (3:0)
+Sheffield United - Leicester City (3:3)
+Southampton Fc - Leicester City (2:4)
+Tottenham Hotspur - Leicester City (1:0)
+West Bromwich Albion - Leicester City (3:4)
+West Ham United - Leicester City (2:2)
+Wolverhampton - Leicester City (4:4)
+Manchester City - Liverpool Fc (0:2)
+Manchester United - Liverpool Fc (3:2)
+Newcastle United - Liverpool Fc (3:1)
+Sheffield United - Liverpool Fc (1:3)
+Southampton Fc - Liverpool Fc (4:0)
+Tottenham Hotspur - Liverpool Fc (4:2)
+West Bromwich Albion - Liverpool Fc (4:1)
+West Ham United - Liverpool Fc (4:4)
+Wolverhampton - Liverpool Fc (1:1)
+Manchester United - Manchester City (0:0)
+Newcastle United - Manchester City (2:2)
+Sheffield United - Manchester City (1:4)
+Southampton Fc - Manchester City (1:0)
+Tottenham Hotspur - Manchester City (3:3)
+West Bromwich Albion - Manchester City (1:1)
+West Ham United - Manchester City (3:4)
+Wolverhampton - Manchester City (2:4)
+Newcastle United - Manchester United (2:3)
+Sheffield United - Manchester United (2:3)
+Southampton Fc - Manchester United (0:0)
+Tottenham Hotspur - Manchester United (0:3)
+West Bromwich Albion - Manchester United (0:4)
+West Ham United - Manchester United (2:3)
+Wolverhampton - Manchester United (1:2)
+Sheffield United - Newcastle United (0:1)
+Southampton Fc - Newcastle United (0:0)
+Tottenham Hotspur - Newcastle United (3:2)
+West Bromwich Albion - Newcastle United (4:4)
+West Ham United - Newcastle United (3:3)
+Wolverhampton - Newcastle United (2:4)
+Southampton Fc - Sheffield United (2:2)
+Tottenham Hotspur - Sheffield United (4:0)
+West Bromwich Albion - Sheffield United (3:3)
+West Ham United - Sheffield United (0:3)
+Wolverhampton - Sheffield United (0:4)
+Tottenham Hotspur - Southampton Fc (1:2)
+West Bromwich Albion - Southampton Fc (0:1)
+West Ham United - Southampton Fc (4:0)
+Wolverhampton - Southampton Fc (2:4)
+West Bromwich Albion - Tottenham Hotspur (3:3)
+West Ham United - Tottenham Hotspur (0:3)
+Wolverhampton - Tottenham Hotspur (3:3)
+West Ham United - West Bromwich Albion (2:1)
+Wolverhampton - West Bromwich Albion (1:0)
+Wolverhampton - West Ham United (1:3)
+
+The table of the rematches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Burnley Fc           36  44  35  9  
+2.    Manchester United    36  37  25  12 
+3.    Newcastle United     30  40  33  7  
+4.    West Ham United      29  41  41  0  
+5.    Fulham London        29  35  26  9  
+6.    Leeds United         29  34  34  0  
+7.    Crystal Palace       28  44  40  4  
+8.    Tottenham Hotspur    28  36  35  1  
+9.    Aston Villa          28  34  30  4  
+10.   Leicester City       27  44  45  -1 
+11.   Arsenal London       27  37  41  -4 
+12.   Manchester City      27  36  37  -1 
+13.   Brighton & Albion    25  38  31  7  
+14.   West Bromwich Albion 25  38  43  -5 
+15.   Chelsea London       25  32  30  2  
+16.   Southampton Fc       25  28  28  0  
+17.   Everton Fc           24  34  36  -2 
+18.   Liverpool Fc         17  34  47  -13
+19.   Sheffield United     16  26  38  -12
+20.   Wolverhampton        14  39  56  -17
+
+The table of the all matches:
+Pos   Team                 Pts GF  GA  GD 
+1.    Manchester United    65  72  51  21 
+2.    Southampton Fc       64  78  62  16 
+3.    Burnley Fc           63  74  70  4  
+4.    Tottenham Hotspur    60  78  70  8  
+5.    Aston Villa          59  81  64  17 
+6.    Brighton & Albion    55  75  59  16 
+7.    West Ham United      55  74  80  -6 
+8.    Leicester City       53  89  87  2  
+9.    Arsenal London       53  76  85  -9 
+10.   West Bromwich Albion 53  75  75  0  
+11.   Chelsea London       53  75  75  0  
+12.   Leeds United         52  77  77  0  
+13.   Manchester City      52  70  74  -4 
+14.   Newcastle United     51  75  70  5  
+15.   Fulham London        51  63  63  0  
+16.   Wolverhampton        49  83  94  -11
+17.   Everton Fc           49  72  79  -7 
+18.   Crystal Palace       44  69  83  -14
+19.   Sheffield United     43  67  73  -6 
+20.   Liverpool Fc         29  60  92  -32
+
+Premier League goals in first round: 752
+
+La Liga goals in rematches: 731
+
+Premier League goals in all matches: 1483
+

@@ -557,7 +557,7 @@ public class MatchManager {
         int counter = 0;
         while (!teamOk) {
             try {
-                printer.printLine("Enter a name of a team to display its all matches");
+                printer.printLine("Enter a name of a team to display its first round");
                 teamFirstRoundUserChoice = dataReader.toLowerCase();
                 teamFirstRoundUserChoice = dataReader.capitalizeFirstLetterEverySingleWord(teamFirstRoundUserChoice);
                 for (String s : teams) {
@@ -584,7 +584,7 @@ public class MatchManager {
         int counter = 0;
         while (!teamOk) {
             try {
-                printer.printLine("Enter a name of a team to display its all matches");
+                printer.printLine("Enter a name of a team to display its rematches");
                 teamRematchesUserChoice = dataReader.toLowerCase();
                 teamRematchesUserChoice = dataReader.capitalizeFirstLetterEverySingleWord(teamRematchesUserChoice);
                 for (String s : teams) {

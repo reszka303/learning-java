@@ -1,6 +1,6 @@
 package javaStart.task29_ArraysOperation.Me.Menu;
 
-import javaStart.task29_ArraysOperation.Me.exercise1.exception.NoSuchOptionException;
+import javaStart.task29_ArraysOperation.Me.exercise1ArrayList.exception.NoSuchOptionException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
