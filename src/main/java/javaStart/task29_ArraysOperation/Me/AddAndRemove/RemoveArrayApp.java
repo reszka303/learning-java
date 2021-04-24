@@ -1,7 +1,10 @@
 package javaStart.task29_ArraysOperation.Me.AddAndRemove;
 
+import kodilla.modul2.calculateTheAverage.versionWithLoops.Array;
+
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 
 public class RemoveArrayApp {
     private static int initialCapacity = 4;
@@ -13,7 +16,8 @@ public class RemoveArrayApp {
         print(people);
         printLine("");
         people = remove();
-        print(people);
+        System.out.println(Arrays.toString(people));
+//        print(people);
         Instant end = Instant.now();
         System.out.println(Duration.between(start, end));
 
@@ -22,8 +26,9 @@ public class RemoveArrayApp {
     private static Person[] remove() {
         int sizeArrayWithNull = people.length;
         Person[] arrayWithNull = toNull(sizeArrayWithNull);
-        Person[] arrayNullLastIndex = nullToLastIndex(sizeArrayWithNull, arrayWithNull);
-        return removeNull(arrayNullLastIndex);
+//        Person[] arrayNullLastIndex = nullToLastIndex(sizeArrayWithNull, arrayWithNull);
+        return arrayWithNull;
+//        return removeNull(arrayNullLastIndex);
     }
 
     private static Person[] toNull(int sizeArrayWithNull) {
@@ -55,29 +60,6 @@ public class RemoveArrayApp {
         }
         return arrayWithoutNull;
     }
-
-//    private static Person[] remove() {
-//        List<Person> persons = new ArrayList<>(List.of(people));
-//        Iterator<Person> personIterator = persons.iterator();
-//        iterate(personIterator);
-//        return getPeople(persons);
-//    }
-//
-//    private static void iterate(Iterator<Person> personIterator) {
-//        while (personIterator.hasNext()) {
-//            if (personIterator.next().getId() == 3) {
-//                personIterator.remove();
-//            }
-//        }
-//    }
-//
-//    private static Person[] getPeople(List<Person> persons) {
-//        Person[] newPeople = new Person[persons.size()];
-//        for (int i = 0; i < persons.size(); i++) {
-//            newPeople[i] = persons.get(i);
-//        }
-//        return newPeople;
-//    }
 
     private static Person[] create() {
         people[0] = new Person("Leonardo", "DiCaprio", 1);
