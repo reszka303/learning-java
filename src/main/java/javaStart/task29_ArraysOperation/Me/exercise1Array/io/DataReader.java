@@ -41,12 +41,12 @@ public class DataReader {
     }
 
     private int getEngineCapacity() {
-        boolean idOk = false;
-        int id = 0;
-        while (!idOk) {
+        boolean capacityOk = false;
+        int capacity = 0;
+        while (!capacityOk) {
             try {
-                id = input.nextInt();
-                idOk = true;
+                capacity = input.nextInt();
+                capacityOk = true;
             } catch (InputMismatchException e) {
                 printer.printLineError("Enter digit, try again");
             } catch (IdLengthException e) {
@@ -55,17 +55,17 @@ public class DataReader {
                 clearBuffer();
             }
         }
-        return id;
+        return capacity;
     }
 
     private int getNumber() {
-        boolean idOk = false;
-        int id = 0;
-        while (!idOk) {
+        boolean numberOk = false;
+        int number = 0;
+        while (!numberOk) {
             try {
-                id = input.nextInt();
-                id = checkLength(id);
-                idOk = true;
+                number = input.nextInt();
+                checkLength(number);
+                numberOk = true;
             } catch (InputMismatchException e) {
                 printer.printLineError("Enter digit, try again");
             } catch (IdLengthException e) {
@@ -74,15 +74,15 @@ public class DataReader {
                 clearBuffer();
             }
         }
-        return id;
+        return number;
     }
 
-    private int checkLength(int id) {
-        int length = String.valueOf(id).length();
+    private int checkLength(int number) {
+        int length = String.valueOf(number).length();
         if (length != 3) {
             throw new IdLengthException("Number must be 3 digits, try again");
         }
-        return id;
+        return number;
     }
 
     public void clearBuffer() {

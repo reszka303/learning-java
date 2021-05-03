@@ -17,7 +17,6 @@ public class DatabaseControl {
     private DataReader dataReader = new DataReader();
     private PersonDatabase personDatabase = new PersonDatabase();
     private CarDatabase carDatabase = new CarDatabase();
-    private Car car;
     private static final int EXIT = 0;
     private static final int ADD_PERSON = 1;
     private static final int REMOVE_PERSON = 2;
@@ -84,9 +83,9 @@ public class DatabaseControl {
     }
 
     private void removePerson() {
-        int id = dataReader.getNumberToRemove();
-        int capacity = personDatabase.getPersons().length;
         try {
+            int id = dataReader.getNumberToRemove();
+            int capacity = personDatabase.getPersons().length;
             Person[] persons = personDatabase.remove(id);
             int resize = persons.length;
             if (resize < capacity) {
@@ -104,11 +103,9 @@ public class DatabaseControl {
     }
 
     private void addCar() {
+        Car car = dataReader.createCar();
+        int capacity = carDatabase.getCars().length;
         try {
-            Car car = dataReader.createCar();
-//            int capacity = car.getCars().length;
-            int capacity = carDatabase.getCars().length;
-//            Car[] cars = car.add(car);
             Car[] cars = carDatabase.add(car);
             int resize = cars.length;
             if (resize > capacity) {
@@ -123,9 +120,7 @@ public class DatabaseControl {
         try {
             int vin = dataReader.getNumberToRemove();
             int capacity = carDatabase.getCars().length;
-//            Car[] cars = car.getCars();
             Car[] cars = carDatabase.remove(vin);
-//            Car[] cars = car.remove(vin);
             int resize = cars.length;
             if (resize < capacity) {
                 printer.printLine("You removed the car from the database");
@@ -136,7 +131,6 @@ public class DatabaseControl {
     }
 
     private void printCars() {
-//        Car[] cars = car.getCars();
         Car[] cars = carDatabase.getCars();
         printer.print(cars);
     }
