@@ -26,9 +26,11 @@ public class RemoveArrayApp {
     private static Person[] remove() {
         int sizeArrayWithNull = people.length;
         Person[] arrayWithNull = toNull(sizeArrayWithNull);
-//        Person[] arrayNullLastIndex = nullToLastIndex(sizeArrayWithNull, arrayWithNull);
-        return arrayWithNull;
-//        return removeNull(arrayNullLastIndex);
+        Person[] arrayNullLastIndex = nullToLastIndex(sizeArrayWithNull, arrayWithNull);
+        Person[] arrayWithoutNull = removeNull(arrayNullLastIndex);
+//        return arrayNullLastIndex;
+        return arrayWithoutNull;
+//        return arrayWithNull;
     }
 
     private static Person[] toNull(int sizeArrayWithNull) {
@@ -38,6 +40,7 @@ public class RemoveArrayApp {
                 arrayWithNull[i] = people[i];
             }
         }
+        System.out.println();
         return arrayWithNull;
     }
 

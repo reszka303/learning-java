@@ -1,79 +1,112 @@
 package javaStart.task29_ArraysOperation.Me.exercise1Array.model;
 
 import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.DuplicateException;
+import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.NumberNotFoundException;
 import javaStart.task29_ArraysOperation.Me.exercise1Array.io.DataReader;
 
-public class PersonDatabase {
+public class PersonDatabase  {
     private DataReader dataReader = new DataReader();
-    private final int initialCapacity = 3;
+    private int initialCapacity = 0;
     private Person[] persons = new Person[initialCapacity];
 
     public Person[] getPersons() {
         return persons;
     }
 
-    public Person[] create() {
-        persons[0] = new Person("Leonardo", "DiCaprio", 123);
-        persons[1] = new Person("Sean", "Connery", 999);
-        persons[2] = new Person("Sylvester", "Stallone", 345);
-        return persons;
-    }
-
-    public Person[] addPerson(Person person) {
-        int resize = persons.length;
-        Person[] resizedPersons = new Person[resize + 1];
-        for (int i = 0; i < resize; i++) {
-            resizedPersons[i] = persons[i];
+    public Person[] add(Person person) {
+        int capacity = persons.length;
+        Person[] copyPersons = new Person[capacity + 1];
+        for (int i = 0; i < persons.length; i++) {
+            copyPersons[i] = persons[i];
         }
-        checkDuplicate(person);
-        resizedPersons[resize] = person;
-        return resizedPersons;
+        copyPersons[capacity] = person;
+        if (persons.length >= 1) {
+            checkDuplicate(person);
+        }
+        persons = copyPersons;
+        return persons;
     }
 
     private void checkDuplicate(Person person) {
         for (int i = 0; i < persons.length; i++) {
-            if (person.getId() == persons[i].getId()) {
+            if (persons[i].getId() == person.getId()) {
                 throw new DuplicateException("There is already the person with the same id");
             }
         }
     }
 
-    public Person[] removePerson() {
-        int size = persons.length;
-        int id = dataReader.getIdToRemove();
-        persons = toNull(size, id);
-        persons = nullToLastIndex(size);
-        persons = removeLastIndex(size);
+    public Person[] remove(int id) {
+        int idVerify = checkId(id);
+        checkIfException(idVerify);
+        persons = removeLogic(id);
         return persons;
     }
 
-    private Person[] toNull(int size, int id) {
-        Person[] newPersons = new Person[size];
-        for (int i = 0; i < size; i++) {
+    public Person[] removeLogic(int id) {
+        int size = persons.length;
+        Person[] personsAfterRemoving = new Person[size - 1];
+        for (int i = 0, k = 0; i < size; i++) {
             if (persons[i].getId() != id) {
-                newPersons[i] = persons[i];
+                personsAfterRemoving[k] = persons[i];
+                k++;
             }
         }
-        return newPersons;
+        return personsAfterRemoving;
     }
 
-    private Person[] nullToLastIndex(int size) {
-        int index = 0;
-        Person[] newPersons = new Person[size];
+    int checkId(int id) {
+        int size = persons.length;
+        int idVerify = 0;
         for (int i = 0; i < size; i++) {
-            if (persons[i] != null) {
-                newPersons[index++] = persons[i];
+            if (persons[i].getId() == id) {
+                idVerify++;
             }
         }
-        return newPersons;
+        return idVerify;
     }
 
-    private Person[] removeLastIndex(int size) {
-        int decreasedByOne = size - 1;
-        Person[] newPerson = new Person[decreasedByOne];
-        for (int i = 0; i < decreasedByOne; i++) {
-            newPerson[i] = persons[i];
+    int checkIfException(int idVerify) {
+        if (idVerify == 0) {
+            throw new NumberNotFoundException("There is not person with given id");
         }
-        return newPerson;
+        return idVerify;
     }
+
+
+
+    //    public <T> T[] add(T t) {
+//        int capacity = persons.length;
+//        Person[] copyPersons = new Person[capacity + 1];
+//        for (int i = 0; i < capacity; i++) {
+//            copyPersons[i] = persons[i];
+//        }
+//        copyPersons[capacity] = (Person) t;
+//        if (persons.length >= 1) {
+//            checkDuplicate((Person) t);
+//        }
+//        persons = copyPersons;
+//        return (T[]) persons;
+//    }
+
+//    @Override
+//    public <T> T[] remove(int id) {
+//        int capacity = persons.length;
+//        Person[] copyPersons = new Person[capacity -1];
+//        int verifyId = checkId(id);
+//        checkIfException(verifyId);
+//        copyPersons = (Person[]) persons = removeLogic(verifyId);
+//
+//    }
+//
+//    private Person[] removeLogic(int verifyId) {
+//        int capacity = persons.length;
+//        Person[] personsAfterRemoving = new Person[capacity - 1];
+//        for (int i = 0, j = 0; i < capacity; i++) {
+//            if (persons[i].getId() != verifyId) {
+//                personsAfterRemoving[j] = persons[i];
+//                j++;
+//            }
+//        }
+//        return personsAfterRemoving;
+//    }
 }

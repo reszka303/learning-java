@@ -1,4 +1,4 @@
-package javaStart.task29_ArraysOperation.Me.exercise1Array.test;
+package javaStart.task29_ArraysOperation.Me.exercise1Array.app.test;
 
 import java.util.Arrays;
 
