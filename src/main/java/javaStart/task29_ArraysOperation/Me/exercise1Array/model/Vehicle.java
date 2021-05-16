@@ -1,6 +1,6 @@
 package javaStart.task29_ArraysOperation.Me.exercise1Array.model;
 
-public class Vehicle {
+public abstract class Vehicle implements CsvConvertible {
     private String mark;
     private String model;
 

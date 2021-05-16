@@ -1,6 +1,6 @@
 package javaStart.task29_ArraysOperation.Me.exercise1Array.model;
 
-public class VehicleEngine extends Vehicle {
+public abstract class VehicleEngine extends Vehicle {
     private int engineCapacity;
     private String fuel;
 

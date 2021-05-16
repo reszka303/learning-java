@@ -1,22 +1,19 @@
 package javaStart.task29_ArraysOperation.Me.exercise1Array.app;
 
-import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.DuplicateException;
-import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.NumberNotFoundException;
-import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.NoSuchOptionException;
+import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.*;
 import javaStart.task29_ArraysOperation.Me.exercise1Array.io.ConsolePrinter;
 import javaStart.task29_ArraysOperation.Me.exercise1Array.io.DataReader;
-import javaStart.task29_ArraysOperation.Me.exercise1Array.model.Car;
-import javaStart.task29_ArraysOperation.Me.exercise1Array.model.CarDatabase;
-import javaStart.task29_ArraysOperation.Me.exercise1Array.model.Person;
-import javaStart.task29_ArraysOperation.Me.exercise1Array.model.PersonDatabase;
+import javaStart.task29_ArraysOperation.Me.exercise1Array.io.file.CsvFileManager;
+import javaStart.task29_ArraysOperation.Me.exercise1Array.io.file.FileManager;
+import javaStart.task29_ArraysOperation.Me.exercise1Array.model.*;
 
 import java.util.InputMismatchException;
 
 public class DatabaseControl {
     private ConsolePrinter printer = new ConsolePrinter();
     private DataReader dataReader = new DataReader();
-    private PersonDatabase personDatabase = new PersonDatabase();
-    private CarDatabase carDatabase = new CarDatabase();
+    private DatabaseManager databaseManager;
+    private FileManager fileManager = new CsvFileManager();
     private static final int EXIT = 0;
     private static final int ADD_PERSON = 1;
     private static final int REMOVE_PERSON = 2;
@@ -27,8 +24,16 @@ public class DatabaseControl {
     private final int initialCapacity = 7;
     private Option[] options = new Option[initialCapacity];
 
+    public DatabaseControl() {
+        readFile();
+    }
+
     void run() {
-        controlLoop();
+        try {
+            controlLoop();
+        } catch (DataReadException e) {
+            printer.printLine(e.getMessage());
+        }
     }
 
     private void controlLoop() {
@@ -63,16 +68,33 @@ public class DatabaseControl {
         } while (option.getValue() != EXIT);
     }
 
+    private void readFile() {
+        try {
+            databaseManager = fileManager.read();
+            printer.printLine("Data from the file has been read successfully");
+        } catch (DataReadException e) {
+            e.getMessage();
+            printer.printLine("The new database has been initiated");
+            databaseManager = new DatabaseManager();
+        }
+    }
+
     private void exit() {
-        printer.printLine("Exit program, bye");
+        try {
+            fileManager.write(databaseManager);
+            printer.printLine("Write data into file has been successful");
+        } catch (DataWriteException e) {
+            e.getMessage();
+        }
         dataReader.close();
+        printer.printLine("Exit program, bye");
     }
 
     private void addPerson() {
         try {
             Person person = dataReader.createPerson();
-            int capacity = personDatabase.getPersons().length;
-            Person[] persons = personDatabase.add(person);
+            int capacity = databaseManager.getPersonDatabase().getPersons().length;
+            Person[] persons = databaseManager.getPersonDatabase().add(person);
             int resize = persons.length;
             if (resize > capacity) {
                 printer.printLine("You added a new person to the database");
@@ -85,8 +107,8 @@ public class DatabaseControl {
     private void removePerson() {
         try {
             int id = dataReader.getNumberToRemove();
-            int capacity = personDatabase.getPersons().length;
-            Person[] persons = personDatabase.remove(id);
+            int capacity = databaseManager.getPersonDatabase().getPersons().length;
+            Person[] persons = databaseManager.getPersonDatabase().remove(id);
             int resize = persons.length;
             if (resize < capacity) {
                 printer.printLine("You removed the person from the database");
@@ -98,15 +120,15 @@ public class DatabaseControl {
     }
 
     private void printPersons() {
-        Person[] persons = personDatabase.getPersons();
+        Person[] persons = databaseManager.getPersonDatabase().getPersons();
         printer.print(persons);
     }
 
     private void addCar() {
         Car car = dataReader.createCar();
-        int capacity = carDatabase.getCars().length;
+        int capacity = databaseManager.getCarDatabase().getCars().length;
         try {
-            Car[] cars = carDatabase.add(car);
+            Car[] cars = databaseManager.getCarDatabase().add(car);
             int resize = cars.length;
             if (resize > capacity) {
                 printer.printLine("You added a new car to the database");
@@ -117,10 +139,10 @@ public class DatabaseControl {
     }
 
     private void removeCar() {
+        int vin = dataReader.getNumberToRemove();
+        int capacity = databaseManager.getCarDatabase().getCars().length;
         try {
-            int vin = dataReader.getNumberToRemove();
-            int capacity = carDatabase.getCars().length;
-            Car[] cars = carDatabase.remove(vin);
+            Car[] cars = databaseManager.getCarDatabase().remove(vin);
             int resize = cars.length;
             if (resize < capacity) {
                 printer.printLine("You removed the car from the database");
@@ -131,7 +153,7 @@ public class DatabaseControl {
     }
 
     private void printCars() {
-        Car[] cars = carDatabase.getCars();
+        Car[] cars = databaseManager.getCarDatabase().getCars();
         printer.print(cars);
     }
 
@@ -143,7 +165,7 @@ public class DatabaseControl {
                 option = createFromInt(dataReader.getIntNoBuffer());
                 optionOk = true;
             } catch (ArrayIndexOutOfBoundsException | NoSuchOptionException e) {
-                e.getMessage();
+                printer.printLine(e.getMessage());
             } catch (InputMismatchException e) {
                 printer.printLineError("Enter a digit, try again");
             } finally {

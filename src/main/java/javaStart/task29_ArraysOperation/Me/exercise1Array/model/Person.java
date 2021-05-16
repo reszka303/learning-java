@@ -1,8 +1,6 @@
 package javaStart.task29_ArraysOperation.Me.exercise1Array.model;
 
-import java.math.BigInteger;
-
-public class Person {
+public class Person implements CsvConvertible {
     private String firstName;
     private String secondName;
     private int id;
@@ -28,5 +26,12 @@ public class Person {
     @Override
     public String toString() {
         return firstName + " " + secondName + " " + id;
+    }
+
+    @Override
+    public String toCsv() {
+        return  firstName + ";" +
+                secondName + ";" +
+                id + "";
     }
 }
