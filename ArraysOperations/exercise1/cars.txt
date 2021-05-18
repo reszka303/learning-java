@@ -1,1 +1,1 @@
-Polonez;Caro;1410;petrol;111
+Renault;Clio;1299;diesel;222

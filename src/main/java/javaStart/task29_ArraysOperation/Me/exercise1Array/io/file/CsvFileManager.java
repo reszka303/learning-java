@@ -3,13 +3,11 @@ package javaStart.task29_ArraysOperation.Me.exercise1Array.io.file;
 
 import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.DataReadException;
 import javaStart.task29_ArraysOperation.Me.exercise1Array.exception.DataWriteException;
-import javaStart.task29_ArraysOperation.Me.exercise1Array.io.ConsolePrinter;
 import javaStart.task29_ArraysOperation.Me.exercise1Array.model.*;
 
 import java.io.*;
 
 public class CsvFileManager implements FileManager  {
-    private ConsolePrinter printer = new ConsolePrinter();
     private static final String PERSONS = "D:\\INNE\\Programowanie\\Projects\\learning\\ArraysOperations" +
             "\\exercise1\\persons.txt";
     private static final String CARS = "D:\\INNE\\Programowanie\\Projects\\learning\\ArraysOperations" +

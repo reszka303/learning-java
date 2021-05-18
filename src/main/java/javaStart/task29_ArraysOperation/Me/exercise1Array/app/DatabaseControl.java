@@ -165,7 +165,7 @@ public class DatabaseControl {
                 option = createFromInt(dataReader.getIntNoBuffer());
                 optionOk = true;
             } catch (ArrayIndexOutOfBoundsException | NoSuchOptionException e) {
-                printer.printLine(e.getMessage());
+                e.getMessage();
             } catch (InputMismatchException e) {
                 printer.printLineError("Enter a digit, try again");
             } finally {
