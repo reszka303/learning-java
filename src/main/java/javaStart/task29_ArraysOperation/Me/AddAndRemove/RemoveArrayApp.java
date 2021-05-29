@@ -1,7 +1,5 @@
 package javaStart.task29_ArraysOperation.Me.AddAndRemove;
 
-import kodilla.modul2.calculateTheAverage.versionWithLoops.Array;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
