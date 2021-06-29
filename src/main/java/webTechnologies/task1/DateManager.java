@@ -4,20 +4,20 @@ public class DateManager {
     private static final int minutes = 24 * 60;
     private static final int seconds = 60 * 60 * 24;
 
-    int getDays(int number) {
-        return number;
+    int getDays(int days) {
+        return days;
     }
 
-    int getHours(int number) {
-        return number * 24;
+    int getHours(int days) {
+        return days * 24;
     }
 
-    int getMinutes(int number) {
-        return minutes * number;
+    int getMinutes(int days) {
+        return minutes * days;
 
     }
 
-    int getSeconds(int number) {
-        return seconds * number;
+    int getSeconds(int days) {
+        return seconds * days;
     }
 }
