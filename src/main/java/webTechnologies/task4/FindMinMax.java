@@ -22,8 +22,6 @@ public class FindMinMax {
         int capacity = array.length;
         int min = array[0];
         int max = array[0];
-        int capacityMinMaxArray = 2;
-        int[] minMaxArray = new int[capacityMinMaxArray];
         for (int i = 0; i < capacity; i++) {
             if (array[i] < min) {
                 min = array[i];
@@ -32,8 +30,6 @@ public class FindMinMax {
                 max = array[i];
             }
         }
-        minMaxArray[0] = min;
-        minMaxArray[1] = max;
-        return minMaxArray;
+        return new int[] {min, max};
     }
 }

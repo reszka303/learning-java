@@ -9,8 +9,8 @@ import java.util.Arrays;
 public class Interlace {
     private static int[] array = {5, 10, 15};
     private static int number = 1;
-    private static int capacityInterlaceArray = array.length;
-    private static int[] interlaceArray = new int[capacityInterlaceArray * 2];
+    private static int capacityInterlaceArray = 0;
+    private static int[] interlaceArray = new int[capacityInterlaceArray];
 
     public static void main(String[] args) {
         interlaceArray = interlace(array, number);
