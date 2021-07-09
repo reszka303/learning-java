@@ -6,6 +6,7 @@ Dla tablicy [5, 10, 15] i liczby 1 oczekiwany wynik to [5, 1, 10, 1, 15, 1] */
 
 import java.util.Arrays;
 
+
 public class Interlace {
     private static int[] array = {5, 10, 15};
     private static int number = 1;
