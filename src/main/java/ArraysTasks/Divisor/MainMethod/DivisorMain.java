@@ -1,18 +1,21 @@
-package ArraysTasks;
+package ArraysTasks.Divisor.MainMethod;
 
 import java.util.Arrays;
 
-public class Factor {
+public class DivisorMain {
     private static int initialCapacity = 0;
     private static int[] positiveNumbers = new int[initialCapacity];
     private static int[] negativePositiveNumbers = new int[initialCapacity];
-    private static int positiveNumber = 30;
-    private static int negativeNumber = -30;
+    private static int positiveNumber = 10;
+    private static int negativeNumber = -10;
 
     public static void main(String[] args) {
-        calculatePositiveFactor(positiveNumber);
+//        calculatePositiveFactor(positiveNumber);
         calculateNegativePositiveFactor(negativeNumber);
+//        printArray(positiveNumbers);
+//        printArray(negativePositiveNumbers);
     }
+
 
     private static void calculateNegativePositiveFactor(int number) {
         int counter = 0;
@@ -20,7 +23,7 @@ public class Factor {
             counter++;
         }
         int counterFor = 0;
-//        System.out.println(counter);
+        System.out.println(counter);
         for (int i = number; i <= counter; i++) {
             counterFor++;
             if (i == 0) {
@@ -31,7 +34,7 @@ public class Factor {
                 negativePositiveNumbers = add(i, negativePositiveNumbers);
             }
         }
-//        System.out.println(counterFor);
+        System.out.println(counterFor);
         System.out.println(Arrays.toString(negativePositiveNumbers));
     }
 
@@ -53,5 +56,12 @@ public class Factor {
         }
         copyArray[capacity] = number;
         return copyArray;
+    }
+
+    private static void printArray(int[] array) {
+        int capacity = array.length;
+        for (int i = 0; i < capacity; i++) {
+            System.out.println(array[i]);
+        }
     }
 }
