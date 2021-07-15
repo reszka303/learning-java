@@ -1,4 +1,4 @@
-package ArraysTasks;
+package arraysTasks.Reverse;
 
 import java.util.Arrays;
 

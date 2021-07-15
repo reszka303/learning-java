@@ -1,4 +1,4 @@
-package ArraysTasks;
+package arraysTasks.Multiply;
 /*
 Celem powyższego programu jest utworzenie tablicy o wskazanym rozmiarze (10), wyświetlenie
 oryginalnej tablicy, następnie przemnożenie każdego elementu tablicy przez wskazaną wartość (2)

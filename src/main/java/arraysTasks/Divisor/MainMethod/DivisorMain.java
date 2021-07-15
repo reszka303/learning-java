@@ -1,4 +1,4 @@
-package ArraysTasks.Divisor.MainMethod;
+package arraysTasks.Divisor.MainMethod;
 
 import java.util.Arrays;
 

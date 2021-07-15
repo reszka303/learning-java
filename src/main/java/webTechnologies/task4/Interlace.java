@@ -15,7 +15,9 @@ public class Interlace {
 
     public static void main(String[] args) {
         interlaceArray = interlace(array, number);
-        System.out.println("Tablica wypełniona naprzemiennie to: " + Arrays.toString(interlaceArray));
+//        System.out.println("Tablica wypełniona naprzemiennie to: " + Arrays.toString(interlaceArray));
+        System.out.println("Tablica wypełniona naprzemiennie w pętli to: ");
+        printArray(interlaceArray);
     }
 
     private static int[] interlace(int[] array, int number) {
@@ -26,5 +28,12 @@ public class Interlace {
             interlaceArray[interlaceArrayIndex++] = number;
         }
         return interlaceArray;
+    }
+
+    private static void printArray(int[] array) {
+        int capacity = array.length;
+        for (int i = 0; i < capacity; i++) {
+            System.out.println(array[i]);
+        }
     }
 }
