@@ -6,7 +6,7 @@ package differentTasks.passwordValidator.validatorBasic;
 public class ValidatorBasic {
     public static void main(String[] args) {
         printLine("Sprawdź siłę swojego hasła:");
-        String password = "A1ćCDfE";
+        String password = "Abgf%1";
         printLine("Twoje hasło to: " + password);
         isSafe(password);
     }
@@ -14,13 +14,13 @@ public class ValidatorBasic {
     private static void isSafe(String password) {
         if (!isRightLength(password)) {
             printLine("Hasło musi zawierać co najmniej 5 liter");
-        } else if (!isLowerCase(password)) {
+        } if (!isLowerCase(password)) {
             printLine("Hasło musi zawierać co najmniej jedną małą literę");
-        } else if (!isUpperCase(password)) {
+        } if (!isUpperCase(password)) {
             printLine("Hasło musi zawierać co najmniej jedną dużą literę");
-        } else if (!isDigit(password)) {
+        } if (!isDigit(password)) {
             printLine("Hasło musi zawierać co najmniej jedną cyfrę");
-        } else if (!isSpecialCharacter(password)) {
+        } if (!isSpecialCharacter(password)) {
             printLine("Hasło musi zawierać co najmniej jeden znak specjalny");
         } else {
             printLine("Hasło spełnia wszystkie kryteria bezpieczeństwa");
