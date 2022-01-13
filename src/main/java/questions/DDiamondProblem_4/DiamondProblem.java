@@ -6,7 +6,6 @@ public class DiamondProblem {
         character.move();
         Human human = new Character();
         human.move();
-
     }
 
     private interface Moveable {
